@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CookBook</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="relative container mx-auto p-10 bg-grey-lighter">
+        <h1>CookBook</h1>
+        <nav class="absolute pin-b pin-l pin-r w-4/5 mx-auto">
+            <div class="flex items-end bg-grey-light">
+                <div class="navItem flex-1 text-grey-darker text-center bg-grey-lighter border border-grey-darker"
+                    id="discoverBtn">Discover</div>
+                <div class="navItem flex-1 text-grey-darker text-center bg-grey-lighter border border-grey-darker"
+                    id="saved">Saved</div>
+            </div>
+        </nav>
+
+    </header>
+    <main class="relative container m-auto mt-5 ">
+        <div class="w-4/5 bg-grey-lighter p-10 mx-auto" id="searchDiv">
+            <form autocomplete="off" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <label for="search-input" class="block text-grey-darker text-sm font-bold mb-2">Search for
+                    Recipe:</label>
+                <input id="search" type="text" placeholder="Chicken Noodle Soup"
+                    class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
+                <input type="submit" value="Search" id="searchBtn"
+                    class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"></input>
+            </form>
+
+            <!-- All below information pulls from API -->
+            <div class="inline-flex flex-wrap w-fullrounded overflow-hidden shadow-lg mx-auto p-2">
+                <div class="lg:w-1/3 text-center mx-auto">
+                        <img class="m-auto"
+                        src="https://www.edamam.com/web-img/e2f/e2f218367f08839d0481b8bafc799235.jpg"
+                        alt="Chicken Noodle Soup">
+                    <!-- healthLabels -->
+                    <div class="px-6 py-4 text-left">
+                            <span class="bg-grey-light text-grey-darkest py-1 px-2 rounded-full inline-flex items-center">Sugar-Conscious</span>
+                            <span class="bg-grey-light text-grey-darkest py-1 px-2 rounded-full inline-flex items-center">Peanut-Free</span>
+                            <span class="bg-grey-light text-grey-darkest py-1 px-2 rounded-full inline-flex items-center">Tree-Nut-Free</span>
+                    </div>
+                </div>
+               
+                <div class="lg:w-2/3 px-6 py-4">
+                    <!-- label -->
+                    <div class="font-bold text-xl mb-1">Chicken Noodle Soup</div>
+                    <p class="text-sm text-grey-dark flex items-center mb-2">Source:<span id="sourcd">Smitten Kitchen</span></p>
+                    
+                    
+                    <p class="text-grey-darker text-base">
+                            "1 tablespoon vegetable oil",
+                            "1 large onion, chopped",
+                            "3-pound chicken, in parts or 3 pounds chicken pieces of your choice",
+                            "8 cups water",
+                            "1 bay leaf",
+                            "2 teaspoons table salt",
+                            "Freshly ground black pepper",
+                            "1 large carrot, diced (1/3-inch)",
+                            "1 medium parsnip, diced (1/3-inch) (optional)",
+                            "1 large celery stalk, diced (1/3-inch)",
+                            "3 ounces dried egg noodles, I prefer wide ones",
+                            "1 tablespoon chopped fresh dill or flat-leaf parsley"
+                    </p>
+                </div>
+
+                
+            </div>
+        </div>
+
+
+    </main>
+    <footer>
+
+    </footer>
+</body>
+
+</html>
