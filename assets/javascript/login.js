@@ -1,11 +1,11 @@
 //this JS handles the FireBase login
 //And determins if the user is loged in
 
-let auth = firebase.auth();
+const auth = firebase.auth();
 
 //JS to push user to the database when a user is created
 
-let database = firebase.database();
+const database = firebase.database();
 
 $(document).ready(function () {
     $(document).on('click',"#signupBtn", function (event) {
