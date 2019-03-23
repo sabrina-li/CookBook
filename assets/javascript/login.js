@@ -37,6 +37,11 @@ $(document).ready(function () {
         $("#lastname").hide();
     })
 
+    $(document).on('click',"#closelogin", function (event) {
+        event.preventDefault();
+        loginHandler(false);
+    })
+
     
     $(document).on('click',"#logoutBtnHead", function (event) {
         auth.signOut().then(function () {
