@@ -60,9 +60,12 @@ $(document).ready(function () {
 
     auth.onAuthStateChanged(function (user) {
         if (user) {
+            
             //User is signed in. set user to this user
             //Hide log in section and show logout button
-            loginHandler(true);
+            
+            loginHandler(true,user);
+            
 
         } else {
             // No user is signed in. set user to anounymouse
@@ -81,12 +84,15 @@ function showError(errorCode, errorMessage) {
     $("#loginForm").append(error);
 }
 
-function loginHandler(loggedIn) {
+function loginHandler(loggedIn,user=0) {
     if (loggedIn) {
+        $("#hello").remove();
         $("#loginForm").remove();
+        $("#loginoutDiv").prepend(`<span id="hello">Hello! `+user.displayName+"</span>");
         $("#logoutBtnHead").show();//TODO: position the log out button
         $("#loginBtnHead").hide();
     } else {
+        $("#hello").remove();
         $("#loginForm").remove();
         $("#savedRecipies").empty();
         $("#logoutBtnHead").hide();//TODO: position the log out button
@@ -110,10 +116,11 @@ function signUpUser(){
                     let user = auth.currentUser;
                     pushUserToDB(user);
                     user.updateProfile({
-                        firsname: firstname,
-                        lastname:lastname
+                        displayName: firstname+" "+lastname,
                     }).then(function () {
                         // Update successful.
+                        updateUserToDBwithName(user);
+                        loginHandler(true,user);
                     }, function (error) {
                         const errorMessage = error.message;
                         showError("Can't set username", errorMessage);
@@ -154,4 +161,29 @@ function pushUserToDB(user){
     database.ref('/users/'+user.uid).update({
         email:user.email
     })
+}
+
+function updateUserToDBwithName(user){
+    const firstname = user.displayName.split(" ")[0];
+    const lastname = user.displayName.split(" ")[1];
+    const userRef = database.ref('/users/'+user.uid)
+    if (firstname){
+        userRef.update({
+            firstname:firstname
+        });
+    }else{
+        userRef.update({
+            firstname:"Unknown"
+        });
+    }
+    if (lastname){
+        userRef.update({
+            lastname:lastname
+        });
+    }else{
+        userRef.update({
+            lastname:"Unknown"
+        });
+    }
+    
 }
