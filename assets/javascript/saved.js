@@ -19,9 +19,7 @@ var testRecipe = {
     "1 tablespoon chopped fresh dill or flat-leaf parsley"]
 }
 
-$(document).ready(function(){
-    //Check for log in or not
-    //if logged in, hide the log in section
-    //if not loged in, show the log in
-    $("#savedDiv").appendRecipeToDiv(testRecipe);
-})
+function  loadSavedRecipiesForUser(user){
+    console.log(user);
+    $("#savedRecipies").appendRecipeToDiv(testRecipe);
+}       

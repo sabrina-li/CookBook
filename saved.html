@@ -20,24 +20,31 @@
                     id="saved">Saved</div>
             </div>
         </nav>
+        <button id="logoutBtn"class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline">Logout</input>
+        
     </header>
     <main class="relative container m-auto mt-5 ">
         <div class="w-4/5 bg-grey-lighter p-10 mx-auto" id="savedDiv">
-            <form autocomplete="off" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                <label for="username" class="block text-grey-darker text-sm font-bold mt-3 mb-1">Username</label>
+            <form id="loginForm" autocomplete="off" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <!-- <label id="usernamelabel" for="username" class="block text-grey-darker text-sm font-bold mt-3 mb-1">Username</label>
                 <input id="username" type="text" placeholder="Username"
+                    class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"> -->
+                <label for="email" class="block text-grey-darker text-sm font-bold mt-3 mb-1">Email</label>
+                <input id="email" type="text" placeholder="Email"
                     class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
                 <label for="password" class="block text-grey-darker text-sm font-bold mt-3 mb-1">Password</label>
                 <input id="password" type="password" placeholder="Password"
                     class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
                 <br>
-                <input type="submit" value="Login" id="searchBtn"
+                <input type="submit" value="Login" id="loginBtn"
                     class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline"></input>
                 <span>or</span>
-                <input type="submit" value="SignUp" id="searchBtn"
+                <input type="submit" value="SignUp" id="signupBtn"
                     class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline"></input>
             </form>
             <!-- When authentication success, append here for saved reciepies -->
+            <div id="savedRecipies">
+            </div>
         </div>
     </main>
     <footer>
@@ -46,11 +53,13 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
     <script src="assets/javascript/config.js"></script>
     <script src="assets/javascript/buildCard.js"></script>
     <script src="assets/javascript/main.js"></script>
     <script src="assets/javascript/saved.js"></script>
-    
+    <script src="assets/javascript/main.js"></script>
+    <script src="assets/javascript/login.js"></script>
 </body>
 
 </html>
