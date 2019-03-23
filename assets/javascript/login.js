@@ -3,6 +3,10 @@
 
 let auth = firebase.auth();
 
+//JS to push user to the database when a user is created
+
+let database = firebase.database();
+
 $(document).ready(function () {
     $(document).on('click',"#signupBtn", function (event) {
         event.preventDefault();
@@ -142,4 +146,12 @@ function loginUser(){
             var errorMessage = error.message;
             showError(errorCode, errorMessage);
         });
+}
+
+
+
+function pushUserToDB(user){
+    database.ref('/users/'+user.uid).update({
+        email:user.email
+    })
 }
