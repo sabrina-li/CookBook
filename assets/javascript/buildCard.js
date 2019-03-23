@@ -1,3 +1,6 @@
+//USE: 
+//this function appens the card based on input recipe object and append it to div
+// use like $("#muDiv").appendRecipeToDiv(recipeObject)
 
 jQuery.fn.extend({
     appendRecipeToDiv: function (recipe) {
