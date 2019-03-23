@@ -98,11 +98,11 @@ function loginHandler(loggedIn) {
 function signUpUser(){
 
         //ready from form and create user
-        let password = $("#password").val();
-        let email = $("#email").val();
-        let firstname = $("#firstname").val();
-        let lastname = $("#lastname").val();
-        //let username = email.split('@')[0];
+        const password = $("#password").val();
+        const email = $("#email").val();
+        const firstname = $("#firstname").val();
+        const lastname = $("#lastname").val();
+        //const username = email.split('@')[0];
 
         if (password && email) {
             auth.createUserWithEmailAndPassword(email, password)
@@ -115,14 +115,14 @@ function signUpUser(){
                     }).then(function () {
                         // Update successful.
                     }, function (error) {
-                        var errorMessage = error.message;
+                        const errorMessage = error.message;
                         showError("Can't set username", errorMessage);
                     });
                 })
                 .catch(function (error) {
                     // Handle Errors here.
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
                     showError(errorCode, errorMessage);
                 });
         } else {
@@ -133,8 +133,8 @@ function signUpUser(){
 
 function loginUser(){
     //ready from form and create user
-    let password = $("#password").val();
-    let email = $("#email").val();
+    const password = $("#password").val();
+    const email = $("#email").val();
 
     auth.signInWithEmailAndPassword(email, password)
         .then(function (u) {
@@ -142,8 +142,8 @@ function loginUser(){
         })
         .catch(function (error) {
             // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
+            const errorCode = error.code;
+            const errorMessage = error.message;
             showError(errorCode, errorMessage);
         });
 }
