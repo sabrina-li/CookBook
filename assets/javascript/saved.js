@@ -1,3 +1,9 @@
+//JS file specific to saved.html
+//this function is called only when user is loged in!!!!!
+//needs get data from saved database
+//should load the reciepies to the div if function is called
+
+
 //All below information should be pulled from API
 //Below is a test  object
 var testRecipe = {
@@ -19,7 +25,7 @@ var testRecipe = {
     "1 tablespoon chopped fresh dill or flat-leaf parsley"]
 }
 
-function  loadSavedRecipiesForUser(user){
-    console.log(user);
+$(document).ready(function(){
+    console.log(firebase.auth().currentUser);
     $("#savedRecipies").appendRecipeToDiv(testRecipe);
-}       
+})

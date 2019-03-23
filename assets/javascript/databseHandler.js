@@ -1,3 +1,5 @@
+//JS to push user to the database when a user is created
+
 let database = firebase.database();
 
 function pushUserToDB(user){

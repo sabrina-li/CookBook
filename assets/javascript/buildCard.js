@@ -4,6 +4,7 @@
 
 jQuery.fn.extend({
     appendRecipeToDiv: function (recipe) {
+        let url = recipe.url || "";
         let imageURL = recipe.imageURL || "";
         let healthLabels = recipe.healthLabels || "";
         let lable = recipe.lable || "can't find lable";
@@ -21,7 +22,7 @@ jQuery.fn.extend({
 
         let newCardDiv =
             `<div class="inline-flex flex-wrap w-fullrounded overflow-hidden shadow-lg mx-auto p-2">
-           <div class="lg:w-1/3 text-center mx-auto">
+             <div class="lg:w-1/3 text-center mx-auto">
                    <img class="m-auto"
                    src="${imageURL}"
                    alt="Chicken Noodle Soup">
@@ -38,7 +39,7 @@ jQuery.fn.extend({
                       ${ingredients}
                </p>
 
-               <button id="saveToAccount">Save</button>
+               <button id="saveToAccount" "data-url"="${url}" "data-imageURL"="${imageURL}" "data-healthLabels"="${healthLabels}" "data-lable"="${lable}" "data-source"="${source}" "data-ingredients"="${ingredients}">Save</button>
            </div>
        </div>`
 
@@ -47,11 +48,6 @@ jQuery.fn.extend({
         this.append(newCardDiv);
     }
 })
-
-
-
-
-
 
 
 jQuery.fn.extend({
@@ -73,10 +69,21 @@ jQuery.fn.extend({
                         <br>
                         <input type="submit" value="Login" id="loginBtn"
                             class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline"></input>
-                        <span>or </span>
-                        <a  id="signupBtn"
-                            class="font-bold mt-3 mb-1 focus:shadow-outline">SignUp</a>
+                        
+                        <span id="signupSpan">
+                            <span>or </span>
+                            <a id="signupBtn"
+                                class="font-bold mt-3 mb-1 focus:shadow-outline">SignUp</a>
+                        </span>
+                        
                     </form>`)
+    loginDiv.css({
+        position:"fixed",
+        top:"20%",
+        left:"20%",
+        right:"20%",
+        zIndex:100
+    })
     this.prepend(loginDiv)
     }
 })

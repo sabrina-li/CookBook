@@ -1,3 +1,7 @@
+//This function should be called when user click on the search button
+//Load ajax from API and then display in the page
+
+
 //All below information should be pulled from API
 //Below is a test  object
 var testRecipe = {

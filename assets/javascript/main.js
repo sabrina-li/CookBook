@@ -1,4 +1,4 @@
-
+//Listener for the top navigation buttongs and navigat to differnet pages
 
 //after page is loaded
 $(document).ready(function(){
