@@ -4,8 +4,8 @@ var testRecipe = {
     imageURL : "https://www.edamam.com/web-img/e2f/e2f218367f08839d0481b8bafc799235.jpg",
     healthLabels : ["Sugar-Conscious","Peanut-Free","Tree-Nut-Free"],
     lable : "Chicken Noodle Soup",
-     source : "Smitten Kitchen",
-     ingredients : [ "1 tablespoon vegetable oil",
+    source : "Smitten Kitchen",
+    ingredients : [ "1 tablespoon vegetable oil",
     "1 large onion, chopped",
     "3-pound chicken, in parts or 3 pounds chicken pieces of your choice",
     "8 cups water",
@@ -19,9 +19,7 @@ var testRecipe = {
     "1 tablespoon chopped fresh dill or flat-leaf parsley"]
 }
 
-$(document).ready(function(){
-    //Check for log in or not
-    //if logged in, hide the log in section
-    //if not loged in, show the log in
-    $("#savedDiv").appendRecipeToDiv(testRecipe);
-})
+function  loadSavedRecipiesForUser(user){
+    console.log(user);
+    $("#savedRecipies").appendRecipeToDiv(testRecipe);
+}       
