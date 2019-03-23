@@ -11,7 +11,7 @@ jQuery.fn.extend({
         const source = recipe.source || "Unkown Source";
         const ingredients = recipe.ingredients || "can't find ingredients";
 
-        const healthLabelsDiv = `<div class="px-6 py-4 text-left">`;
+        let healthLabelsDiv = `<div class="px-6 py-4 text-left">`;
 
         healthLabels.forEach(function (val) {
             healthLabelsDiv += `<span class="bg-grey-light text-grey-darkest py-1 px-2 rounded-full inline-flex items-center">${val}</span>`
