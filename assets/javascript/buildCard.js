@@ -28,7 +28,7 @@ jQuery.fn.extend({
                     ${healthLabelsDiv}
            </div>
           
-           <div class="lg:w-2/3 px-6 py-4">
+           <div class="lg:w-2/3 px-6 py-4" id="recipeData">
                
                <div class="font-bold text-xl mb-1">${lable}</div>
                <p class="text-sm text-grey-dark flex items-center mb-2">Source:<span id="source">${source}</span></p>
@@ -37,6 +37,8 @@ jQuery.fn.extend({
                <p class="text-grey-darker text-base">
                       ${ingredients}
                </p>
+
+               <button id="saveToAccount">Save</button>
            </div>
        </div>`
 
@@ -52,3 +54,29 @@ jQuery.fn.extend({
 
 
 
+jQuery.fn.extend({
+    showLoginSection: function () {
+        let loginDiv = $(`<form id="loginForm" autocomplete="off" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                        <label id="firstNameLabel" for="firstname" class="block text-grey-darker text-sm font-bold mt-3 mb-1">FirstName</label>
+                        <input id="firstname" type="text" placeholder="FirstName"
+                            class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
+                        <label id="lastNameLabel" for="lastname" class="block text-grey-darker text-sm font-bold mt-3 mb-1">LastName</label>
+                        <input id="lastname" type="text" placeholder="LastName"
+                            class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
+                            
+                        <label for="email" class="block text-grey-darker text-sm font-bold mt-3 mb-1">Email</label>
+                        <input id="email" type="text" placeholder="Email"
+                            class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
+                        <label for="password" class="block text-grey-darker text-sm font-bold mt-3 mb-1">Password</label>
+                        <input id="password" type="password" placeholder="Password"
+                            class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
+                        <br>
+                        <input type="submit" value="Login" id="loginBtn"
+                            class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline"></input>
+                        <span>or </span>
+                        <a  id="signupBtn"
+                            class="font-bold mt-3 mb-1 focus:shadow-outline">SignUp</a>
+                    </form>`)
+    this.prepend(loginDiv)
+    }
+})

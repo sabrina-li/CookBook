@@ -1,43 +1,44 @@
 let auth = firebase.auth();
 
-$(document).ready(function(){
-    // $("#username").hide();
-    // $("#usernamelabel").hide();
-    $("#signupBtn").on('click', function (event) {
-    event.preventDefault();
-    //remove errormsg if any
-    $("#errormsg").remove();
-    //ready from form and create user
-    let password = $("#password").val().trim();
-    let email = $("#email").val().trim();
-    let username = email.split('@')[0];
-    if (username && password && email){
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then(function () {
-                let user = firebase.auth().currentUser;
+$(document).ready(function () {
+    $(document).on('click',"#signupBtn", function (event) {
+        event.preventDefault();
+        //remove errormsg if any
+        $("#errormsg").remove();
 
-                user.updateProfile({
-                    displayName: username
-                }).then(function () {
-                    // Update successful.
-                    
-                }, function (error) {
+        //show username and change the button
+
+
+        //ready from form and create user
+        let password = $("#password").val().trim();
+        let email = $("#email").val().trim();
+        let username = email.split('@')[0];
+        if (username && password && email) {
+            auth.createUserWithEmailAndPassword(email, password)
+                .then(function () {
+                    let user = auth.currentUser;
+                    pushUserToDB(user);
+                    user.updateProfile({
+                        displayName: username
+                    }).then(function () {
+                        // Update successful.
+                    }, function (error) {
+                        var errorMessage = error.message;
+                        showError("Can't set username", errorMessage);
+                    });
+                })
+                .catch(function (error) {
+                    // Handle Errors here.
+                    var errorCode = error.code;
                     var errorMessage = error.message;
-                    showError("Can't set username", errorMessage);
+                    showError(errorCode, errorMessage);
                 });
-            })
-            .catch(function (error) {
-                // Handle Errors here.
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                showError(errorCode, errorMessage);
-            });
-    }else{
-        showError(0,"Please complete all the fields")
-    }
-        
+        } else {
+            showError(0, "Please complete all the fields")
+        }
+
     })
-    $("#loginBtn").on('click', function (event) {
+    $(document).on('click',"#loginBtn", function (event) {
         event.preventDefault();
         //remove errormsg if any
         $("#errormsg").remove();
@@ -45,8 +46,8 @@ $(document).ready(function(){
         let password = $("#password").val().trim();
         let email = $("#email").val().trim();
 
-        firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(function(u){
+        auth.signInWithEmailAndPassword(email, password)
+            .then(function (u) {
                 // Login successful.
             })
             .catch(function (error) {
@@ -57,8 +58,8 @@ $(document).ready(function(){
             });
     })
 
-    $("#logoutBtn").on('click', function (event) {
-        firebase.auth().signOut().then(function () {
+    $(document).on('click',"#logoutBtn", function (event) {
+        auth.signOut().then(function () {
             // Sign-out successful.
             loginHandler(false);
         }).catch(function (error) {
@@ -68,12 +69,12 @@ $(document).ready(function(){
 
 
 
-    firebase.auth().onAuthStateChanged(function (user) {
+    auth.onAuthStateChanged(function (user) {
         if (user) {
             //User is signed in. set user to this user
             //Hide log in section and show logout button
             loginHandler(true);
-            
+
         } else {
             // No user is signed in. set user to anounymouse
             //Show loging section and empty div
@@ -84,21 +85,21 @@ $(document).ready(function(){
 })
 
 
-function showError(errorCode,errorMessage){
-    let error = $("<p>").attr("id","errormsg");
-    error.css("color","red");
-    error.text("Error Authenticate, code: " + errorCode + ". Error Message: "+errorMessage)
+function showError(errorCode, errorMessage) {
+    let error = $("<p>").attr("id", "errormsg");
+    error.css("color", "red");
+    error.text("Error Authenticate, code: " + errorCode + ". Error Message: " + errorMessage)
     $("#loginForm").append(error);
 }
 
-function loginHandler(loggedIn){
-    if (loggedIn){
+function loginHandler(loggedIn) {
+    if (loggedIn) {
         $("#loginForm").hide();
         $("#logoutBtn").show();//TODO: position the log out button
-        loadSavedRecipiesForUser(firebase.auth().currentUser);
+        loadSavedRecipiesForUser(auth.currentUser);
 
-    }else{
-        $("#loginForm").show();
+    } else {
+        $("#savedDiv").showLoginSection();
         $("#savedRecipies").empty();
         $("#logoutBtn").hide();//TODO: position the log out button
     }
