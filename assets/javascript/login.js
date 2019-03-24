@@ -80,7 +80,7 @@ $(document).ready(function () {
 function showError(errorCode, errorMessage) {
     let error = $("<p>").attr("id", "errormsg");
     error.css("color", "red");
-    error.text("Error Authenticate, code: " + errorCode + ". Error Message: " + errorMessage)
+    error.text("Error Authenticating! Error Message: " + errorMessage)
     $("#loginForm").append(error);
 }
 

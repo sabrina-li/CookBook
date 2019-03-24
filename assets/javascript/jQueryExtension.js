@@ -21,8 +21,8 @@ jQuery.fn.extend({
 
 
         const newCardDiv =
-            `<div class="inline-flex flex-wrap w-fullrounded overflow-hidden shadow-lg mx-auto p-2">
-             <div class="lg:w-1/3 text-center mx-auto">
+            `<div class="recipeCard inline-flex flex-wrap w-fullrounded overflow-hidden shadow-lg mx-auto p-2" data="${url}">
+            <div class="lg:w-1/3 text-center mx-auto">
                    <img class="m-auto"
                    src="${imageURL}"
                    alt="Chicken Noodle Soup">
@@ -40,7 +40,7 @@ jQuery.fn.extend({
                </p>
                 <br>
                <button id="saveToAccount" "data-url"="${url}" "data-imageURL"="${imageURL}" "data-healthLabels"="${healthLabels}" "data-lable"="${lable}" "data-source"="${source}" "data-ingredients"="${ingredients}"
-                        class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Save</button>
+                        class="saveToAccount shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Save</button>
            </div>
        </div>`
 

@@ -28,6 +28,10 @@ $(document).ready(function () {
     }
 
   });
+  $(document).on("click",".recipeCard", function (event) {
+    window.open($(this).attr("data"),'_blank');
+  })
+  
 })
 
 
