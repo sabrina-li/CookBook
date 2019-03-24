@@ -29,6 +29,7 @@ $(document).ready(function(){
     //this needs onclick listener to call ajax and display
     $("#searchBtn").on("click", function(event) {
         event.preventDefault();
+        $("#searchDiv").empty();
         //API to fetch the gif from giphy.com
         let querystr = $("#search").val();
         var queryURL =
