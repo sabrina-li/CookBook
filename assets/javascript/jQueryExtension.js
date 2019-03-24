@@ -26,7 +26,6 @@ jQuery.fn.extend({
                    <img class="m-auto"
                    src="${imageURL}"
                    alt="Chicken Noodle Soup">
-                    ${healthLabelsDiv}
            </div>
           
            <div class="lg:w-2/3 px-6 py-4" id="recipeData">
@@ -42,6 +41,7 @@ jQuery.fn.extend({
                <button id="saveToAccount" "data-url"="${url}" "data-imageURL"="${imageURL}" "data-healthLabels"="${healthLabels}" "data-lable"="${lable}" "data-source"="${source}" "data-ingredients"="${ingredients}"
                         class="saveToAccount shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Save</button>
            </div>
+           ${healthLabelsDiv}
        </div>`
 
 
