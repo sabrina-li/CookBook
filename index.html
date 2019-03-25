@@ -20,10 +20,14 @@
                     id="savedBtn">Saved</div>
             </div>
         </nav>
-
+        <div id="loginoutDiv">
+            <button id="logoutBtnHead" class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline hidden">Logout</button>
+            <button id="loginBtnHead" class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline hidden">Login</button>    
+        </div>
+        
     </header>
     <main class="relative container m-auto mt-5 ">
-        <div class="w-4/5 bg-grey-lighter p-10 mx-auto" id="searchDiv">
+        <div class="w-4/5 bg-grey-lighter p-10 mx-auto">
             <form autocomplete="off" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                 <label for="search-input" class="block text-grey-darker text-sm font-bold mb-2">Search for
                     Recipe:</label>
@@ -32,7 +36,10 @@
                 <input type="submit" value="Search" id="searchBtn"
                     class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"></input>
             </form>
+            <div id="searchDiv"></div>
         </div>
+
+        
 
     <!-- When hit search, append here for list of returned reciepies buildCards.js is used to create the cars and append to div-->
 
@@ -43,11 +50,12 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
     <script src="assets/javascript/config.js"></script>
-    <script src="assets/javascript/buildCard.js"></script>
+    <script src="assets/javascript/jQueryExtension.js"></script>
     <script src="assets/javascript/main.js"></script>
     <script src="assets/javascript/search.js"></script>
-
+    <script src="assets/javascript/login.js"></script>
     
 </body>
 

@@ -1,6 +1,13 @@
+//JS file specific to saved.html
+//this function is called only when user is loged in!!!!!
+//needs get data from saved database
+//should load the reciepies to the div if function is called
+
+
 //All below information should be pulled from API
 //Below is a test  object
 var testRecipe = {
+    url:"http://fakeurl.com",
     imageURL : "https://www.edamam.com/web-img/e2f/e2f218367f08839d0481b8bafc799235.jpg",
     healthLabels : ["Sugar-Conscious","Peanut-Free","Tree-Nut-Free"],
     lable : "Chicken Noodle Soup",
@@ -19,7 +26,9 @@ var testRecipe = {
     "1 tablespoon chopped fresh dill or flat-leaf parsley"]
 }
 
-function  loadSavedRecipiesForUser(user){
-    console.log(user);
+$(document).ready(function(){
+    console.log(firebase.auth().currentUser);
+    //see if the user is loged in, if loggedin - this returns a user, otherwise returns undefined(i believe)
+    
     $("#savedRecipies").appendRecipeToDiv(testRecipe);
-}       
+})

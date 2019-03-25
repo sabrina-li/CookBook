@@ -1,7 +1,7 @@
 //FireBase config goes here
 
   // Initialize Firebase
-  var config = {
+  const config = {
     apiKey: "AIzaSyAtamErClWw6i6a2HERaGGujd9BpBMjvtQ",
     authDomain: "my-test-project-1529527039002.firebaseapp.com",
     databaseURL: "https://my-test-project-1529527039002.firebaseio.com",
