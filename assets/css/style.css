@@ -1,14 +1,19 @@
 
 
 .relative {
-  background-image: url("images/food.jpg");
+  background-image: url("../images/food.jpg");
   
 }
 
 
+
+
+
 h1 span{
   font-size: 50px;
-  
+  font-family: 'Gloria Hallelujah', cursive;
+font-family: 'Yesteryear', cursive;
+font-family: 'Rock Salt', cursive;
 }
 
 h1 span{
@@ -20,43 +25,43 @@ animation: animate 2s linear infinite;
 
 h1 span:nth-child(1)
 {
-  animation-delay: 0s;
+  animation-delay: .5s;
 }  
 h1 span:nth-child(2)
 {
-  animation-delay: 0.25s;
+  animation-delay: 0.75s;
 }  
 h1 span:nth-child(3)
 {
-  animation-delay: 0.5s;
+  animation-delay: 1.00s;
 }  
 h1 span:nth-child(4)
 {
-  animation-delay: 0.75s;
+  animation-delay: 1.25s;
 }  
 h1 span:nth-child(5)
 {
-  animation-delay: 1s;
+  animation-delay: 1.5s;
 }  
   h1 span:nth-child(6)
 {
-  animation-delay: 1.25s;
+  animation-delay: 1.75s;
 }  
 h1 span:nth-child(7)
 {
-  animation-delay: 1.5s;
+  animation-delay: 2.00s;
 }  
 h1 span:nth-child(8)
 {
-animation-delay: 1.75s;
+animation-delay: 2.25s;
 }
 
 @keyframes animate
 {
   0%,100%
  {
-color: #fff;
-/* filter: blur(2px); */
+color: rgb(252, 6, 6);
+filter: blur(2px);
 text-shadow: 0 0 10px #00b3ff,
             0 0 20px #00b3ff,
             0 0 40px #00b3ff,
@@ -68,8 +73,8 @@ text-shadow: 0 0 10px #00b3ff,
 }
 5%,95%
 {
-  color: #111;
-/* filter: blur(0px); */
+  color: #fff;
+filter: blur(0px);
 text-shadow: 0 0 10px none;
 }
 
@@ -79,9 +84,56 @@ text-shadow: 0 0 10px none;
   background-color: rgb(245, 61, 29);
 }
 
+#searchBtn{
+  background: linear-gradient(90deg,#03a9f4, #f441a5, #ffeb3b, #03a9f4);
+background-size: 400%;
+border-radius: 30px;
+}
 
 
-#searchBtn {
+
+#searchBtn:hover{
+animation: animating 8s linear infinite;
+}
+
+@keyframes animating
+{
+  0%
+  {
+    background-position: 0%;
+  }
+  100%
+  {
+    background-position: 400%;
+  }
+}
+
+#searchBtn:before
+{
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -1;
+  background: linear-gradient(90deg,#03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 400%;
+  border-radius: 40px;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+#searchBtn:hover::before
+{
+  filter: blur(20px);
+  opacity: 1;
+  animation: animating 8s linear infinite;
+}
+
+
+
+/* #searchBtn {
     display: inline-block;
   padding: 10px 20px;
   font-size: 15px;
@@ -101,8 +153,8 @@ text-shadow: 0 0 10px none;
 #searchBtn:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
+  transform: translateY(4px); */
+/* } */
 
 
 
