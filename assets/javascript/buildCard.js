@@ -22,7 +22,7 @@ jQuery.fn.extend({
         let newCardDiv =
             `<div class="inline-flex flex-wrap w-fullrounded overflow-hidden shadow-lg mx-auto p-2">
            <div class="lg:w-1/3 text-center mx-auto">
-                   <img class="m-auto"
+                   <img class="picAnimate m-auto"
                    src="${imageURL}"
                    alt="Chicken Noodle Soup">
                     ${healthLabelsDiv}
