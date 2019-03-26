@@ -28,12 +28,12 @@ $(document).ready(function () {
     }
 
   });
-  $(document).on("click",".recipeCard", function (event) {
-    window.open($(this).attr("data"),'_blank');
-  })
-  
+
 })
 
+// $(document).on("click",".recipeCard", function (event) {
+//   window.open($(this).attr("data"),'_blank');
+// })
 
 function getmMoreRecipe(from,querystr){
   var queryURL =
@@ -60,6 +60,7 @@ function getmMoreRecipe(from,querystr){
         }
         $("#searchDiv").appendRecipeToDiv(thisRecipe);
 
+        
       })
 
     });
