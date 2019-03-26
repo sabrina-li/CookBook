@@ -53,16 +53,15 @@ jQuery.fn.extend({
                 ${ingredientsDiv}
                 ${moreIngredientsDiv}
 
-
                 <br>
                 <button id="saveToAccount" data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}"
                         class="saveToAccount shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Save</button>
                 <button id="showRecipe" data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}"
                         class="saveToAccount shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Show Recipe</button>
-                //TODO: share to social media
            </div>
            ${healthLabelsDiv}
        </div>`
+       //TODO: share to social media
 
         this.append(newCardDiv);
     }
