@@ -18,6 +18,13 @@ jQuery.fn.extend({
         })
         healthLabelsDiv += "</div>";
 
+        let ingredientsDiv = `<div class="px-6 py-4 text-left">`;
+
+        ingredients.forEach(function (val) {
+            ingredientsDiv += `<p <p class="text-grey-darker text-base">${val}</p>`
+        })
+        ingredientsDiv += "</div>";
+
 
 
         const newCardDiv =
@@ -34,9 +41,7 @@ jQuery.fn.extend({
                <p class="text-sm text-grey-dark flex items-center mb-2">Source:<span id="source">${source}</span></p>
                
                
-               <p class="text-grey-darker text-base">
-                      ${ingredients}
-               </p>
+               ${ingredientsDiv}
                 <br>
                <button id="saveToAccount" data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}"
                         class="saveToAccount shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Save</button>
