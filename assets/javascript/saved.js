@@ -29,6 +29,29 @@ var testRecipe = {
 $(document).ready(function(){
     console.log(firebase.auth().currentUser);
     //see if the user is loged in, if loggedin - this returns a user, otherwise returns undefined(i believe)
-    
+    //If logged in: 
+        //if have saved recipies show recipies
+        //if do not have saved recipies, show "no recipies saved, go save some!"
+    //else (not logged in)
+        //show: you are not logged in
+        //show log in section
     $("#savedRecipies").appendRecipeToDiv(testRecipe);
+
+
+
+
+
+    //this needs to be called after appendRecipeToDiv
+    $(".saveToAccount").hide();
+    //this is for show more and build the cards functions. 
+    $(document).on("click",".showMore", function (event) {
+        console.log($(this).parent().next().show());
+        $(this).hide();
+      
+      })
+      $(document).on("click",".showLess", function (event) {
+        $(this).parent().hide();
+        $(this).parent().prev().children(".showMore").show();
+      })
+
 })

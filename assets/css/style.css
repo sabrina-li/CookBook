@@ -1,7 +1,10 @@
-
+html,body,main{
+  height: 100%;
+}
 body{
   background-color: rgb(221, 236, 236);
 }
+
 
 
 .relative {

@@ -21,16 +21,16 @@ jQuery.fn.extend({
         let ingredientsDiv = `<div class="px-6 text-left ingredients">`;
         let moreIngredientsDiv = `<div class="px-6 text-left hidden moreIngredients">`;
 
-        for(i=0;i<ingredients.length;i++){
+        for (i = 0; i < ingredients.length; i++) {
             if (i < 4) {
                 ingredientsDiv += `<p class="text-grey-darker text-base">${ingredients[i]}</p>`;
-            }else {
+            } else {
                 moreIngredientsDiv += `<p class="text-grey-darker text-base">${ingredients[i]}</p>`;
             }
         }
-        if (i>=4){
+        if (i >= 4) {
             ingredientsDiv += `<div class="showMore">Show more</div>`
-            moreIngredientsDiv+= `<div class="showLess">Show less</div>`
+            moreIngredientsDiv += `<div class="showLess">Show less</div>`
         }
         ingredientsDiv += `</div>`
         moreIngredientsDiv += `</div>`
@@ -57,11 +57,11 @@ jQuery.fn.extend({
                 <button id="saveToAccount" data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}"
                         class="saveToAccount shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Save</button>
                 <button id="showRecipe" data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}"
-                        class="saveToAccount shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Show Recipe</button>
+                        class="goToRecipe shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Show Recipe</button>
            </div>
            ${healthLabelsDiv}
        </div>`
-       //TODO: share to social media
+        //TODO: share to social media
 
         this.append(newCardDiv);
     }
@@ -86,6 +86,10 @@ jQuery.fn.extend({
                         <input id="password" type="password" placeholder="Password"
                             class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
                         <br>
+                        <label id="confirmPasswordLabel" for="confirmPassword" class="block text-grey-darker text-sm font-bold mt-3 mb-1">Password</label>
+                        <input id="confirmPassword" type="password" placeholder="Confrim Password"
+                            class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
+                        <br>
                         <input type="submit" value="Login" id="loginBtn"
                             class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline"></input>
                         
@@ -105,5 +109,36 @@ jQuery.fn.extend({
             zIndex: 100
         })
         this.prepend(loginDiv)
+    }
+})
+
+
+
+jQuery.fn.extend({
+    showHealthLabels: function () {
+        let healthLabels = ["alcohol-free", "celery-free", "crustacean-free", "dairy-free", "egg-free", "fish-free", "gluten-free", "kidney-friendly", "kosher", "low-potassium", "lupine-free", "No-oil-added", "low-sugar", "paleo", "peanut-free", "pescatarian", "pork-free", "red-meat-free", "sesame-free", "shellfish-free", "soy-free", "sugar-conscious", "tree-nut-free", "vegan", "vegetarian", "wheat-free"];
+
+        let healthLabelsDiv = `<div class="px-6 py-4 text-left">`;
+
+        healthLabels.forEach(function (val) {
+            healthLabelsDiv += `<span class="healthLabels bg-grey-light text-grey-darkest py-1 px-2 rounded-full inline-flex items-center" data="${val}">${val}</span>`
+        })
+        healthLabelsDiv += "</div>";
+
+
+        const healthLabelsSelectionDiv = $(`<form id="healthLabelsDiv" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                            <h2>Please chose your diet restrictions and preferences:</h2>
+                            ${healthLabelsDiv}
+                            <button id="saveDietBtn"
+                                class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline">Save</button>
+                            </form>`)
+        healthLabelsSelectionDiv.css({
+            position: "fixed",
+            top: "20%",
+            left: "20%",
+            right: "20%",
+            zIndex: 100
+        })
+        this.append(healthLabelsSelectionDiv);
     }
 })

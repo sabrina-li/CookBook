@@ -17,6 +17,8 @@ $(document).ready(function () {
         $("#firstname").show();
         $("#lastNameLabel").show();
         $("#lastname").show();
+        $("#confirmPassword").show();
+        $("#confirmPasswordLabel").show();
         $("#signupSpan").hide();
         $("#loginBtn").attr("value","SignUp")
     })
@@ -39,6 +41,8 @@ $(document).ready(function () {
         $("#firstname").hide();
         $("#lastNameLabel").hide();
         $("#lastname").hide();
+        $("#confirmPassword").hide();
+        $("#confirmPasswordLabel").hide();
     })
 
     $(document).on('click',"#closelogin", function (event) {
@@ -56,6 +60,10 @@ $(document).ready(function () {
         });
     })
 
+    $(document).on('click',"#saveDietBtn", function (event) {
+        //get  lables from selection
+        //push lables to DB
+    })
 
 
     auth.onAuthStateChanged(function (user) {
@@ -104,13 +112,13 @@ function loginHandler(loggedIn,user=0) {
 function signUpUser(){
 
         //ready from form and create user
-        const password = $("#password").val();
-        const email = $("#email").val();
-        const firstname = $("#firstname").val();
-        const lastname = $("#lastname").val();
-        //const username = email.split('@')[0];
+        const password = $("#password").val() ? $("#password").val().trim(): null;
+        const email = $("#email").val() ? $("#email").val().trim():null;
+        const firstname = $("#firstname").val()?$("#firstname").val().trim():"Anonymouse";
+        const lastname = $("#lastname").val()?$("#lastname").val().trim():"Anonymouse";
+        const confirmpassword = $("#confirmPassword").val()?$("#confirmPassword").val().trim():null;
 
-        if (password && email) {
+        if (password && email && password === confirmpassword) {
             auth.createUserWithEmailAndPassword(email, password)
                 .then(function () {
                     let user = auth.currentUser;
@@ -121,6 +129,7 @@ function signUpUser(){
                         // Update successful.
                         updateUserToDBwithName(user);
                         loginHandler(true,user);
+                        $("body").showHealthLabels();
                     }, function (error) {
                         const errorMessage = error.message;
                         showError("Can't set username", errorMessage);
@@ -132,7 +141,9 @@ function signUpUser(){
                     const errorMessage = error.message;
                     showError(errorCode, errorMessage);
                 });
-        } else {
+        }else if(password !== confirmpassword) {
+            showError(0, "Password inputs does not match. Please make sure passwords matches")
+        }else {
             showError(0, "Please complete all the fields")
         }
 
