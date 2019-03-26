@@ -31,9 +31,18 @@ $(document).ready(function () {
 
 })
 
-// $(document).on("click",".recipeCard", function (event) {
-//   window.open($(this).attr("data"),'_blank');
-// })
+
+// window.open($(this).attr("data"),'_blank');
+
+$(document).on("click",".showMore", function (event) {
+  console.log($(this).parent().next().show());
+  $(this).hide();
+
+})
+$(document).on("click",".showLess", function (event) {
+  $(this).parent().hide();
+  $(this).parent().prev().children(".showMore").show();
+})
 
 function getmMoreRecipe(from,querystr){
   var queryURL =
