@@ -36,6 +36,7 @@ $(document).ready(function () {
     })
 
     $(document).on('click',"#loginBtnHead", function (event) {
+        // event.preventDefault();
         $("body").showLoginSection();
         $("#firstNameLabel").hide();
         $("#firstname").hide();

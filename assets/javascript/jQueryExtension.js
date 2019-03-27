@@ -72,6 +72,8 @@ jQuery.fn.extend({
     showLoginSection: function () {
         const loginDiv = $(`<form id="loginForm" autocomplete="off" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                         <button class="absolute mr-5 pin-r" id="closelogin">x</button>
+                        <div id="signinWithGoogle"><span id="googleIcon"></span></div>
+                        
                         <label id="firstNameLabel" for="firstname" class="block text-grey-darker text-sm font-bold mt-3 mb-1">FirstName</label>
                         <input id="firstname" type="text" placeholder="FirstName"
                             class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
