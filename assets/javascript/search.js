@@ -45,6 +45,20 @@ $(document).on("click",".showLess", function (event) {
 })
 
 function getmMoreRecipe(from,querystr){
+
+  let user = firebase.auth().currentUser;
+  if(user){
+    database.ref('/users/'+user.uid+"/healthLabels").once('value',function(snap){
+      let snapArr = [];
+      snap.forEach(function (item){
+      snapArr.push(item.val())
+      })
+      $("body").showHealthLabels(snapArr);
+    });
+  }
+  
+
+
   var queryURL =
     "https://api.edamam.com/search?q=" + querystr + "&app_id=c372c471&app_key=9985027ab53a0ce7b9660e4b50d3db60&from=" + from + "&to=" + (from + 10);
 

@@ -12,4 +12,6 @@
 #googleIcon:active{
     background: url("../images/btn_google_signin_dark_pressed_web.png");
 }
-
+span.active{
+    background: white;
+}
