@@ -11,7 +11,14 @@ $(document).on('click',"#signinWithGoogle",function(event){
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
-        
+        console.log(user.email);
+        console.log(user.displayName);
+        database.ref('/users').once('value',function(snap){
+            if(snap.val() && Object.keys(snap.val()).indexOf(user.uid) == -1){
+                pushUserToDB(user);
+                updateUserToDBwithName(user);
+            }
+        })
     }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
