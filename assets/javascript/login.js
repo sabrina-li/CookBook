@@ -64,7 +64,31 @@ $(document).ready(function () {
     $(document).on('click',"#saveDietBtn", function (event) {
         //get  lables from selection
         //push lables to DB
+        event.preventDefault();
+        let user = firebase.auth().currentUser;
+        event.preventDefault();
+        let labels = $(this).prev().children(".active");
+        console.log(labels);
+        labels.each(function(idx,val){
+            let label = $(val).text();
+            database.ref('/users/'+user.uid+"/healthLabels").push(label);
+        });
+        $("#healthLabelsDiv").hide();
     })
+    $(document).on('click','.healthLabels',function(event){
+        $(this).toggleClass("active");
+    })
+
+    $(document).on('click','#hello',function(){
+        let user = firebase.auth().currentUser;
+        database.ref('/users/'+user.uid+"/healthLabels").once('value',function(snap){
+            let snapArr = [];
+            snap.forEach(function (item){
+            snapArr.push(item.val())
+            })
+            $("body").showHealthLabels(snapArr);
+        });
+    });
 
 
     auth.onAuthStateChanged(function (user) {
@@ -98,6 +122,7 @@ function loginHandler(loggedIn,user=0) {
         $("#hello").remove();
         $("#loginForm").remove();
         $("#loginoutDiv").prepend(`<span id="hello" style="color: white; font-size: 40px;">Hello! `+user.displayName+"</span>");
+        $("#hello").css("text-decoration","underline")
         $("#logoutBtnHead").show();//TODO: position the log out button
         $("#loginBtnHead").hide();
     } else {

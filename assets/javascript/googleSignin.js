@@ -17,6 +17,7 @@ $(document).on('click',"#signinWithGoogle",function(event){
             if(snap.val() && Object.keys(snap.val()).indexOf(user.uid) == -1){
                 pushUserToDB(user);
                 updateUserToDBwithName(user);
+                $("body").showHealthLabels();
             }
         })
     }).catch(function(error) {

@@ -117,13 +117,19 @@ jQuery.fn.extend({
 
 
 jQuery.fn.extend({
-    showHealthLabels: function () {
+    showHealthLabels: function (activeLabels) {
+        //activeLabels is array of active labels
         let healthLabels = ["alcohol-free", "celery-free", "crustacean-free", "dairy-free", "egg-free", "fish-free", "gluten-free", "kidney-friendly", "kosher", "low-potassium", "lupine-free", "No-oil-added", "low-sugar", "paleo", "peanut-free", "pescatarian", "pork-free", "red-meat-free", "sesame-free", "shellfish-free", "soy-free", "sugar-conscious", "tree-nut-free", "vegan", "vegetarian", "wheat-free"];
 
         let healthLabelsDiv = `<div class="px-6 py-4 text-left">`;
 
         healthLabels.forEach(function (val) {
-            healthLabelsDiv += `<span class="healthLabels bg-grey-light text-grey-darkest py-1 px-2 rounded-full inline-flex items-center" data="${val}">${val}</span>`
+            if(activeLabels && activeLabels.indexOf(val) !== -1){
+                healthLabelsDiv += `<span class="active `
+            }else{
+                healthLabelsDiv += `<span class="`
+            }
+            healthLabelsDiv += `healthLabels bg-grey-light text-grey-darkest py-1 px-2 rounded-full inline-flex items-center" data="${val}">${val}</span>`
         })
         healthLabelsDiv += "</div>";
 
