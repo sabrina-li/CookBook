@@ -16,10 +16,11 @@ $(document).ready(function () {
         let snapArr = [];
         snap.forEach(function (item) {
           snapArr.push(item.val())
-        })
-        
+        }) 
         getmMoreRecipe(0, searchInput, snapArr);
       });
+    }else{
+      getmMoreRecipe(0, searchInput);
     }
     
 
@@ -69,6 +70,7 @@ function getmMoreRecipe(from, querystr, healthLabels = null) {
   console.log(searchHealth);
   var queryURL =
     "https://api.edamam.com/search?q=" + querystr + "&app_id=c372c471&app_key=9985027ab53a0ce7b9660e4b50d3db60&from=" + from + "&to=" + (from + 10)+searchHealth;
+  console.log(queryURL);
 
   //AJAX call to get the data using GET method and url as parameter
   $.ajax({
@@ -78,8 +80,8 @@ function getmMoreRecipe(from, querystr, healthLabels = null) {
 
     //After fetching the data execute below block of code. The AJAX query response is pass as parameter to below function
     .then(function (response) {
-      console.log(response);
       let data = response.hits;
+      console.log(data);
       data.forEach(function (val) {
         let thisRecipe = {
           url: val.recipe.url,
@@ -89,6 +91,7 @@ function getmMoreRecipe(from, querystr, healthLabels = null) {
           source: val.recipe.source,
           ingredients: val.recipe.ingredientLines
         }
+        console.log(thisRecipe);
         $("#searchDiv").appendRecipeToDiv(thisRecipe);
 
 
@@ -123,6 +126,8 @@ function getmMoreRecipe(from, querystr, healthLabels = null) {
             // })
 
           })
+        }else{
+          $("#loginBtnHead").click();
         }
       });
     });
