@@ -23,7 +23,7 @@ jQuery.fn.extend({
         const newCardDiv =
             `<div class="recipeCard inline-flex flex-wrap w-fullrounded overflow-hidden shadow-lg mx-auto p-2" data="${url}">
             <div class="lg:w-1/3 text-center mx-auto">
-                   <img class="m-auto"
+                   <img class="m-auto, recipe-img"
                    src="${imageURL}"
                    alt="Chicken Noodle Soup">
            </div>
