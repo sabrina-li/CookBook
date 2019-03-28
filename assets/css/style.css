@@ -9,6 +9,48 @@ body{
   
 }
 
+
+
+#loginBtnHead:hover{
+  animation: animating 8s linear infinite;
+  }
+  
+  @keyframes animating
+  {
+    0%
+    {
+      background-position: 0%;
+    }
+    100%
+    {
+      background-position: 400%;
+    }
+  }
+  
+  #loginBtnHead:before
+  {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;
+    background: linear-gradient(90deg,#03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 400%;
+    border-radius: 40px;
+    opacity: 0;
+    transition: 0.5s;
+  }
+  
+  #loginBtnHead:hover::before
+  {
+    filter: blur(20px);
+    opacity: 1;
+    animation: animating 8s linear infinite;
+  }
+
+
 #logoutBtnHead{
   background: linear-gradient(90deg,#03a9f4, #f441a5, #ffeb3b, #03a9f4);
 background-size: 400%;
@@ -186,8 +228,6 @@ animation: animating 8s linear infinite;
 }
 
 
-
- 
       
        #discoverBtn{ 
         float: left;
@@ -213,7 +253,52 @@ animation: animating 8s linear infinite;
         cursor: pointer;
       }
 
+      
+      #saveToAccount {
+        background-color: #004A7F;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        border: none;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-family: Arial;
+        font-size: 20px;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        -webkit-animation: glowing 1500ms infinite;
+        -moz-animation: glowing 1500ms infinite;
+        -o-animation: glowing 1500ms infinite;
+        animation: glowing 1500ms infinite;
+      }
+      @-webkit-keyframes glowing {
+        0% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+        50% { background-color: #FF0000; -webkit-box-shadow: 0 0 40px #FF0000; }
+        100% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+      }
+      
+      /* @-moz-keyframes glowing {
+        0% { background-color: #B20000; -moz-box-shadow: 0 0 3px #B20000; }
+        50% { background-color: #FF0000; -moz-box-shadow: 0 0 40px #FF0000; }
+        100% { background-color: #B20000; -moz-box-shadow: 0 0 3px #B20000; }
+      } */
+      
+      /* @-o-keyframes glowing {
+        0% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+        50% { background-color: #FF0000; box-shadow: 0 0 40px #FF0000; }
+        100% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+      } */
+      
+      /* @keyframes glowing {
+        0% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+        50% { background-color: #FF0000; box-shadow: 0 0 40px #FF0000; }
+        100% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+      } */
+      
 
+      
+      
 
 
  .recipe-img {
@@ -302,3 +387,7 @@ animation: animating 8s linear infinite;
 padding: 70px;
 
   }
+
+  
+  
+  
