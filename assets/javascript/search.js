@@ -2,7 +2,7 @@
 //Load ajax from API and then display in the page
 
 $(document).ready(function () {
-  var searchInput= "";
+  var searchInput = "";
 
   //this needs onclick listener to call ajax and display
   $("#searchBtn").on("click", function (event) {
@@ -10,8 +10,8 @@ $(document).ready(function () {
     $("#searchDiv").empty();
     //API to fetch the gif from giphy.com
     searchInput = $("#search").val();
-    
-    getmMoreRecipe(0,searchInput);
+
+    getmMoreRecipe(0, searchInput);
   });
 
 
@@ -24,7 +24,7 @@ $(document).ready(function () {
       //TODO: add spining wheel while loading
 
       let scrollOffset = $("#searchDiv").children().length;
-      getmMoreRecipe(scrollOffset,searchInput);
+      getmMoreRecipe(scrollOffset, searchInput);
     }
 
   });
@@ -77,7 +77,36 @@ function getmMoreRecipe(from,querystr){
         
       })
 
+      $(".saveToAccount").on("click", function (event) {
+        event.preventDefault();
+        // window.open($(this).attr("data"),'_blank');
+        let curUser = auth.currentUser;
+        
+        if(curUser.uid){
+          console.log($(this).attr("data-url"));
+          console.log($(this));
+          console.log(curUser.uid);
+          let recipeUrl=$(this).attr("data-url");
+          let recipeImageUrl=$(this).attr("data-imageurl");
+          let recipeHealthLable=$(this).attr("data-healthlabels");
+          let recipeName=$(this).attr("data-lable");
+          let recipeSource=$(this).attr("data-source");
+          let recipeIngredients=$(this).attr("data-ingredients");
+          database.ref("/users/"+curUser.uid+"/recipes").push({
+            recipesurl:recipeUrl,
+            recipeimage:recipeImageUrl,
+            recipeHealthLable:recipeHealthLable,
+            recipeName:recipeName,
+            recipeSource:recipeSource,
+            recipeIngredients:recipeIngredients,
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+            // database.ref(“/users/asdfasdfasdf/recipies”).push({
+//    url:“fakeurl2.com”,
+//    imageurl:“fakeimage2.com”
+// })
+
+        })
+      }
+      });
     });
-
-
-}
+  }
