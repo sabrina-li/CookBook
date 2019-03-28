@@ -93,13 +93,19 @@ function getmMoreRecipe(from, querystr, healthLabels = null) {
         }
         console.log(thisRecipe);
         $("#searchDiv").appendRecipeToDiv(thisRecipe);
+        //detach onclick rom previouse loop
+        $(".goToRecipe").off('click');
+        $(".goToRecipe").on('click',function(){
+          console.log($(this))
+          window.open($(this).attr("data-url"),'_blank');
+        })
 
 
       })
 
       $(".saveToAccount").on("click", function (event) {
         event.preventDefault();
-        // window.open($(this).attr("data"),'_blank');
+        
         let curUser = auth.currentUser;
 
         if (curUser && curUser.uid) {

@@ -6,23 +6,8 @@
 
 
 $(document).ready(function () {
-        console.log(firebase.auth().currentUser);
-        //see if the user is loged in, if loggedin - this returns a user, otherwise returns undefined(i believe)
-        //If logged in: 
-        //if have saved recipies show recipies
-        //if do not have saved recipies, show "no recipies saved, go save some!"
-        //else (not logged in)
-        //show: you are not logged in
-        //show log in section
 
-
-
-
-
-
-        //this needs to be called after appendRecipeToDiv
         $(".saveToAccount").hide();
-        //this is for show more and build the cards functions. 
         $(document).on("click", ".showMore", function (event) {
                 console.log($(this).parent().next().show());
                 $(this).hide();
@@ -35,30 +20,52 @@ $(document).ready(function () {
 
 
         //todo: put this to onauth change
-        $("#saved").on("click", function (event) {
-                event.preventDefault();
+        firebase.auth().onAuthStateChanged(function (user) {
 
-                let userId = firebase.auth().currentUser.uid;
-                if (userId) {
-                        return firebase.database().ref('/users/' + userId + '/recipes/').once('value').then(function (snapshot) {
-                                snapshot.forEach(function (childSnapshot) {
-                                        console.log(childSnapshot.val());
-                                        console.log(childSnapshot.val().recipeHealthLable);;
-                                        let testRecipe = {
-                                                url: childSnapshot.val().recipesurl,
-                                                imageURL: childSnapshot.val().recipeimage,
-                                                healthLabels: childSnapshot.val().recipeHealthLable.split(','),
-                                                lable: childSnapshot.val().recipeName,
-                                                source: childSnapshot.val().recipeSource,
-                                                ingredients: childSnapshot.val().recipeIngredients.split(',')
+                if (user) {
+
+                        //User is signed in. set user to this user
+                        //Hide log in section and show logout button
+
+                        // $("#saved").on("click", function (event) {
+                        // event.preventDefault();
+
+                        let userId = user.uid;
+                        if (userId) {
+                                return firebase.database().ref('/users/' + userId + '/recipes/').once('value').then(function (snapshot) {
+                                        console.log("snap",snapshot.val());
+                                        if (snapshot.val()) {
+                                                snapshot.forEach(function (childSnapshot) {
+
+                                                        console.log(childSnapshot.val().recipeHealthLable);;
+                                                        let testRecipe = {
+                                                                url: childSnapshot.val().recipesurl,
+                                                                imageURL: childSnapshot.val().recipeimage,
+                                                                healthLabels: childSnapshot.val().recipeHealthLable.split(','),
+                                                                lable: childSnapshot.val().recipeName,
+                                                                source: childSnapshot.val().recipeSource,
+                                                                ingredients: childSnapshot.val().recipeIngredients.split(',')
+                                                        }
+                                                        $("#savedRecipies").appendRecipeToDiv(testRecipe);
+                                                        $(".saveToAccount").hide();
+                                                })
+                                        } else {
+                                                let notFound = $("<h2>").text("No Recipe has been saved to your account! Go to Discover and save some!");
+                                                $("#savedRecipies").append(notFound)
                                         }
-                                        $("#savedRecipies").appendRecipeToDiv(testRecipe);
-                                        $(".saveToAccount").hide();
                                 })
-                                // $("#saveToAccount").hide();
-                        })
+                        }
+                        // });
+
+
+                } else {
+                        // No user is signed in. set user to anounymouse
+                        //Show loging section and empty div
+                        console.log($("#loginBtnHead"));
+                        $("#loginBtnHead").click();
                 }
         });
+
 
 
 })
