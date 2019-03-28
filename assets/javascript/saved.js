@@ -33,8 +33,11 @@ $(document).ready(function () {
                 $(this).parent().prev().children(".showMore").show();
         })
 
+
+        //todo: put this to onauth change
         $("#saved").on("click", function (event) {
                 event.preventDefault();
+
                 let userId = firebase.auth().currentUser.uid;
                 if (userId) {
                         return firebase.database().ref('/users/' + userId + '/recipes/').once('value').then(function (snapshot) {
@@ -47,7 +50,7 @@ $(document).ready(function () {
                                                 healthLabels: childSnapshot.val().recipeHealthLable.split(','),
                                                 lable: childSnapshot.val().recipeName,
                                                 source: childSnapshot.val().recipeSource,
-                                                ingredients: childSnapshot.val().recipeIngredients
+                                                ingredients: childSnapshot.val().recipeIngredients.split(',')
                                         }
                                         $("#savedRecipies").appendRecipeToDiv(testRecipe);
                                         $(".saveToAccount").hide();

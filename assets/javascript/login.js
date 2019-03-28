@@ -66,14 +66,17 @@ $(document).ready(function () {
         //push lables to DB
         event.preventDefault();
         let user = firebase.auth().currentUser;
-        event.preventDefault();
         let labels = $(this).prev().children(".active");
-        console.log(labels);
+        
+
+        database.ref('/users/'+user.uid+"/healthLabels").remove();
         labels.each(function(idx,val){
             let label = $(val).text();
+            console.log(label);
             database.ref('/users/'+user.uid+"/healthLabels").push(label);
         });
-        $("#healthLabelsDiv").hide();
+        $("#healthLabelsDiv").remove();
+        
     })
     $(document).on('click','.healthLabels',function(event){
         $(this).toggleClass("active");

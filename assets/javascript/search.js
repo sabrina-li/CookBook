@@ -10,8 +10,20 @@ $(document).ready(function () {
     $("#searchDiv").empty();
     //API to fetch the gif from giphy.com
     searchInput = $("#search").val();
+    let user = firebase.auth().currentUser;
+    if(user && user.uid){
+      database.ref('/users/' + user.uid + "/healthLabels").once('value', function (snap) {
+        let snapArr = [];
+        snap.forEach(function (item) {
+          snapArr.push(item.val())
+        })
+        
+        getmMoreRecipe(0, searchInput, snapArr);
+      });
+    }
+    
 
-    getmMoreRecipe(0, searchInput);
+    
   });
 
 
@@ -34,24 +46,29 @@ $(document).ready(function () {
 
 // window.open($(this).attr("data"),'_blank');
 
-$(document).on("click",".showMore", function (event) {
+$(document).on("click", ".showMore", function (event) {
   console.log($(this).parent().next().show());
   $(this).hide();
 
 })
-$(document).on("click",".showLess", function (event) {
+$(document).on("click", ".showLess", function (event) {
   $(this).parent().hide();
   $(this).parent().prev().children(".showMore").show();
 })
 
-function getmMoreRecipe(from,querystr){
-
-  
-  
-
-
+function getmMoreRecipe(from, querystr, healthLabels = null) {
+  //health=peanut-free&health=tree-nut-free
+  let searchHealth = "";
+  if (healthLabels && healthLabels.length !== 0) {
+    $("#healthLabels").html("Your health labels set as: ");
+    healthLabels.forEach(function (val) {
+      searchHealth += "&health=" + val;
+      $("#healthLabels").append($(`<span class="bg-grey-light text-grey-darkest py-1 px-2 rounded-full inline-flex items-center">${val}</span>`));
+    })
+  }
+  console.log(searchHealth);
   var queryURL =
-    "https://api.edamam.com/search?q=" + querystr + "&app_id=c372c471&app_key=9985027ab53a0ce7b9660e4b50d3db60&from=" + from + "&to=" + (from + 10);
+    "https://api.edamam.com/search?q=" + querystr + "&app_id=c372c471&app_key=9985027ab53a0ce7b9660e4b50d3db60&from=" + from + "&to=" + (from + 10)+searchHealth;
 
   //AJAX call to get the data using GET method and url as parameter
   $.ajax({
@@ -74,39 +91,39 @@ function getmMoreRecipe(from,querystr){
         }
         $("#searchDiv").appendRecipeToDiv(thisRecipe);
 
-        
+
       })
 
       $(".saveToAccount").on("click", function (event) {
         event.preventDefault();
         // window.open($(this).attr("data"),'_blank');
         let curUser = auth.currentUser;
-        
-        if(curUser.uid){
+
+        if (curUser && curUser.uid) {
           console.log($(this).attr("data-url"));
           console.log($(this));
           console.log(curUser.uid);
-          let recipeUrl=$(this).attr("data-url");
-          let recipeImageUrl=$(this).attr("data-imageurl");
-          let recipeHealthLable=$(this).attr("data-healthlabels");
-          let recipeName=$(this).attr("data-lable");
-          let recipeSource=$(this).attr("data-source");
-          let recipeIngredients=$(this).attr("data-ingredients");
-          database.ref("/users/"+curUser.uid+"/recipes").push({
-            recipesurl:recipeUrl,
-            recipeimage:recipeImageUrl,
-            recipeHealthLable:recipeHealthLable,
-            recipeName:recipeName,
-            recipeSource:recipeSource,
-            recipeIngredients:recipeIngredients,
+          let recipeUrl = $(this).attr("data-url");
+          let recipeImageUrl = $(this).attr("data-imageurl");
+          let recipeHealthLable = $(this).attr("data-healthlabels");
+          let recipeName = $(this).attr("data-lable");
+          let recipeSource = $(this).attr("data-source");
+          let recipeIngredients = $(this).attr("data-ingredients");
+          database.ref("/users/" + curUser.uid + "/recipes").push({
+            recipesurl: recipeUrl,
+            recipeimage: recipeImageUrl,
+            recipeHealthLable: recipeHealthLable,
+            recipeName: recipeName,
+            recipeSource: recipeSource,
+            recipeIngredients: recipeIngredients,
             dateAdded: firebase.database.ServerValue.TIMESTAMP
             // database.ref(“/users/asdfasdfasdf/recipies”).push({
-//    url:“fakeurl2.com”,
-//    imageurl:“fakeimage2.com”
-// })
+            //    url:“fakeurl2.com”,
+            //    imageurl:“fakeimage2.com”
+            // })
 
-        })
-      }
+          })
+        }
       });
     });
-  }
+}
