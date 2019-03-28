@@ -6,7 +6,7 @@ jQuery.fn.extend({
     appendRecipeToDiv: function (recipe) {
         const url = recipe.url || "";
         const imageURL = recipe.imageURL || "";
-        const healthLabels = recipe.healthLabels.split(',') || [];
+        const healthLabels = recipe.healthLabels || [];
         const lable = recipe.lable || "can't find lable";
         const source = recipe.source || "Unkown Source";
         const ingredients = recipe.ingredients || "can't find ingredients";

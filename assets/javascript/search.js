@@ -46,16 +46,7 @@ $(document).on("click",".showLess", function (event) {
 
 function getmMoreRecipe(from,querystr){
 
-  let user = firebase.auth().currentUser;
-  if(user){
-    database.ref('/users/'+user.uid+"/healthLabels").once('value',function(snap){
-      let snapArr = [];
-      snap.forEach(function (item){
-      snapArr.push(item.val())
-      })
-      $("body").showHealthLabels(snapArr);
-    });
-  }
+  
   
 
 
