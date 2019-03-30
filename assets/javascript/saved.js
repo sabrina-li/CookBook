@@ -18,6 +18,19 @@ $(document).ready(function () {
                 $(this).parent().prev().children(".showMore").show();
         })
 
+        $(document).on("click", ".showTotalNutrients", function (event) {
+                $(this).parent().parent().children(".totalNutrients").show();
+                $(this).toggleClass("showTotalNutrients");
+                $(this).text("Hide Nutrition");
+                $(this).toggleClass("hideTotalNutrients");
+        })
+              $(document).on("click", ".hideTotalNutrients", function (event) {
+                $(this).parent().parent().children(".totalNutrients").hide();
+                $(this).toggleClass("showTotalNutrients");
+                $(this).text("Show Nutrition");
+                $(this).toggleClass("hideTotalNutrients");
+        })
+
 
         //todo: put this to onauth change
         firebase.auth().onAuthStateChanged(function (user) {
@@ -37,16 +50,22 @@ $(document).ready(function () {
                                         if (snapshot.val()) {
                                                 snapshot.forEach(function (childSnapshot) {
 
-                                                        console.log(childSnapshot.val().recipeHealthLable);;
+                                                        // console.log(childSnapshot.val().recipeHealthLable);;
                                                         let testRecipe = {
                                                                 url: childSnapshot.val().recipesurl,
                                                                 imageURL: childSnapshot.val().recipeimage,
                                                                 healthLabels: childSnapshot.val().recipeHealthLable.split(','),
                                                                 lable: childSnapshot.val().recipeName,
                                                                 source: childSnapshot.val().recipeSource,
-                                                                ingredients: childSnapshot.val().recipeIngredients.split(',')
+                                                                ingredients: childSnapshot.val().recipeIngredients.split(','),
+                                                                totalNutrients:JSON.parse(childSnapshot.val().recipeTotalNutrients)
                                                         }
                                                         $("#savedRecipies").appendRecipeToDiv(testRecipe);
+                                                        $(".goToRecipe").off('click');
+                                                        $(".goToRecipe").on('click',function(){
+                                                        // console.log($(this))
+                                                        window.open($(this).attr("data-url"),'_blank');
+                                                        })
                                                         $(".saveToAccount").hide();
                                                 })
                                         } else {
@@ -61,7 +80,7 @@ $(document).ready(function () {
                 } else {
                         // No user is signed in. set user to anounymouse
                         //Show loging section and empty div
-                        console.log($("#loginBtnHead"));
+                        // console.log($("#loginBtnHead"));
                         $("#loginBtnHead").click();
                 }
         });

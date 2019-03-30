@@ -8,18 +8,18 @@ $(document).on('click',"#signinWithGoogle",function(event){
 
     firebase.auth().signInWithPopup(provider).then(function(result) {
         // This gives you a Google Access Token. You can use it to access the Google API.
-        var token = result.credential.accessToken;
+        // var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
         console.log(user.email);
         console.log(user.displayName);
-        database.ref('/users').once('value',function(snap){
-            if(snap.val() && Object.keys(snap.val()).indexOf(user.uid) == -1){
+        // database.ref('/users').once('value',function(snap){
+            // if(snap.val() && Object.keys(snap.val()).indexOf(user.uid) == -1){
                 pushUserToDB(user);
                 updateUserToDBwithName(user);
                 $("body").showHealthLabels();
-            }
-        })
+            // }
+        // })
     }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;

@@ -1,6 +1,8 @@
+
 //USE: 
 //this function appens the card based on input recipe object and append it to div
 // use like $("#muDiv").appendRecipeToDiv(recipeObject)
+
 
 jQuery.fn.extend({
     appendRecipeToDiv: function (recipe) {
@@ -10,8 +12,9 @@ jQuery.fn.extend({
         const lable = recipe.lable || "can't find lable";
         const source = recipe.source || "Unkown Source";
         const ingredients = recipe.ingredients || "can't find ingredients";
+        const totalNutrients = recipe.totalNutrients || {};
 
-        let healthLabelsDiv = `<div class="px-6 py-4 text-left">`;
+        let healthLabelsDiv = `<div class="px-6 py-4 text-left block">`;
 
         healthLabels.forEach(function (val) {
             healthLabelsDiv += `<span class="bg-grey-light text-grey-darkest py-1 px-2 rounded-full inline-flex items-center">${val}</span>`
@@ -35,6 +38,25 @@ jQuery.fn.extend({
         ingredientsDiv += `</div>`
         moreIngredientsDiv += `</div>`
 
+        let totalNutrientsDiv = $(`<div class="block w-full hidden totalNutrients"> 
+                                    <h1 >Nutrition Facts</h1>
+                                    <table class="text-left nutritionTable">
+                                    </table>
+                                </div>`)
+
+        const totalNutrientsValues = Object.values(totalNutrients);
+        
+        totalNutrientsValues.forEach(function(val){
+            // console.log(val);
+            let tablerow = $(`<tr>
+                                <th class="${val.label}">${val.label}</th>
+                                <td class="${val.label}">${Math.floor(val.quantity * 100) / 100} ${val.unit}</td> 
+                            </tr>`)
+          totalNutrientsDiv.children("table").append(tablerow);
+        })
+        
+        
+
 
         const newCardDiv =
             `<div class="recipeCard w-full inline-flex flex-wrap w-fullrounded overflow-hidden shadow-lg mx-auto p-2" data="${url}">
@@ -54,12 +76,14 @@ jQuery.fn.extend({
                 ${moreIngredientsDiv}
 
                 <br>
-                <button id="saveToAccount" data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}"
+                <button  data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}" data-totalNutrients='${JSON.stringify(totalNutrients)}'
                         class="saveToAccount shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Save</button>
-                <button id="showRecipe" data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}"
+                <button  data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}"
                         class="goToRecipe shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Show Recipe</button>
+                <button class="showTotalNutrients shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Show Nutrition</button>
            </div>
            ${healthLabelsDiv}
+           ${totalNutrientsDiv.prop('outerHTML')}
        </div>`
         //TODO: share to social media
 
