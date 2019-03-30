@@ -12,8 +12,19 @@
 #googleIcon:active{
     background: url("../images/btn_google_signin_dark_pressed_web.png");
 }
-span.active{
+
+.rounded-full{
     background: white;
+    border:2px solid #f441a5;
+    color:black;
+    margin: 1px 2px;
+}
+
+.rounded-full.active{
+    background: #f441a5;
+    border:2px solid #f441a5;
+    margin: 1px 2px;
+    color: #fff;
 }
 
 .nutritionTable th{
@@ -27,4 +38,8 @@ span.active{
 .Energy,.Fat,.Carbs,.Protein,.Cholesterol,.Sodium{
     font-weight: 700!important;
     border-bottom: 2px solid black;
+}
+
+#healthLabels{
+    padding-top: 10px;
 }

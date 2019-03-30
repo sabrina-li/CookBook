@@ -71,6 +71,7 @@ function getmMoreRecipe(from, querystr, healthLabels = null) {
   //health=peanut-free&health=tree-nut-free
   let searchHealth = "";
   if (healthLabels && healthLabels.length !== 0) {
+    $("#healthLabels").empty();
     $("#healthLabels").html("Your health labels set as: ");
     healthLabels.forEach(function (val) {
       searchHealth += "&health=" + val;
@@ -87,65 +88,80 @@ function getmMoreRecipe(from, querystr, healthLabels = null) {
     url: queryURL,
     method: "GET"
   })
-
     //After fetching the data execute below block of code. The AJAX query response is pass as parameter to below function
-    .then(function (response) {
-      let data = response.hits;
-      // console.log(data);
-      data.forEach(function (val) {
-        let thisRecipe = {
-          url: val.recipe.url,
-          imageURL: val.recipe.image,
-          healthLabels: val.recipe.healthLabels,
-          lable: val.recipe.label,
-          source: val.recipe.source,
-          ingredients: val.recipe.ingredientLines,
-          totalNutrients:val.recipe.totalNutrients
-        }
-        // console.log(val);
-        $("#searchDiv").appendRecipeToDiv(thisRecipe);
-        //detach onclick rom previouse loop
-        $(".goToRecipe").off('click');
-        $(".goToRecipe").on('click',function(){
-          // console.log($(this))
-          window.open($(this).attr("data-url"),'_blank');
-        })
-      })
-
-      $(".saveToAccount").on("click", function (event) {
-        event.preventDefault();
+    .then(
+      function (response,textStatus, xhr) {
+        handleRecipeAPIResponse(response);
         
-        let curUser = firebase.auth().currentUser;
-        // console.log(curUser);
-        if (curUser && curUser.uid) {
-          // console.log($(this).attr("data-url"));
-          // console.log($(this));
-          // console.log(curUser.uid);
-          // console.log($(this).attr("data-totalNutrients"));
-
-          let recipeUrl = $(this).attr("data-url");
-          let recipeImageUrl = $(this).attr("data-imageurl");
-          let recipeHealthLable = $(this).attr("data-healthlabels");
-          let recipeName = $(this).attr("data-lable");
-          let recipeSource = $(this).attr("data-source");
-          let recipeIngredients = $(this).attr("data-ingredients");
-          let totalNutrients  = JSON.parse($(this).attr("data-totalNutrients"));
-          
-
-          database.ref("/users/" + curUser.uid + "/recipes").push({
-            recipesurl: recipeUrl,
-            recipeimage: recipeImageUrl,
-            recipeHealthLable: recipeHealthLable,
-            recipeName: recipeName,
-            recipeSource: recipeSource,
-            recipeIngredients: recipeIngredients,
-            recipeTotalNutrients : JSON.stringify(totalNutrients),
-            
-            dateAdded: firebase.database.ServerValue.TIMESTAMP
-          })
-        }else{
-          $("#loginBtnHead").click();
-        }
+      },
+      function(xhr, textStatus, errorThrown ) {
+        console.log(xhr.statusCode())
+        showAPIError(xhr.status);
       });
-    });
+}
+
+function showAPIError(errorCode){
+  $("#healthLabels").empty();
+  $("#healthLabels").html("Slowdown tiger! Your are making too many calls too quickly. API temporarily unavailable. Please wait and re-try in a minute");
+}
+
+function handleRecipeAPIResponse(response){
+
+  let data = response.hits;
+  // console.log(data);
+  data.forEach(function (val) {
+    let thisRecipe = {
+      url: val.recipe.url,
+      imageURL: val.recipe.image,
+      healthLabels: val.recipe.healthLabels,
+      lable: val.recipe.label,
+      source: val.recipe.source,
+      ingredients: val.recipe.ingredientLines,
+      totalNutrients:val.recipe.totalNutrients
+    }
+    // console.log(val);
+    $("#searchDiv").appendRecipeToDiv(thisRecipe);
+    //detach onclick rom previouse loop
+    $(".goToRecipe").off('click');
+    $(".goToRecipe").on('click',function(){
+      // console.log($(this))
+      window.open($(this).attr("data-url"),'_blank');
+    })
+  })
+
+  $(".saveToAccount").on("click", function (event) {
+    event.preventDefault();
+    
+    let curUser = firebase.auth().currentUser;
+    // console.log(curUser);
+    if (curUser && curUser.uid) {
+      // console.log($(this).attr("data-url"));
+      // console.log($(this));
+      // console.log(curUser.uid);
+      // console.log($(this).attr("data-totalNutrients"));
+
+      let recipeUrl = $(this).attr("data-url");
+      let recipeImageUrl = $(this).attr("data-imageurl");
+      let recipeHealthLable = $(this).attr("data-healthlabels");
+      let recipeName = $(this).attr("data-lable");
+      let recipeSource = $(this).attr("data-source");
+      let recipeIngredients = $(this).attr("data-ingredients");
+      let totalNutrients  = JSON.parse($(this).attr("data-totalNutrients"));
+      
+
+      database.ref("/users/" + curUser.uid + "/recipes").push({
+        recipesurl: recipeUrl,
+        recipeimage: recipeImageUrl,
+        recipeHealthLable: recipeHealthLable,
+        recipeName: recipeName,
+        recipeSource: recipeSource,
+        recipeIngredients: recipeIngredients,
+        recipeTotalNutrients : JSON.stringify(totalNutrients),
+        
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+      })
+    }else{
+      $("#loginBtnHead").click();
+    }
+  });
 }
