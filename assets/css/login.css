@@ -27,19 +27,32 @@
     color: #fff;
 }
 
+.totalNutrients{
+    border: 1px solid black;
+    padding: 10px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .nutritionTable th{
     font-weight: 500;
+    padding-right: 15px;
 }
-.Saturated,.Trans,.Monounsaturated,.Polyunsaturated,.Fiber,.Sugars{
+.FASAT,.FATRN,.FAMS,.FAPU,.FIBTG,.SUGAR{
     font-weight: 500;
     padding-left: 20px;
 }
 
-.Energy,.Fat,.Carbs,.Protein,.Cholesterol,.Sodium{
+.ENERC_KCAL,.FAT,.CHOCDF,.PROCNT,.CHOLE,.NA{
     font-weight: 700!important;
     border-bottom: 2px solid black;
 }
 
 #healthLabels{
     padding-top: 10px;
+}
+
+.recipeCard{
+    padding: 20px;
 }

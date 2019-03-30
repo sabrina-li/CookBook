@@ -13,8 +13,10 @@ jQuery.fn.extend({
         const source = recipe.source || "Unkown Source";
         const ingredients = recipe.ingredients || "can't find ingredients";
         const totalNutrients = recipe.totalNutrients;
+        const totalDaily = recipe.totalDaily;
+        
 
-        let healthLabelsDiv = `<div class="px-6 py-4 text-left block">`;
+        let healthLabelsDiv = `<div class="px-6 py-4 text-left w-full">`;
 
         healthLabels.forEach(function (val) {
             healthLabelsDiv += `<span class="bg-grey-light text-grey-darkest py-1 px-2 rounded-full inline-flex items-center">${val}</span>`
@@ -38,22 +40,27 @@ jQuery.fn.extend({
         ingredientsDiv += `</div>`
         moreIngredientsDiv += `</div>`
 
-        let totalNutrientsDiv = $(`<div class="block w-full hidden totalNutrients"> 
+        let totalNutrientsDiv = $(`<div class="block hidden totalNutrients"> 
                                     <h1 >Nutrition Facts</h1>
                                     <table class="text-left nutritionTable">
                                     </table>
                                 </div>`)
 
-        const totalNutrientsValues = Object.values(totalNutrients);
+        // const totalNutrientsValues = Object.values(totalNutrients);
         
-        totalNutrientsValues.forEach(function(val){
-            // console.log(val);
-            let tablerow = $(`<tr>
-                                <th class="${val.label}">${val.label}</th>
-                                <td class="${val.label}">${Math.floor(val.quantity * 100) / 100} ${val.unit}</td> 
+        // totalNutrientsValues.forEach(function(val){
+        for (var key in totalNutrients) {
+            let daily = totalDaily[key];
+            let amount = totalNutrients[key];
+            if(daily && amount){
+                let tablerow = $(`<tr>
+                                <th class="${key}">${amount.label}    ${Math.floor(amount.quantity * 100) / 100} ${amount.unit}</th>
+                                <td class="${key}">${Math.floor(daily.quantity * 100) / 100} ${daily.unit}</td> 
                             </tr>`)
-          totalNutrientsDiv.children("table").append(tablerow);
-        })
+                totalNutrientsDiv.children("table").append(tablerow);
+            }
+            
+        }
         
         
 
@@ -157,7 +164,7 @@ jQuery.fn.extend({
 jQuery.fn.extend({
     showHealthLabels: function (activeLabels) {
         //activeLabels is array of active labels
-        let healthLabels = ["alcohol-free", "celery-free", "crustacean-free", "dairy-free", "egg-free", "fish-free", "gluten-free", "kidney-friendly", "kosher", "low-potassium", "lupine-free", "No-oil-added", "low-sugar", "paleo", "peanut-free", "pescatarian", "pork-free", "red-meat-free", "sesame-free", "shellfish-free", "soy-free", "sugar-conscious", "tree-nut-free", "vegan", "vegetarian", "wheat-free"];
+        
 
         let healthLabelsDiv = `<div class="px-6 py-4 text-left">`;
 

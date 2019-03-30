@@ -34,7 +34,10 @@ $(document).ready(function () {
       //TODO: add spining wheel while loading
 
       let scrollOffset = $("#searchDiv").children().length;
-      getmMoreRecipe(scrollOffset, searchInput);
+      if (scrollOffset !==0){
+        getmMoreRecipe(scrollOffset, searchInput);
+      }
+      
     }
 
   });
@@ -81,7 +84,7 @@ function getmMoreRecipe(from, querystr, healthLabels = null) {
   // console.log(searchHealth);
   var queryURL =
     apiBaseURL+"&q=" + querystr + "&from=" + from + "&to=" + (from + 10)+searchHealth;
-  // console.log(queryURL);
+  console.log(queryURL);
 
   //AJAX call to get the data using GET method and url as parameter
   $.ajax({
@@ -117,7 +120,8 @@ function handleRecipeAPIResponse(response){
       lable: val.recipe.label,
       source: val.recipe.source,
       ingredients: val.recipe.ingredientLines,
-      totalNutrients:val.recipe.totalNutrients
+      totalNutrients:val.recipe.totalNutrients,
+      totalDaily:val.recipe.totalDaily
     }
     // console.log(val);
     $("#searchDiv").appendRecipeToDiv(thisRecipe);
@@ -147,7 +151,7 @@ function handleRecipeAPIResponse(response){
       let recipeSource = $(this).attr("data-source");
       let recipeIngredients = $(this).attr("data-ingredients");
       let totalNutrients  = JSON.parse($(this).attr("data-totalNutrients"));
-      
+      let totalDaily  = JSON.parse($(this).attr("data-totalDaily"));
 
       database.ref("/users/" + curUser.uid + "/recipes").push({
         recipesurl: recipeUrl,
@@ -157,6 +161,7 @@ function handleRecipeAPIResponse(response){
         recipeSource: recipeSource,
         recipeIngredients: recipeIngredients,
         recipeTotalNutrients : JSON.stringify(totalNutrients),
+        recipeTotalDaily : JSON.stringify(totalDaily),
         
         dateAdded: firebase.database.ServerValue.TIMESTAMP
       })
