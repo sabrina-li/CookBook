@@ -12,7 +12,7 @@ jQuery.fn.extend({
         const lable = recipe.lable || "can't find lable";
         const source = recipe.source || "Unkown Source";
         const ingredients = recipe.ingredients || "can't find ingredients";
-        const totalNutrients = recipe.totalNutrients || {};
+        const totalNutrients = recipe.totalNutrients;
 
         let healthLabelsDiv = `<div class="px-6 py-4 text-left block">`;
 

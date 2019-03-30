@@ -46,11 +46,11 @@ $(document).ready(function () {
                         let userId = user.uid;
                         if (userId) {
                                 return firebase.database().ref('/users/' + userId + '/recipes/').once('value').then(function (snapshot) {
-                                        console.log("snap",snapshot.val());
+                                        // console.log("snap",snapshot.val());
                                         if (snapshot.val()) {
                                                 snapshot.forEach(function (childSnapshot) {
 
-                                                        // console.log(childSnapshot.val().recipeHealthLable);;
+                                                        //TODO:handle null values in DB
                                                         let testRecipe = {
                                                                 url: childSnapshot.val().recipesurl,
                                                                 imageURL: childSnapshot.val().recipeimage,
@@ -58,7 +58,8 @@ $(document).ready(function () {
                                                                 lable: childSnapshot.val().recipeName,
                                                                 source: childSnapshot.val().recipeSource,
                                                                 ingredients: childSnapshot.val().recipeIngredients.split(','),
-                                                                totalNutrients:JSON.parse(childSnapshot.val().recipeTotalNutrients)
+                                                                
+                                                                totalNutrients:JSON.parse(childSnapshot.val().recipeTotalNutrients || "{\"nutrition\":\"unknown\"}")
                                                         }
                                                         $("#savedRecipies").appendRecipeToDiv(testRecipe);
                                                         $(".goToRecipe").off('click');
