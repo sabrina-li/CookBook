@@ -9,7 +9,7 @@ $(document).ready(function(){
     })
 
     //go to saved page, first display login if not logged in, then display saved reciepies
-    $("#savedBtn").on('click',function(){
+    $("#saved").on('click',function(){
         window.location.href="saved.html";
     })
 })
