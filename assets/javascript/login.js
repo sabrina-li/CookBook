@@ -46,7 +46,7 @@ $(document).ready(function () {
         $("#confirmPasswordLabel").hide();
     })
 
-    $(document).on('click',"#closelogin", function (event) {
+    $(document).on('click',".closelogin", function (event) {
         event.preventDefault();
         loginHandler(false);
     })
@@ -132,6 +132,8 @@ function loginHandler(loggedIn,user=0) {
         $("#hello").remove();
         $("#loginForm").remove();
         $("#savedRecipies").empty();
+        let notLoggedIn = $("<h2>").text("You are not logged in! Please log in to See Saved Recipes");
+        $("#savedRecipies").append(notLoggedIn);
         $("#logoutBtnHead").hide();//TODO: position the log out button
         $("#loginBtnHead").show();
     }
