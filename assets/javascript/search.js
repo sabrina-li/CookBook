@@ -48,7 +48,7 @@ $(document).ready(function () {
 // window.open($(this).attr("data"),'_blank');
 
 $(document).on("click", ".showMore", function (event) {
-  // console.log($(this).parent().next().show());
+  $(this).parent().next().show();
   $(this).hide();
 
 })

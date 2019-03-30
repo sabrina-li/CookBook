@@ -102,7 +102,7 @@ jQuery.fn.extend({
 jQuery.fn.extend({
     showLoginSection: function () {
         const loginDiv = $(`<form id="loginForm area" autocomplete="off" class="loginForm bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <button class="absolute mr-5 pin-r closelogin">x</button>
+        <p class="absolute mr-5 pin-r closelogin">x</p>
         <div id="signinWithGoogle"><span id="googleIcon"></span></div>
 
         <label id="firstNameLabel" for="firstname" class="block text-grey-darker text-sm font-bold mt-3 mb-1">FirstName</label>
@@ -126,7 +126,7 @@ jQuery.fn.extend({
         <br>
 
         <input type="submit" value="Login" id="loginBtn"
-        class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline"></input>
+            class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline"></input>
         
         <span id="signupSpan">
         <span>or </span>
@@ -193,5 +193,6 @@ jQuery.fn.extend({
             zIndex: 100
         })
         this.append(healthLabelsSelectionDiv);
+        
     }
 })

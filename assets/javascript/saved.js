@@ -9,9 +9,8 @@ $(document).ready(function () {
 
         $(".saveToAccount").hide();
         $(document).on("click", ".showMore", function (event) {
-                console.log($(this).parent().next().show());
+                $(this).parent().next().show();
                 $(this).hide();
-
         })
         $(document).on("click", ".showLess", function (event) {
                 $(this).parent().hide();
@@ -61,6 +60,7 @@ $(document).ready(function () {
                                                                 totalNutrients:JSON.parse(childSnapshot.val().recipeTotalNutrients || "{\"nutrition\":\"unknown\"}"),
                                                                 totalDaily:JSON.parse(childSnapshot.val().recipeTotalDaily || "{\"nutrition\":\"unknown\"}")
                                                         }
+                                                        $("#savedRecipies").empty()
                                                         $("#savedRecipies").appendRecipeToDiv(testRecipe);
                                                         $(".goToRecipe").off('click');
                                                         $(".goToRecipe").on('click',function(){

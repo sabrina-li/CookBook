@@ -11,7 +11,7 @@ $(document).ready(function () {
     $(document).on('click',"#signupBtn", function (event) {
         event.preventDefault();
         //remove errormsg if any
-        $("#errormsg").remove();
+        $(".errormsg").remove();
         //show username and change the button
         $("#firstNameLabel").show();
         $("#firstname").show();
@@ -26,14 +26,16 @@ $(document).ready(function () {
     $(document).on('click',"#loginBtn", function (event) {
         event.preventDefault();
         //remove errormsg if any
-        $("#errormsg").remove();
+        $(".errormsg").remove();
         if($(this).attr("value").toLowerCase() == "login"){
             loginUser();
         }else{
             signUpUser();
         }
-        
     })
+
+    
+
 
     $(document).on('click',"#loginBtnHead", function (event) {
         // event.preventDefault();
@@ -110,11 +112,14 @@ $(document).ready(function () {
         }
     });
 
+
+
 })
 
 
 function showError(errorCode, errorMessage) {
-    let error = $("<p>").attr("id", "errormsg");
+    $(".errormsg").remove();
+    let error = $("<p>").attr("class", "errormsg");
     error.css("color", "red");
     error.text("Error Authenticating! Error Message: " + errorMessage)
     $(".loginForm").append(error);
@@ -123,7 +128,6 @@ function showError(errorCode, errorMessage) {
 function loginHandler(loggedIn,user=0) {
     if (loggedIn) {
         $("#hello").remove();
-        
         $(".loginForm").remove();
         $("#loginoutDiv").prepend(`<span id="hello" style="color: white; font-size: 40px;">Hello! `+user.displayName+"</span>");
         $("#hello").css("text-decoration","underline")
