@@ -83,7 +83,7 @@ jQuery.fn.extend({
                 ${moreIngredientsDiv}
 
                 <br>
-                <button  data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}" data-totalNutrients='${JSON.stringify(totalNutrients)}'
+                <button  data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}" data-totalNutrients='${JSON.stringify(totalNutrients)}' data-totalDaily='${JSON.stringify(totalDaily)}'
                         class="saveToAccount shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Save</button>
                 <button  data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}"
                         class="goToRecipe shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Show Recipe</button>

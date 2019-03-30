@@ -58,8 +58,8 @@ $(document).ready(function () {
                                                                 lable: childSnapshot.val().recipeName,
                                                                 source: childSnapshot.val().recipeSource,
                                                                 ingredients: childSnapshot.val().recipeIngredients.split(','),
-                                                                
-                                                                totalNutrients:JSON.parse(childSnapshot.val().recipeTotalNutrients || "{\"nutrition\":\"unknown\"}")
+                                                                totalNutrients:JSON.parse(childSnapshot.val().recipeTotalNutrients || "{\"nutrition\":\"unknown\"}"),
+                                                                totalDaily:JSON.parse(childSnapshot.val().recipeTotalDaily || "{\"nutrition\":\"unknown\"}")
                                                         }
                                                         $("#savedRecipies").appendRecipeToDiv(testRecipe);
                                                         $(".goToRecipe").off('click');
