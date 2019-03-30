@@ -132,7 +132,7 @@ function loginHandler(loggedIn,user=0) {
         $("#hello").remove();
         $("#loginForm").remove();
         $("#savedRecipies").empty();
-        let notLoggedIn = $("<h2>").text("You are not logged in! Please log in to See Saved Recipes");
+        let notLoggedIn = $("<h2>").text("You are not logged in! Please log in to see saved recipes");
         $("#savedRecipies").append(notLoggedIn);
         $("#logoutBtnHead").hide();//TODO: position the log out button
         $("#loginBtnHead").show();
