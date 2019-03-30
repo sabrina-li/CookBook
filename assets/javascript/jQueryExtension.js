@@ -53,33 +53,45 @@ jQuery.fn.extend({
 
 jQuery.fn.extend({
     showLoginSection: function () {
-        const loginDiv = $(`<form id="loginForm" autocomplete="off" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                        <button class="absolute mr-5 pin-r" id="closelogin">x</button>
-                        <label id="firstNameLabel" for="firstname" class="block text-grey-darker text-sm font-bold mt-3 mb-1">FirstName</label>
-                        <input id="firstname" type="text" placeholder="FirstName"
-                            class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
-                        <label id="lastNameLabel" for="lastname" class="block text-grey-darker text-sm font-bold mt-3 mb-1">LastName</label>
-                        <input id="lastname" type="text" placeholder="LastName"
-                            class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
-                            
-                        <label for="email" class="block text-grey-darker text-sm font-bold mt-3 mb-1">Email</label>
-                        <input id="email" type="text" placeholder="Email"
-                            class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
-                        <label for="password" class="block text-grey-darker text-sm font-bold mt-3 mb-1">Password</label>
-                        <input id="password" type="password" placeholder="Password"
-                            class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
-                        <br>
-                        <input type="submit" value="Login" id="loginBtn"
-                            class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline"></input>
-                        
-                        <span id="signupSpan">
-                            <span>or </span>
-                            <a id="signupBtn"
-                                class="font-bold mt-3 mb-1 focus:shadow-outline">SignUp</a>
-                        </span>
-
-                        
-                    </form>`)
+        const loginDiv = $(`<form id="loginForm area" autocomplete="off" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <button class="absolute mr-5 pin-r" id="closelogin">x</button>
+        <label id="firstNameLabel" for="firstname" class="block text-grey-darker text-sm font-bold mt-3 mb-1">FirstName</label>
+        <input id="firstname" type="text" placeholder="FirstName"
+        class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
+        <label id="lastNameLabel" for="lastname" class="block text-grey-darker text-sm font-bold mt-3 mb-1">LastName</label>
+        <input id="lastname" type="text" placeholder="LastName"
+        class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
+        
+        <label for="email" class="block text-grey-darker text-sm font-bold mt-3 mb-1">Email</label>
+        <input id="email" type="text" placeholder="Email"
+        class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
+        <label for="password" class="block text-grey-darker text-sm font-bold mt-3 mb-1">Password</label>
+        <input id="password" type="password" placeholder="Password"
+        class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
+        <br>
+        <input type="submit" value="Login" id="loginBtn"
+        class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline"></input>
+        
+        <span id="signupSpan">
+        <span>or </span>
+        <a id="signupBtn"
+        class="font-bold mt-3 mb-1 focus:shadow-outline">SignUp</a>
+        </span>
+        
+    <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+        </ul>
+        
+        </form>`)
     loginDiv.css({
         position:"fixed",
         top:"20%",
