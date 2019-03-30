@@ -53,7 +53,19 @@ jQuery.fn.extend({
 
 jQuery.fn.extend({
     showLoginSection: function () {
-        const loginDiv = $(`<form id="loginForm" autocomplete="off" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        const loginDiv = $(`<form id="loginForm area" autocomplete="off" class="bg-blue shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
                         <button class="absolute mr-5 pin-r" id="closelogin">x</button>
                         <label id="firstNameLabel" for="firstname" class="block text-grey-darker text-sm font-bold mt-3 mb-1">FirstName</label>
                         <input id="firstname" type="text" placeholder="FirstName"
