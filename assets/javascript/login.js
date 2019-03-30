@@ -46,7 +46,7 @@ $(document).ready(function () {
         $("#confirmPasswordLabel").hide();
     })
 
-    $(document).on('click',"#closelogin", function (event) {
+    $(document).on('click',".closelogin", function (event) {
         event.preventDefault();
         loginHandler(false);
     })
