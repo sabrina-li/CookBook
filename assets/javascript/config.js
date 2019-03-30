@@ -10,3 +10,5 @@
     messagingSenderId: "788633798566"
   };
   firebase.initializeApp(config);
+
+  var apiBaseURL = "https://api.edamam.com/search?app_id=c372c471&app_key=9985027ab53a0ce7b9660e4b50d3db60";

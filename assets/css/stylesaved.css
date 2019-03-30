@@ -53,14 +53,11 @@
     opacity: 1;
     animation: animating 8s linear infinite;
   }
-<<<<<<< HEAD
 
 
 
-=======
   
   
->>>>>>> master
   #logoutBtnHead{
     background: linear-gradient(90deg,#03a9f4, #f441a5, #ffeb3b, #03a9f4);
   background-size: 400%;
@@ -116,7 +113,6 @@
 }
 
 
-<<<<<<< HEAD
 #loginBtn:hover{
   animation: animating 8s linear infinite;
   }
@@ -196,8 +192,6 @@
   }
 
   
-=======
->>>>>>> master
   h1 span{
     font-size: 50px;
     font-family: 'Gloria Hallelujah', cursive;
@@ -468,9 +462,6 @@
     cursor: pointer;
   }
   
-<<<<<<< HEAD
-   .recipe-img {
-=======
   #saved{
     float: left;
     width: 20%;
@@ -627,7 +618,6 @@
 
   
    .picAnimate {
->>>>>>> master
       background-size: cover;
       float: left;
       margin: 4px;
@@ -649,7 +639,7 @@
     }
 
     
-    #saveToAccount {
+    .saveToAccount {
       background-color: #004A7F;
       -webkit-border-radius: 10px;
       border-radius: 10px;

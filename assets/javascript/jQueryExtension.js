@@ -1,6 +1,8 @@
+
 //USE: 
 //this function appens the card based on input recipe object and append it to div
 // use like $("#muDiv").appendRecipeToDiv(recipeObject)
+
 
 jQuery.fn.extend({
     appendRecipeToDiv: function (recipe) {
@@ -10,8 +12,9 @@ jQuery.fn.extend({
         const lable = recipe.lable || "can't find lable";
         const source = recipe.source || "Unkown Source";
         const ingredients = recipe.ingredients || "can't find ingredients";
+        const totalNutrients = recipe.totalNutrients;
 
-        let healthLabelsDiv = `<div class="px-6 py-4 text-left">`;
+        let healthLabelsDiv = `<div class="px-6 py-4 text-left block">`;
 
         healthLabels.forEach(function (val) {
             healthLabelsDiv += `<span class="bg-grey-light text-grey-darkest py-1 px-2 rounded-full inline-flex items-center">${val}</span>`
@@ -22,7 +25,7 @@ jQuery.fn.extend({
         let moreIngredientsDiv = `<div class="px-6 text-left hidden moreIngredients">`;
 
         for (i = 0; i < ingredients.length; i++) {
-            if (i < 4) {
+            if (i < 2) {
                 ingredientsDiv += `<p class="text-grey-darker text-base">${ingredients[i]}</p>`;
             } else {
                 moreIngredientsDiv += `<p class="text-grey-darker text-base">${ingredients[i]}</p>`;
@@ -34,6 +37,25 @@ jQuery.fn.extend({
         }
         ingredientsDiv += `</div>`
         moreIngredientsDiv += `</div>`
+
+        let totalNutrientsDiv = $(`<div class="block w-full hidden totalNutrients"> 
+                                    <h1 >Nutrition Facts</h1>
+                                    <table class="text-left nutritionTable">
+                                    </table>
+                                </div>`)
+
+        const totalNutrientsValues = Object.values(totalNutrients);
+        
+        totalNutrientsValues.forEach(function(val){
+            // console.log(val);
+            let tablerow = $(`<tr>
+                                <th class="${val.label}">${val.label}</th>
+                                <td class="${val.label}">${Math.floor(val.quantity * 100) / 100} ${val.unit}</td> 
+                            </tr>`)
+          totalNutrientsDiv.children("table").append(tablerow);
+        })
+        
+        
 
 
         const newCardDiv =
@@ -54,12 +76,14 @@ jQuery.fn.extend({
                 ${moreIngredientsDiv}
 
                 <br>
-                <button id="saveToAccount" data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}"
+                <button  data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}" data-totalNutrients='${JSON.stringify(totalNutrients)}'
                         class="saveToAccount shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Save</button>
-                <button id="showRecipe" data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}"
+                <button  data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}"
                         class="goToRecipe shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Show Recipe</button>
+                <button class="showTotalNutrients shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Show Nutrition</button>
            </div>
            ${healthLabelsDiv}
+           ${totalNutrientsDiv.prop('outerHTML')}
        </div>`
         //TODO: share to social media
 
@@ -70,8 +94,10 @@ jQuery.fn.extend({
 
 jQuery.fn.extend({
     showLoginSection: function () {
-        const loginDiv = $(`<form id="loginForm area" autocomplete="off" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <button class="absolute mr-5 pin-r" id="closelogin">x</button>
+        const loginDiv = $(`<form id="loginForm area" autocomplete="off" class="loginForm bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <button class="absolute mr-5 pin-r closelogin">x</button>
+        <div id="signinWithGoogle"><span id="googleIcon"></span></div>
+
         <label id="firstNameLabel" for="firstname" class="block text-grey-darker text-sm font-bold mt-3 mb-1">FirstName</label>
         <input id="firstname" type="text" placeholder="FirstName"
         class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
@@ -86,6 +112,12 @@ jQuery.fn.extend({
         <input id="password" type="password" placeholder="Password"
         class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
         <br>
+
+        <label id="confirmPasswordLabel" for="confirmPassword" class="block text-grey-darker text-sm font-bold mt-3 mb-1">Password</label>
+        <input id="confirmPassword" type="password" placeholder="Confrim Password"
+            class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
+        <br>
+
         <input type="submit" value="Login" id="loginBtn"
         class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline"></input>
         
@@ -117,5 +149,42 @@ jQuery.fn.extend({
         zIndex:100
     })
     this.prepend(loginDiv)
+    }
+})
+
+
+
+jQuery.fn.extend({
+    showHealthLabels: function (activeLabels) {
+        //activeLabels is array of active labels
+        let healthLabels = ["alcohol-free", "celery-free", "crustacean-free", "dairy-free", "egg-free", "fish-free", "gluten-free", "kidney-friendly", "kosher", "low-potassium", "lupine-free", "No-oil-added", "low-sugar", "paleo", "peanut-free", "pescatarian", "pork-free", "red-meat-free", "sesame-free", "shellfish-free", "soy-free", "sugar-conscious", "tree-nut-free", "vegan", "vegetarian", "wheat-free"];
+
+        let healthLabelsDiv = `<div class="px-6 py-4 text-left">`;
+
+        healthLabels.forEach(function (val) {
+            if(activeLabels && activeLabels.indexOf(val) !== -1){
+                healthLabelsDiv += `<span class="active `
+            }else{
+                healthLabelsDiv += `<span class="`
+            }
+            healthLabelsDiv += `healthLabels bg-grey-light text-grey-darkest py-1 px-2 rounded-full inline-flex items-center" data="${val}">${val}</span>`
+        })
+        healthLabelsDiv += "</div>";
+
+
+        const healthLabelsSelectionDiv = $(`<form id="healthLabelsDiv" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                            <h2>Please chose your diet restrictions and preferences:</h2>
+                            ${healthLabelsDiv}
+                            <button id="saveDietBtn"
+                                class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline">Save</button>
+                            </form>`)
+        healthLabelsSelectionDiv.css({
+            position: "fixed",
+            top: "20%",
+            left: "20%",
+            right: "20%",
+            zIndex: 100
+        })
+        this.append(healthLabelsSelectionDiv);
     }
 })

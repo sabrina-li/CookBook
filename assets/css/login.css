@@ -15,3 +15,16 @@
 span.active{
     background: white;
 }
+
+.nutritionTable th{
+    font-weight: 500;
+}
+.Saturated,.Trans,.Monounsaturated,.Polyunsaturated,.Fiber,.Sugars{
+    font-weight: 500;
+    padding-left: 20px;
+}
+
+.Energy,.Fat,.Carbs,.Protein,.Cholesterol,.Sodium{
+    font-weight: 700!important;
+    border-bottom: 2px solid black;
+}

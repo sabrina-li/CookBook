@@ -21,10 +21,7 @@ $(document).ready(function () {
       });
     }else{
       getmMoreRecipe(0, searchInput);
-    }
-    
-
-    
+    } 
   });
 
 
@@ -48,13 +45,26 @@ $(document).ready(function () {
 // window.open($(this).attr("data"),'_blank');
 
 $(document).on("click", ".showMore", function (event) {
-  console.log($(this).parent().next().show());
+  // console.log($(this).parent().next().show());
   $(this).hide();
 
 })
 $(document).on("click", ".showLess", function (event) {
   $(this).parent().hide();
   $(this).parent().prev().children(".showMore").show();
+})
+
+$(document).on("click", ".showTotalNutrients", function (event) {
+  $(this).parent().parent().children(".totalNutrients").show();
+  $(this).toggleClass("showTotalNutrients");
+  $(this).text("Hide Nutrition");
+  $(this).toggleClass("hideTotalNutrients");
+})
+$(document).on("click", ".hideTotalNutrients", function (event) {
+  $(this).parent().parent().children(".totalNutrients").hide();
+  $(this).toggleClass("showTotalNutrients");
+  $(this).text("Show Nutrition");
+  $(this).toggleClass("hideTotalNutrients");
 })
 
 function getmMoreRecipe(from, querystr, healthLabels = null) {
@@ -67,10 +77,10 @@ function getmMoreRecipe(from, querystr, healthLabels = null) {
       $("#healthLabels").append($(`<span class="bg-grey-light text-grey-darkest py-1 px-2 rounded-full inline-flex items-center">${val}</span>`));
     })
   }
-  console.log(searchHealth);
+  // console.log(searchHealth);
   var queryURL =
-    "https://api.edamam.com/search?q=" + querystr + "&app_id=c372c471&app_key=9985027ab53a0ce7b9660e4b50d3db60&from=" + from + "&to=" + (from + 10)+searchHealth;
-  console.log(queryURL);
+    apiBaseURL+"&q=" + querystr + "&from=" + from + "&to=" + (from + 10)+searchHealth;
+  // console.log(queryURL);
 
   //AJAX call to get the data using GET method and url as parameter
   $.ajax({
@@ -81,7 +91,7 @@ function getmMoreRecipe(from, querystr, healthLabels = null) {
     //After fetching the data execute below block of code. The AJAX query response is pass as parameter to below function
     .then(function (response) {
       let data = response.hits;
-      console.log(data);
+      // console.log(data);
       data.forEach(function (val) {
         let thisRecipe = {
           url: val.recipe.url,
@@ -89,35 +99,39 @@ function getmMoreRecipe(from, querystr, healthLabels = null) {
           healthLabels: val.recipe.healthLabels,
           lable: val.recipe.label,
           source: val.recipe.source,
-          ingredients: val.recipe.ingredientLines
+          ingredients: val.recipe.ingredientLines,
+          totalNutrients:val.recipe.totalNutrients
         }
-        console.log(thisRecipe);
+        // console.log(val);
         $("#searchDiv").appendRecipeToDiv(thisRecipe);
         //detach onclick rom previouse loop
         $(".goToRecipe").off('click');
         $(".goToRecipe").on('click',function(){
-          console.log($(this))
+          // console.log($(this))
           window.open($(this).attr("data-url"),'_blank');
         })
-
-
       })
 
       $(".saveToAccount").on("click", function (event) {
         event.preventDefault();
         
-        let curUser = auth.currentUser;
-
+        let curUser = firebase.auth().currentUser;
+        // console.log(curUser);
         if (curUser && curUser.uid) {
-          console.log($(this).attr("data-url"));
-          console.log($(this));
-          console.log(curUser.uid);
+          // console.log($(this).attr("data-url"));
+          // console.log($(this));
+          // console.log(curUser.uid);
+          // console.log($(this).attr("data-totalNutrients"));
+
           let recipeUrl = $(this).attr("data-url");
           let recipeImageUrl = $(this).attr("data-imageurl");
           let recipeHealthLable = $(this).attr("data-healthlabels");
           let recipeName = $(this).attr("data-lable");
           let recipeSource = $(this).attr("data-source");
           let recipeIngredients = $(this).attr("data-ingredients");
+          let totalNutrients  = JSON.parse($(this).attr("data-totalNutrients"));
+          
+
           database.ref("/users/" + curUser.uid + "/recipes").push({
             recipesurl: recipeUrl,
             recipeimage: recipeImageUrl,
@@ -125,12 +139,9 @@ function getmMoreRecipe(from, querystr, healthLabels = null) {
             recipeName: recipeName,
             recipeSource: recipeSource,
             recipeIngredients: recipeIngredients,
+            recipeTotalNutrients : JSON.stringify(totalNutrients),
+            
             dateAdded: firebase.database.ServerValue.TIMESTAMP
-            // database.ref(“/users/asdfasdfasdf/recipies”).push({
-            //    url:“fakeurl2.com”,
-            //    imageurl:“fakeimage2.com”
-            // })
-
           })
         }else{
           $("#loginBtnHead").click();
