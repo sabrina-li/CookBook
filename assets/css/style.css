@@ -61,7 +61,9 @@ animation: animating 8s linear infinite;
 
 
 
-
+.closelogin{
+  z-index: 100;
+}
 
 
 
