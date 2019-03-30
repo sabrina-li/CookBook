@@ -104,13 +104,6 @@
 
 
 
-
-
-
-
-
-
-  
   h1 span{
     font-size: 50px;
     font-family: 'Gloria Hallelujah', cursive;
@@ -259,37 +252,40 @@
     cursor: pointer;
   }
 
-#loginForm{
+/* #loginForm{
 
     width: 100%;
     position: absolute;
     top:60vh;
     background-color: #03a9f4;
     top: 40%;
-}
+} */
 
-.bg-blue{
+/* .bg-blue{
   background-color: #c6a2e9;
-}
+} */
 
 
 #area{
-    background: #4e54c8;  
-    background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
-    width: 100%;
-    height:100vh;
-    
-   
+  background: #4e54c8;  
+  background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
+  width: 100%;
+  height:100vh;
+  
+ 
 }
 
 .circles{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
+
+
+
 
 .circles li{
     position: absolute;
@@ -395,12 +391,8 @@
         border-radius: 50%;
     }
 
-}
+} 
   
-}
-
-
-
 
   
    .picAnimate {

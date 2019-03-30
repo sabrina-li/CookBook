@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CookBook</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link rel="stylesheet" href="animate.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/stylesaved.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/login.css">
+    <!-- <link rel="stylesheet" type="text/css" href="animate.min.css"> -->
     <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Rock+Salt|Yesteryear" rel="stylesheet">
 </head>
 
@@ -48,7 +50,9 @@
                     class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
                 <input type="submit" value="Search" id="searchBtn"
                     class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"></input>
+                <div id="healthLabels"></div>
             </form>
+            
             <div id="searchDiv"></div>
         </div>
 
@@ -59,20 +63,13 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <!-- Initialize Firebase -->
-    <!-- <script src="assets/javascript/config.js"></script> -->
-    <!-- <script src="assets/javascript/buildCard.js"></script> -->
-    <!-- <script src="assets/javascript/main.js"></script> -->
-    <script src="assets/javascript/search.js"></script>
-
-
-
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
     <script src="assets/javascript/config.js"></script>
     <script src="assets/javascript/jQueryExtension.js"></script>
     <script src="assets/javascript/main.js"></script>
-    <!-- <script src="assets/javascript/search.js"></script> -->
+    <script src="assets/javascript/search.js"></script>
     <script src="assets/javascript/login.js"></script>
+    <script src="assets/javascript/googleSignin.js"></script>
     
 
 </body>

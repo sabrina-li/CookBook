@@ -1,0 +1,17 @@
+#googleIcon{
+    background: url("../images/btn_google_signin_dark_normal_web.png");
+    background-repeat: round;
+    display: inline-block;
+    vertical-align: middle;
+    width: 191px;
+    height: 46px;
+}
+#googleIcon:focus{
+    background: url("../images/btn_google_signin_dark_focus_web.png");
+}
+#googleIcon:active{
+    background: url("../images/btn_google_signin_dark_pressed_web.png");
+}
+span.active{
+    background: white;
+}
