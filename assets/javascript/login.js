@@ -17,6 +17,8 @@ $(document).ready(function () {
         $("#firstname").show();
         $("#lastNameLabel").show();
         $("#lastname").show();
+        $("#confirmPassword").show();
+        $("#confirmPasswordLabel").show();
         $("#signupSpan").hide();
         $("#loginBtn").attr("value","SignUp")
     })
@@ -34,14 +36,17 @@ $(document).ready(function () {
     })
 
     $(document).on('click',"#loginBtnHead", function (event) {
+        // event.preventDefault();
         $("body").showLoginSection();
         $("#firstNameLabel").hide();
         $("#firstname").hide();
         $("#lastNameLabel").hide();
         $("#lastname").hide();
+        $("#confirmPassword").hide();
+        $("#confirmPasswordLabel").hide();
     })
 
-    $(document).on('click',"#closelogin", function (event) {
+    $(document).on('click',".closelogin", function (event) {
         event.preventDefault();
         loginHandler(false);
     })
@@ -56,6 +61,37 @@ $(document).ready(function () {
         });
     })
 
+    $(document).on('click',"#saveDietBtn", function (event) {
+        //get  lables from selection
+        //push lables to DB
+        event.preventDefault();
+        let user = firebase.auth().currentUser;
+        let labels = $(this).prev().children(".active");
+        
+
+        database.ref('/users/'+user.uid+"/healthLabels").remove();
+        labels.each(function(idx,val){
+            let label = $(val).text();
+            console.log(label);
+            database.ref('/users/'+user.uid+"/healthLabels").push(label);
+        });
+        $("#healthLabelsDiv").remove();
+        
+    })
+    $(document).on('click','.healthLabels',function(event){
+        $(this).toggleClass("active");
+    })
+
+    $(document).on('click','#hello',function(){
+        let user = firebase.auth().currentUser;
+        database.ref('/users/'+user.uid+"/healthLabels").once('value',function(snap){
+            let snapArr = [];
+            snap.forEach(function (item){
+            snapArr.push(item.val())
+            })
+            $("body").showHealthLabels(snapArr);
+        });
+    });
 
 
     auth.onAuthStateChanged(function (user) {
@@ -89,6 +125,7 @@ function loginHandler(loggedIn,user=0) {
         $("#hello").remove();
         $("#loginForm").remove();
         $("#loginoutDiv").prepend(`<span id="hello" style="color: white; font-size: 40px;">Hello! `+user.displayName+"</span>");
+        $("#hello").css("text-decoration","underline")
         $("#logoutBtnHead").show();//TODO: position the log out button
         $("#loginBtnHead").hide();
     } else {
@@ -104,13 +141,13 @@ function loginHandler(loggedIn,user=0) {
 function signUpUser(){
 
         //ready from form and create user
-        const password = $("#password").val();
-        const email = $("#email").val();
-        const firstname = $("#firstname").val();
-        const lastname = $("#lastname").val();
-        //const username = email.split('@')[0];
+        const password = $("#password").val() ? $("#password").val().trim(): null;
+        const email = $("#email").val() ? $("#email").val().trim():null;
+        const firstname = $("#firstname").val()?$("#firstname").val().trim():"Anonymouse";
+        const lastname = $("#lastname").val()?$("#lastname").val().trim():"Anonymouse";
+        const confirmpassword = $("#confirmPassword").val()?$("#confirmPassword").val().trim():null;
 
-        if (password && email) {
+        if (password && email && password === confirmpassword) {
             auth.createUserWithEmailAndPassword(email, password)
                 .then(function () {
                     let user = auth.currentUser;
@@ -121,6 +158,7 @@ function signUpUser(){
                         // Update successful.
                         updateUserToDBwithName(user);
                         loginHandler(true,user);
+                        $("body").showHealthLabels();
                     }, function (error) {
                         const errorMessage = error.message;
                         showError("Can't set username", errorMessage);
@@ -132,7 +170,9 @@ function signUpUser(){
                     const errorMessage = error.message;
                     showError(errorCode, errorMessage);
                 });
-        } else {
+        }else if(password !== confirmpassword) {
+            showError(0, "Password inputs does not match. Please make sure passwords matches")
+        }else {
             showError(0, "Please complete all the fields")
         }
 
