@@ -134,6 +134,7 @@ function loginHandler(loggedIn,user=0) {
         $("#logoutBtnHead").show();//TODO: position the log out button
         $("#loginBtnHead").hide();
     } else {
+        $("#healthLabelsDiv").remove();
         $("#hello").remove();
         $(".loginForm").remove();
         $("#savedRecipies").empty();

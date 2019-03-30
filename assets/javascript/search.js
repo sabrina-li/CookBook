@@ -20,6 +20,7 @@ $(document).ready(function () {
         getmMoreRecipe(0, searchInput, snapArr);
       });
     }else{
+      $("#healthLabels").remove();
       getmMoreRecipe(0, searchInput);
     } 
   });
