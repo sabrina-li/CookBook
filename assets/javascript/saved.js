@@ -46,6 +46,7 @@ $(document).ready(function () {
                         if (userId) {
                                 return firebase.database().ref('/users/' + userId + '/recipes/').once('value').then(function (snapshot) {
                                         // console.log("snap",snapshot.val());
+                                        $("#savedRecipies").empty()
                                         if (snapshot.val()) {
                                                 snapshot.forEach(function (childSnapshot) {
 
@@ -60,7 +61,7 @@ $(document).ready(function () {
                                                                 totalNutrients:JSON.parse(childSnapshot.val().recipeTotalNutrients || "{\"nutrition\":\"unknown\"}"),
                                                                 totalDaily:JSON.parse(childSnapshot.val().recipeTotalDaily || "{\"nutrition\":\"unknown\"}")
                                                         }
-                                                        $("#savedRecipies").empty()
+                                                        
                                                         $("#savedRecipies").appendRecipeToDiv(testRecipe);
                                                         $(".goToRecipe").off('click');
                                                         $(".goToRecipe").on('click',function(){
@@ -70,7 +71,7 @@ $(document).ready(function () {
                                                         $(".saveToAccount").hide();
                                                 })
                                         } else {
-                                                $("#savedRecipies").empty()
+                                               
                                                 let notFound = $("<h2>").text("No Recipe has been saved to your account! Go to Discover and save some!");
                                                 $("#savedRecipies").append(notFound)
                                         }
