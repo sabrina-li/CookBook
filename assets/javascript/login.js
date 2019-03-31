@@ -11,7 +11,7 @@ $(document).ready(function () {
     $(document).on('click',"#signupBtn", function (event) {
         event.preventDefault();
         //remove errormsg if any
-        $("#errormsg").remove();
+        $(".errormsg").remove();
         //show username and change the button
         $("#firstNameLabel").show();
         $("#firstname").show();
@@ -26,14 +26,16 @@ $(document).ready(function () {
     $(document).on('click',"#loginBtn", function (event) {
         event.preventDefault();
         //remove errormsg if any
-        $("#errormsg").remove();
+        $(".errormsg").remove();
         if($(this).attr("value").toLowerCase() == "login"){
             loginUser();
         }else{
             signUpUser();
         }
-        
     })
+
+    
+
 
     $(document).on('click',"#loginBtnHead", function (event) {
         // event.preventDefault();
@@ -72,7 +74,7 @@ $(document).ready(function () {
         database.ref('/users/'+user.uid+"/healthLabels").remove();
         labels.each(function(idx,val){
             let label = $(val).text();
-            console.log(label);
+            
             database.ref('/users/'+user.uid+"/healthLabels").push(label);
         });
         $("#healthLabelsDiv").remove();
@@ -110,28 +112,34 @@ $(document).ready(function () {
         }
     });
 
+
+
 })
 
 
 function showError(errorCode, errorMessage) {
-    let error = $("<p>").attr("id", "errormsg");
+    $(".errormsg").remove();
+    let error = $("<p>").attr("class", "errormsg");
     error.css("color", "red");
     error.text("Error Authenticating! Error Message: " + errorMessage)
-    $("#loginForm").append(error);
+    $(".loginForm").append(error);
 }
 
 function loginHandler(loggedIn,user=0) {
     if (loggedIn) {
         $("#hello").remove();
-        $("#loginForm").remove();
+        $(".loginForm").remove();
         $("#loginoutDiv").prepend(`<span id="hello" style="color: white; font-size: 40px;">Hello! `+user.displayName+"</span>");
         $("#hello").css("text-decoration","underline")
         $("#logoutBtnHead").show();//TODO: position the log out button
         $("#loginBtnHead").hide();
     } else {
+        $("#healthLabelsDiv").remove();
         $("#hello").remove();
-        $("#loginForm").remove();
+        $(".loginForm").remove();
         $("#savedRecipies").empty();
+        let notLoggedIn = $("<h2>").text("You are not logged in! Please log in to see saved recipes");
+        $("#savedRecipies").append(notLoggedIn);
         $("#logoutBtnHead").hide();//TODO: position the log out button
         $("#loginBtnHead").show();
     }
@@ -180,19 +188,25 @@ function signUpUser(){
 
 function loginUser(){
     //ready from form and create user
-    const password = $("#password").val();
-    const email = $("#email").val();
+    const password = $("#password").val() ? $("#password").val().trim(): null;
+    const email = $("#email").val() ? $("#email").val().trim():null;
+    
+    if (password && email) {
 
-    auth.signInWithEmailAndPassword(email, password)
-        .then(function (u) {
-            // Login successful.
-        })
-        .catch(function (error) {
-            // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            showError(errorCode, errorMessage);
-        });
+        auth.signInWithEmailAndPassword(email, password)
+            .then(function (u) {
+                // Login successful.
+            })
+            .catch(function (error) {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                showError(errorCode, errorMessage);
+            });
+    }else {
+        showError(0, "Please complete all the fields")
+    }
+
 }
 
 
