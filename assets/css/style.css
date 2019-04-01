@@ -119,7 +119,7 @@ font-family: 'Rock Salt', cursive;
 }
 
 h1 span{
-  display: table-cell;
+  /* display: table-cell; */
 margin: 0;
 padding: 0;
 animation: animate 2s linear infinite;
@@ -260,7 +260,7 @@ animation: animating 8s linear infinite;
       }
 
       
-      .saveToAccount {
+      .saveToAccount:hover, .goToRecipe:hover, .showTotalNutrients:hover,.hideTotalNutrients:hover  {
         background-color: #004A7F;
         -webkit-border-radius: 10px;
         border-radius: 10px;

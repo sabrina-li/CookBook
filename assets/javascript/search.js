@@ -165,6 +165,17 @@ function handleRecipeAPIResponse(response){
         recipeTotalDaily : JSON.stringify(totalDaily),
         
         dateAdded: firebase.database.ServerValue.TIMESTAMP
+      },function(error){
+        if(error){
+          //handle error
+          console.log("Error Saving to DB: ",error);
+        }else{
+          //push successful, show banner
+          $(".savedAlert").css({display:"initial"});
+          setTimeout(() => {
+            $(".savedAlert").css({display:"none"});
+          }, 2000);
+        }
       })
     }else{
       $("#loginBtnHead").click();

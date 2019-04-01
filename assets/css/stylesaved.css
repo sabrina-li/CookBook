@@ -200,7 +200,7 @@
   }
   
   h1 span{
-    display: table-cell;
+    /* display: table-cell; */
   margin: 0;
   padding: 0;
   animation: animate 2s linear infinite;
@@ -639,7 +639,7 @@
     }
 
     
-    .saveToAccount {
+    .saveToAccount:hover {
       background-color: #004A7F;
       -webkit-border-radius: 10px;
       border-radius: 10px;

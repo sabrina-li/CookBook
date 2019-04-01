@@ -65,3 +65,33 @@ h1{
 #loginoutDiv{
     margin-bottom: 10px;
 }
+
+.savedAlert{
+    display: none;
+    position: fixed;
+    background-color: #f441a5;
+    top:35%;
+    left: 20%;
+    right: 20%;
+}
+
+
+.saveToAccount, .goToRecipe, .showTotalNutrients, .hideTotalNutrients {
+    margin: 2px;
+    background-color: #c6a2e9;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Arial;
+    font-size: 20px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+}
+
+h1 span{
+    margin-left: -7px;
+}
