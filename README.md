@@ -9,5 +9,7 @@ For those who are health conscious, our website is using API to dynamically and 
 The website allows you the search the recipies without login. But once logged in you will be able to save your recipies and come back to make it again!
 
 API used: https://developer.edamam.com/edamam-recipe-api
+
 Backends sits on Firebase auth and DB
+
 Showcasing tailwind CSS framework and use pure CSS animation for main UI
