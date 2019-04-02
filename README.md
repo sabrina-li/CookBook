@@ -1,9 +1,12 @@
-Project1 - Cheeta Group
-1.index.html- When user is not logged in, the page will appear as page1
-2.index.html- When user is logged in , the page will appear as page2
-3.When clicked on view button on recipe div, a new tab will open with original recipe url irrespective of whether you are login or not
-4.When clicked on save button on recipe div, if user is already logged in, the recipe details will be saved in database for that user
-5.When clicked on save button on recipe div, if user is not logged in, the user will be directed to saved.html and prompted with login or signup page
-6.When clicked on saved tab (saved.html), if user is already logged in, the user will be directed to saved.html and would be able to view all the saved recipe cards
-7.When clicked on Saved tab (saved.html), if user is not logged in, the user will be prompt with login or signup page on saved tab
-8.When clicked on login button on main page, user will be prompted with login or signup page on saved tab.
+#CookBook
+
+Cookbook website that allow user to search and add recipes to their cookbook. Ever tried a recipe that you liked very much but can’t find it on the internet anymore when you want to make it again? You’ll never lose a recipe again with CookBook!
+
+For those who are health conscious, our website is using API to dynamically and automatically analyse the ingredients information from the recipe and give you nutrition values for specific recipies. Controlling your calories has never been easier!
+
+
+The website allows you the search the recipies without login. But once logged in you will be able to save your recipies and come back to make it again!
+
+API used: https://developer.edamam.com/edamam-recipe-api
+Backends sits on Firebase auth and DB
+Showcasing tailwind CSS framework and use pure CSS animation for main UI
