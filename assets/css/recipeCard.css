@@ -1,0 +1,149 @@
+  
+.saveToAccount, .goToRecipe, .showTotalNutrients, .hideTotalNutrients {
+    margin: 2px;
+    background-color: #c6a2e9;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Arial;
+    font-size: 20px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+.saveToAccount:hover, .goToRecipe:hover, .showTotalNutrients:hover,.hideTotalNutrients:hover  {
+    background-color: #004A7F;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Arial;
+    font-size: 20px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-animation: glowing 1500ms infinite;
+    -moz-animation: glowing 1500ms infinite;
+    -o-animation: glowing 1500ms infinite;
+    animation: glowing 1500ms infinite;
+}
+@-webkit-keyframes glowing {
+    0% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+    50% { background-color: #FF0000; -webkit-box-shadow: 0 0 40px #FF0000; }
+    100% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+}
+
+@-moz-keyframes glowing {
+    0% { background-color: #B20000; -moz-box-shadow: 0 0 3px #B20000; }
+    50% { background-color: #FF0000; -moz-box-shadow: 0 0 40px #FF0000; }
+    100% { background-color: #B20000; -moz-box-shadow: 0 0 3px #B20000; }
+} 
+
+@-o-keyframes glowing {
+    0% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+    50% { background-color: #FF0000; box-shadow: 0 0 40px #FF0000; }
+    100% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+}
+
+@keyframes glowing { 
+    0% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+    50% { background-color: #FF0000; box-shadow: 0 0 40px #FF0000; }
+    100% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+}
+
+
+
+
+
+.recipe-img {
+    background-size: cover;
+    float: left;
+    margin: 4px;
+    box-shadow: 0 2px 4px #000;
+    position: relative;
+    transform: scale(0.9);
+    transition: .1s;
+    }
+    
+    .recipe-img:hover {
+    transform: scale(1);
+    box-shadow: 0 2px 4px #000, 0 8px 32px rgba(0, 0, 0, 0.5);
+    }
+    
+    .recipe-img:hover:before,
+    .recipe-img:hover:after {
+    position: absolute;
+    content: "";
+    background: linear-gradient(90deg, #ddd 40%, transparent 40%);
+    top: -3px;
+    bottom: -5px;
+    left: -5px;
+    right: -5px;
+    z-index: 1;
+    border-radius: 4px;
+    background-size: 200% 2px;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 0 8px #fff);
+    background-position: 80% 0;
+    }
+    
+    .recipe-img:hover:before {
+    animation: beforeLineAnim 2s linear infinite;
+    }
+    
+    .recipe-img:hover:after {
+    animation: afterLineAnim 2s linear infinite;
+    transform: rotate(-90deg);
+    background-position: -20% 0;
+    }
+    
+@keyframes beforeLineAnim {
+    45%,
+    50% {
+        background-position: -100% 0;
+    }
+    45% {
+        transform: scale(1)
+    }
+    50%,
+    95% {
+        transform: scale(1, -1)
+    }
+    95% {
+        background-position: 80% 0
+    }
+    } 
+    
+@keyframes afterLineAnim {
+    20%,
+    25% {
+        background-position: -100% 0;
+    }
+    20% {
+        transform: scale(1) rotate(-90deg)
+    }
+    25% {
+        transform: scale(-1, 1) rotate(-90deg)
+    }
+    70%,
+    75% {
+        background-position: 80% 0;
+    }
+    70% {
+        transform: scale(-1, 1) rotate(-90deg)
+    }
+    75% {
+        transform: scale(1, 1) rotate(-90deg)
+    }
+}
+    
+.recipeCard{
+    padding: 20px;
+    margin: 10px;
+}
