@@ -1,5 +1,5 @@
 
-# CookBook
+# CookBook 
 
 Cookbook website that allow user to search and add recipes to their cookbook. Ever tried a recipe that you liked very much but can’t find it on the internet anymore when you want to make it again? You’ll never lose a recipe again with CookBook!
 
@@ -13,3 +13,5 @@ API used: https://developer.edamam.com/edamam-recipe-api
 Backends sits on Firebase auth and DB
 
 Showcasing tailwind CSS framework and use pure CSS animation for main UI
+
+Website hosted [here](https://sabrina-li.github.io/CookBook/)
