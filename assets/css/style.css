@@ -46,7 +46,7 @@ body{
   margin-right: -8px;
 }
 .subHeadline{
-  font-size: 30px;
+  font-size: 35px;
   color:#F1E7DE
 }
 
@@ -134,10 +134,7 @@ animation-delay: 2.25s;
   } */
 
 
-.closelogin{
-  z-index: 100;
-  cursor: pointer;
-}
+
 
 
 

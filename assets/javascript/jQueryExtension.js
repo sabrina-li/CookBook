@@ -101,7 +101,8 @@ jQuery.fn.extend({
 
 jQuery.fn.extend({
     showLoginSection: function () {
-        const loginDiv = $(`<form id="loginForm area" autocomplete="off" class="loginForm bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        const loginDiv = $(`<div class="modal loginForm">
+        <form id="area" autocomplete="off" class="loginFrom bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <p class="absolute mr-5 pin-r closelogin">x</p>
         <div id="signinWithGoogle"><span id="googleIcon"></span></div>
 
@@ -147,14 +148,9 @@ jQuery.fn.extend({
                 <li></li>
         </ul>
         
-        </form>`)
-    loginDiv.css({
-        position:"fixed",
-        top:"20%",
-        left:"20%",
-        right:"20%",
-        zIndex:100
-    })
+        </form>
+        </div>`)
+
     this.prepend(loginDiv)
     }
 })
