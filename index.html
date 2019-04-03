@@ -18,32 +18,40 @@
 </head>
 
 <body>
-    <header class="container parallax">
-        <h1>
-            <span>C</span>
-            <span>o</span>
-            <span>o</span>
-            <span>k</span>
-            <span>B</span>
-            <span>o</span>
-            <span>o</span>
-            <span>k</span>
+    <header class="fixHeader">
+        <div class="container">
+            CookBook placeholder fixed
+        </div>    
+    </header>
+
+    <div class="parallax" >
+        <h1 class="explosion">
+            <span id="exp1" class="dei-1">C</span>
+            <span id="exp2"  class="dei-2">o</span>
+            <span id="exp3"  class="dei-3">o</span>
+            <span id="exp4"  class="dei-4">k</span>
+            <span id="exp5"  class="dei-5">B</span>
+            <span id="exp6"  class="dei-6">o</span>
+            <span id="exp7"  class="dei-7">o</span>
+            <span id="exp8"  class="dei-8">k</span>
         </h1>
-        
-        <nav class="absolute pin-b pin-l pin-r w-4/5 mx-auto">
-            <div class="flex items-end bg-grey-light">
-                <div class="navItem flex-1 text-grey-darker text-center bg-grey-lighter border border-grey-darker"
-                    id="discoverBtn">Discover</div>
-                <div class="navItem flex-1 text-grey-darker text-center bg-grey-lighter border border-grey-darker"
-                    id="saved">Saved</div>
-            </div>
-        </nav>
-        <div id="loginoutDiv">
+    </div>
+    
+
+
+    <nav class="absolute pin-b pin-l pin-r w-4/5 mx-auto">
+        <div class="flex items-end bg-grey-light">
+            <div class="navItem flex-1 text-grey-darker text-center bg-grey-lighter border border-grey-darker"
+                id="discoverBtn">Discover</div>
+            <div class="navItem flex-1 text-grey-darker text-center bg-grey-lighter border border-grey-darker"
+                id="saved">Saved</div>
+        </div>
+    </nav>
+    <div id="loginoutDiv">
             <button id="logoutBtnHead" class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline hidden">Logout</button>
             <button id="loginBtnHead" class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline hidden">Login</button>    
         </div>
-        
-    </header>
+    
     <main class="relative container m-auto mt-5 parallax">
         <div class="w-4/5 bg-grey-lighter p-10 mx-auto">
             <form autocomplete="off" class="bg-white shadow-md rounded px-8 pt-6 pb-4 mb-4">
@@ -77,7 +85,7 @@
     <script src="assets/javascript/search.js"></script>
     <script src="assets/javascript/login.js"></script>
     <script src="assets/javascript/googleSignin.js"></script>
-    
+    <script src="assets/javascript/animation.js"></script>
 
 </body>
 
