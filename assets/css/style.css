@@ -24,7 +24,7 @@ body{
 .parallax{
   background-image: url("../images/ingredients.jpg");
   height: 120vh; 
-  padding-left: 10%;
+  padding-left: 5%;
 
   background-attachment: fixed;
   background-position: center;
@@ -36,7 +36,7 @@ body{
   width: fit-content;
   /* margin-left: auto; */
   margin-right: auto;
-  padding-top: 60vh;
+  padding-top: 33%;
 }
 
 .headline span{

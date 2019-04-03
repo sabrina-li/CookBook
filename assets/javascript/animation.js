@@ -34,17 +34,23 @@ function easeInOutQuad(t, b, c, d) {
 function setCSS(){
     let ratio = scrollTop/initposition;
     $('.headline').css('opacity',Math.pow((1-ratio),0.7));
-    $('.subHeadline').css('opacity',Math.pow((1-ratio),0.5));
-
+    $('.subHeadline').css('opacity',Math.pow((1-ratio),0.7));
     $('.subHeadline').css('transform',' translate3d('+ratio*0+'px, -'+ratio*100+'px, 0px)');
-    $('#exp1').css('transform',' translate3d('+ratio*0+'px, -'+ratio*200+'px, 0px)');
-    $('#exp2').css('transform',' translate3d('+ratio*25+'px, -'+ratio*200+'px, 0px)');
-    $('#exp3').css('transform',' translate3d('+ratio*50+'px, -'+ratio*200+'px, 0px)');
-    $('#exp4').css('transform',' translate3d('+ratio*75+'px, -'+ratio*200+'px, 0px)');
-    $('#exp5').css('transform',' translate3d('+ratio*100+'px, -'+ratio*200+'px, 0px)');
-    $('#exp6').css('transform',' translate3d('+ratio*125+'px, -'+ratio*200+'px, 0px)');
-    $('#exp7').css('transform',' translate3d('+ratio*150+'px, -'+ratio*200+'px, 0px)');
-    $('#exp8').css('transform',' translate3d('+ratio*175+'px, -'+ratio*200+'px, 0px)');
+
+    
+    $('#exp8').css('transform','scale('+(1+ratio)+') translate3d('+ratio*210+'px, -'+ratio*200+'px, 0px)');
+    $('#exp7').css('transform','scale('+(1+ratio)+') translate3d('+ratio*180+'px, -'+ratio*200+'px, 0px)');
+    $('#exp6').css('transform','scale('+(1+ratio)+') translate3d('+ratio*150+'px, -'+ratio*200+'px, 0px)');
+    $('#exp5').css('transform','scale('+(1+ratio)+') translate3d('+ratio*120+'px, -'+ratio*200+'px, 0px)');
+    $('#exp4').css('transform','scale('+(1+ratio)+') translate3d('+ratio*90+'px, -'+ratio*200+'px, 0px)');
+    $('#exp3').css('transform','scale('+(1+ratio)+') translate3d('+ratio*60+'px, -'+ratio*200+'px, 0px)');
+    $('#exp2').css('transform','scale('+(1+ratio)+') translate3d('+ratio*30+'px, -'+ratio*200+'px, 0px)');
+    $('#exp1').css('transform','scale('+(1+ratio)+') translate3d('+ratio*0+'px, -'+ratio*200+'px, 0px)');
+    
+
+
+    
+
 }
     
       $(window).scroll(function() {
