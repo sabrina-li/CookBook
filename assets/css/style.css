@@ -1,6 +1,7 @@
 html,body,main{
   height: 100%;
   /* min-height: fit-content; */
+  font-family: "brandon-grotesque", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 body{
   background-color: rgb(221, 236, 236);
@@ -14,11 +15,16 @@ body{
   top: 0;
   background: white;
   z-index: 999;
+  display: flex;
+  justify-content: space-between;
 }
+
+
 
 .parallax{
   background-image: url("../images/ingredients.jpg");
-  height: 100vh; 
+  height: 120vh; 
+  padding-left: 10%;
 
   background-attachment: fixed;
   background-position: center;
@@ -26,25 +32,26 @@ body{
   background-size: cover;
 }
 
-.explosion{
+.headline{
   width: fit-content;
-  margin-left: auto;
+  /* margin-left: auto; */
   margin-right: auto;
   padding-top: 60vh;
 }
 
-
-h1{
-  margin-bottom: 10px;
+.headline span{
+  display: inline-block;
+  font-size: 60px;
+  color:#343D3A;
+  margin-right: -8px;
+}
+.subHeadline{
+  font-size: 30px;
+  color:#F1E7DE
 }
 
-h1 span{
-  display: inline-block;
-  font-size: 50px;
-  font-family: 'Gloria Hallelujah', cursive;
-  font-family: 'Yesteryear', cursive;
-  font-family: 'Rock Salt', cursive;
-  color:white
+.subHeadline #love{
+  color: #FD2E58;
 }
 
 /* h1 span{
@@ -88,14 +95,13 @@ animation-delay: 2.25s;
 
 
 
-#loginoutDiv{
-  margin-bottom: 10px;
-}
+
 
 #logoutBtnHead, #loginBtnHead, #searchBtn{
   background: linear-gradient(90deg,#03a9f4, #f441a5, #ffeb3b, #03a9f4);
-background-size: 400%;
-border-radius: 30px;
+  background-size: 400%;
+  border-radius: 30px;
+  margin: 0;
 }
 
 #loginBtnHead:hover, #logoutBtnHead:hover, #searchBtn:hover{

@@ -10,6 +10,7 @@ $(document).ready(function(){
     windowHeight = $(".parallax").height();
     windowWidth = $(window).width();
     console.log("init",initposition);
+    setCSS()
 })
 
 
@@ -29,16 +30,26 @@ function easeInOutQuad(t, b, c, d) {
     //sinusoadial in and out
     return -c/2 * (Math.cos(Math.PI*t/d) - 1) + b;
 };
+
+function setCSS(){
+    let ratio = scrollTop/initposition;
+    $('.headline').css('opacity',Math.pow((1-ratio),0.7));
+    $('.subHeadline').css('opacity',Math.pow((1-ratio),0.5));
+
+    $('.subHeadline').css('transform',' translate3d('+ratio*0+'px, -'+ratio*100+'px, 0px)');
+    $('#exp1').css('transform',' translate3d('+ratio*0+'px, -'+ratio*200+'px, 0px)');
+    $('#exp2').css('transform',' translate3d('+ratio*25+'px, -'+ratio*200+'px, 0px)');
+    $('#exp3').css('transform',' translate3d('+ratio*50+'px, -'+ratio*200+'px, 0px)');
+    $('#exp4').css('transform',' translate3d('+ratio*75+'px, -'+ratio*200+'px, 0px)');
+    $('#exp5').css('transform',' translate3d('+ratio*100+'px, -'+ratio*200+'px, 0px)');
+    $('#exp6').css('transform',' translate3d('+ratio*125+'px, -'+ratio*200+'px, 0px)');
+    $('#exp7').css('transform',' translate3d('+ratio*150+'px, -'+ratio*200+'px, 0px)');
+    $('#exp8').css('transform',' translate3d('+ratio*175+'px, -'+ratio*200+'px, 0px)');
+}
     
       $(window).scroll(function() {
         scrollTop = $(window).scrollTop();
-        console.log(scrollTop)
-        if(isInViewport($('#exp1')[0])){
-            console.log("scrolltop",scrollTop);
-            console.log("scrolltop",initposition);
-            $('#exp1').css('opacity',Math.pow((1-scrollTop/initposition),0.5));
-            $('#exp1').css('transform','scale('+(1+scrollTop/initposition)+')');
-        }
+        setCSS();
     })
 
 

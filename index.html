@@ -19,13 +19,25 @@
 
 <body>
     <header class="fixHeader">
-        <div class="container">
+        <div>
             CookBook placeholder fixed
-        </div>    
+        </div>
+        <nav class="absolute pin-b pin-l pin-r w-4/5 mx-auto">
+            <div class="flex items-end bg-grey-light">
+                <div class="navItem flex-1 text-grey-darker text-center bg-grey-lighter border border-grey-darker"
+                    id="discoverBtn">Discover</div>
+                <div class="navItem flex-1 text-grey-darker text-center bg-grey-lighter border border-grey-darker"
+                    id="saved">Saved</div>
+            </div>
+        </nav>
+        <div id="loginoutDiv">
+                <button id="logoutBtnHead" class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline hidden">Logout</button>
+                <button id="loginBtnHead" class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline hidden">Login</button>    
+        </div> 
     </header>
 
     <div class="parallax" >
-        <h1 class="explosion">
+        <h1 class="headline">
             <span id="exp1" class="dei-1">C</span>
             <span id="exp2"  class="dei-2">o</span>
             <span id="exp3"  class="dei-3">o</span>
@@ -35,24 +47,17 @@
             <span id="exp7"  class="dei-7">o</span>
             <span id="exp8"  class="dei-8">k</span>
         </h1>
+        <h3 class="subHeadline">
+            <span id="cooking">Cooking</span> is <span id="love">love</span> made visible
+        </h3>
     </div>
     
 
 
-    <nav class="absolute pin-b pin-l pin-r w-4/5 mx-auto">
-        <div class="flex items-end bg-grey-light">
-            <div class="navItem flex-1 text-grey-darker text-center bg-grey-lighter border border-grey-darker"
-                id="discoverBtn">Discover</div>
-            <div class="navItem flex-1 text-grey-darker text-center bg-grey-lighter border border-grey-darker"
-                id="saved">Saved</div>
-        </div>
-    </nav>
-    <div id="loginoutDiv">
-            <button id="logoutBtnHead" class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline hidden">Logout</button>
-            <button id="loginBtnHead" class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline hidden">Login</button>    
-        </div>
     
-    <main class="relative container m-auto mt-5 parallax">
+    
+    
+    <main class="relative container m-auto mt-5 ">
         <div class="w-4/5 bg-grey-lighter p-10 mx-auto">
             <form autocomplete="off" class="bg-white shadow-md rounded px-8 pt-6 pb-4 mb-4">
                 <label for="search-input" class="block text-grey-darker text-sm font-bold mb-2">Search for
