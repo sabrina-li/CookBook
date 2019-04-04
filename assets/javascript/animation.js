@@ -34,6 +34,12 @@ function easeInOutQuad(t, b, c, d) {
 function setCSS(){
     let ratio = scrollTop/initposition;
     $('.headline').css('opacity',Math.pow((1-ratio),0.7));
+    if(scrollTop<=90){
+        $('.fixHeader').css('height',scrollTop/2);
+    }else{
+        $('.fixHeader').css('height','40px');
+    }
+    
     $('.subHeadline').css('opacity',Math.pow((1-ratio),0.7));
     $('.subHeadline').css('transform',' translate3d('+ratio*0+'px, -'+ratio*100+'px, 0px)');
 

@@ -1,19 +1,37 @@
-.zeroWidth{
-    width: 0px;
-    padding: 0;
-}
 .slidOut{
     width:50%;
     animation: slidOut 1s;
     border-top-left-radius: 500px;
     border-bottom-left-radius:  500px;
 }
-#searchBtn{
+.searchBtn{
     border-top-right-radius: 500px;
     border-bottom-right-radius:  500px;
+}
+.search{
+    border: 2px solid #EFA93A;
+}
+
+.search,.searchBtn{
+    padding: 8px;
+    background: none;
+    border: 2px solid #EFA93A;
+    color:#EFA93A;
+}
+
+.zeroWidth{
+    width: 0px;
+    padding: 0;
+    border:none;
+}
+
+#searchForm{
+  position: sticky;
+  top: 0px;
 }
 
 @keyframes slidOut {
     from {width: 0}
     to {width: 50%}
   }
+
