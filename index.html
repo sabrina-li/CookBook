@@ -61,20 +61,22 @@
     
     
     
-    <main class="relative container main">
-        <form id="searchForm" class="rounded px-8 pt-6 pb-4 mb-4">
-                <label for="search-input" class="inline text-grey-darker text-sm font-bold mb-2">Search for
-                    Recipe:</label>
-                <input id="search" type="text" placeholder="Chicken Noodle Soup"
-                    class="zeroWidth search focus:outline-none">
+    <main class=" container main">
+        <form id="searchForm" >
+                <div class="searchFormGroup">
+                    <label for="search-input" class="searchLabel">Search for
+                        Recipe:</label>
+                    <input id="search" type="text" placeholder="Chicken Noodle Soup"
+                        class="search zeroWidth search focus:outline-none">
+                </div>
                 <a id="searchBtn"
                     class="searchBtn focus:outline-none">
                     <i class="fas fa-search"></i>
                 </a>
                 <div id="healthLabels"></div>
         </form>
+        
         <div class="w-4/5 bg-grey-lighter p-10 mx-auto">
-            
             <div id="searchDiv"></div>
         </div>
         

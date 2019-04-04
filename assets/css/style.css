@@ -1,4 +1,4 @@
-html,body,main{
+html,body{
   height: 100%;
   font-family: "brandon-grotesque", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -158,6 +158,7 @@ animation-delay: 2.25s;
    padding-top: 80px; /*double as header */
    margin-left: auto;
    margin-right: auto;
+   min-height: 95%;
 }
 
 
