@@ -5,10 +5,15 @@ $(document).ready(function () {
   var searchInput = "";
 
   //this needs onclick listener to call ajax and display
+  $('#searchForm').submit(function(e) {
+    e.preventDefault();
+    $("#searchBtn").click();
+  });
   $("#searchBtn").on("click", function (event) {
     event.preventDefault();
     $("#search").removeClass("zeroWidth");
     $("#search").addClass("slidOut");
+
     $("#searchDiv").empty();
     //API to fetch the gif from giphy.com
     searchInput = $("#search").val();
