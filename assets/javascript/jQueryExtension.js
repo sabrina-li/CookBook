@@ -66,32 +66,34 @@ jQuery.fn.extend({
 
 
         const newCardDiv =
-            `<div class="recipeCard clearfix w-full mx-auto p-2" data="${url}">
-             <div class="cardImgDiv">
-                   <img class="m-auto recipe-img active"
-                        src="${imageURL}"
-                        alt="Chicken Noodle Soup">
-            </div>
-          
-           <div class="recipeData" id="recipeData">
-               
-               <div class="font-bold text-xl mb-1">${lable}</div>
-               <p class="text-sm text-grey-dark flex items-center mb-2">Source:<span id="source">${source}</span></p>
-               
-               
-                ${ingredientsDiv}
-                ${moreIngredientsDiv}
+            `<div class="recipeCard w-full mx-auto p-2" data="${url}">
+                <div class="cardFloatContainer clearfix">
+                    <div class="cardImgDiv">
+                        <img class="m-auto recipe-img active"
+                                src="${imageURL}"
+                                alt="Chicken Noodle Soup">
+                    </div>
+            
+                    <div class="recipeData" id="recipeData">
+                        <div class="font-bold text-xl mb-1">${lable}</div>
+                        <p class="text-sm text-grey-dark flex items-center mb-2">Source:<span id="source">${source}</span></p>
+                    
+                    
+                    ${ingredientsDiv}
+                    ${moreIngredientsDiv}
 
-                <br>
-                <button  data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}" data-totalNutrients='${JSON.stringify(totalNutrients)}' data-totalDaily='${JSON.stringify(totalDaily)}'
-                        class="saveToAccount shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Save</button>
-                <button  data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}"
-                        class="goToRecipe shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Show Recipe</button>
-                <button class="showTotalNutrients shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Show Nutrition</button>
-           </div>
-           ${healthLabelsDiv}
-           ${totalNutrientsDiv.prop('outerHTML')}
-       </div>`
+                    <button  data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}" data-totalNutrients='${JSON.stringify(totalNutrients)}' data-totalDaily='${JSON.stringify(totalDaily)}'
+                            class="saveToAccount shadow appearance-none border rounded py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Save</button>
+                    <button  data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}"
+                            class="goToRecipe shadow appearance-none border rounded  py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Show Recipe</button>
+                    <button class="showTotalNutrients shadow appearance-none border rounded   py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Show Nutrition</button>
+            
+                    </div>
+                </div>
+            
+                ${healthLabelsDiv}
+                ${totalNutrientsDiv.prop('outerHTML')}
+            </div>`
         //TODO: share to social media
 
         this.append(newCardDiv);
