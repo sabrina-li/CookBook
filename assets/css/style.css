@@ -4,28 +4,43 @@ html,body,main{
   font-family: "brandon-grotesque", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 body{
-  background-color: rgb(221, 236, 236);
+  background-color: #F1E7DE;
 }
 
 
 .fixHeader{
+  padding-left: 5%;
   width: 100%;
-  height: fit-content;
+  height: 40px;
   position: fixed;
   top: 0;
-  background: white;
+  background: #F1E7DE;
+  border-bottom: 5px solid #FD2E58;
+  color:#343D3A;
   z-index: 999;
   display: flex;
+  align-items: bottom;
   justify-content: space-between;
+}
+
+
+.topHeader, .navBar{
+  /* position: absolute; */
+  display: inline-block;
+  align-self: flex-end;
+}
+
+.navBar .navItem{
+  color: #FD2E58;
+  padding: 10px;
 }
 
 
 
 .parallax{
   background-image: url("../images/ingredients.jpg");
-  height: 120vh; 
+  height: 100vh; 
   padding-left: 5%;
-
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -42,12 +57,12 @@ body{
 .headline span{
   display: inline-block;
   font-size: 60px;
-  color:#343D3A;
+  color:#F1E7DE;
   margin-right: -8px;
 }
 .subHeadline{
   font-size: 35px;
-  color:#F1E7DE
+  color:#343D3A
 }
 
 .subHeadline #love{
@@ -94,17 +109,14 @@ animation-delay: 2.25s;
 } */
 
 
-
-
-
-#logoutBtnHead, #loginBtnHead, #searchBtn{
+#logoutBtnHead, #loginBtnHead{
   background: linear-gradient(90deg,#03a9f4, #f441a5, #ffeb3b, #03a9f4);
   background-size: 400%;
   border-radius: 30px;
   margin: 0;
 }
 
-#loginBtnHead:hover, #logoutBtnHead:hover, #searchBtn:hover{
+#loginBtnHead:hover, #logoutBtnHead:hover{
   animation: rainbowEffect 8s linear infinite;
 }
 /*   
@@ -135,7 +147,11 @@ animation-delay: 2.25s;
 
 
 
-
+.main{
+   padding-top: 80px; /*double as header */
+   margin-left: auto;
+   margin-right: auto;
+}
 
 
 
@@ -176,7 +192,7 @@ animation-delay: 2.25s;
 }
 
 
-      
+/*       
 #discoverBtn{ 
   float: left;
   width: 20%;
@@ -199,7 +215,7 @@ animation-delay: 2.25s;
   border: 1px solid grey;
   border-left: none;
   cursor: pointer;
-}
+} */
 
     
       
@@ -210,7 +226,6 @@ animation-delay: 2.25s;
 #healthLabels{
   padding-top: 10px;
 }
-
 
 
 .savedAlert{

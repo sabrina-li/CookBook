@@ -7,6 +7,8 @@ $(document).ready(function () {
   //this needs onclick listener to call ajax and display
   $("#searchBtn").on("click", function (event) {
     event.preventDefault();
+    $("#search").removeClass("zeroWidth");
+    $("#search").addClass("slidOut");
     $("#searchDiv").empty();
     //API to fetch the gif from giphy.com
     searchInput = $("#search").val();
