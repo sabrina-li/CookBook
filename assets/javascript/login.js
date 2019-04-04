@@ -129,7 +129,7 @@ function loginHandler(loggedIn,user=0) {
     if (loggedIn) {
         $("#hello").remove();
         $(".loginForm").remove();
-        $("#loginoutDiv").prepend(`<span id="hello" style="color: white; font-size: 40px;">Hello! `+user.displayName+"</span>");
+        $("#loginoutDiv").prepend(`<span id="hello">Hello! `+user.displayName+"</span>");
         $("#hello").css("text-decoration","underline")
         $("#logoutBtnHead").show();//TODO: position the log out button
         $("#loginBtnHead").hide();

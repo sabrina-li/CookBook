@@ -9,16 +9,25 @@ $(document).ready(function () {
     e.preventDefault();
     $("#searchBtn").click();
   });
+
+  $(".searchFormGroup").on("click", function (event) {
+    $("#search").removeClass("zeroWidth");
+    $("#search").addClass("slidOut");
+    $("#searchBtn").addClass("removeLeftBorder");
+  });
+
+  
   $("#searchBtn").on("click", function (event) {
     event.preventDefault();
     $("#search").removeClass("zeroWidth");
     $("#search").addClass("slidOut");
+    $("#searchBtn").addClass("removeLeftBorder");
 
     $("#searchDiv").empty();
     //API to fetch the gif from giphy.com
     searchInput = $("#search").val();
     let user = firebase.auth().currentUser;
-    if(user && user.uid){
+    if(user && user.uid && searchInput){
       database.ref('/users/' + user.uid + "/healthLabels").once('value', function (snap) {
         let snapArr = [];
         snap.forEach(function (item) {
@@ -27,7 +36,7 @@ $(document).ready(function () {
         getmMoreRecipe(0, searchInput, snapArr);
       });
     }else{
-      $("#healthLabels").remove();
+      $("#healthLabels").empty();
       getmMoreRecipe(0, searchInput);
     } 
   });

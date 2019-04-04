@@ -3,18 +3,19 @@ html,body{
   font-family: "brandon-grotesque", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 body{
-  background-color: #F1E7DE;
+  background-color: #090B1A;
+  color: var(--dark-gray);
 }
 
 .fixHeader{
+  /* height: 0; */
   padding-left: 5%;
   width: 100%;
   max-height: 40px;
   position: fixed;
   top: 0;
-  background: #F1E7DE;
-  border-bottom: 5px solid #FD2E58;
-  color:#343D3A;
+  background: var(--cream);
+  border-bottom: 5px solid var(--bright-red);
   z-index: 999;
   display: flex;
   align-items: bottom;
@@ -31,11 +32,10 @@ body{
 
 
 .navBar .navItem{
-  color: #343D3A;
   padding: 10px;
 }
 .navBar .navItem:hover{
-  color: #FD2E58;
+  color: var(--bright-red);
 }
 
 
@@ -49,7 +49,7 @@ body{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  border-bottom: 5px solid #FD2E58;
+  border-bottom: 5px solid var(--bright-red);
   
 }
 
@@ -64,16 +64,15 @@ body{
 .headline span{
   display: inline-block;
   font-size: 60px;
-  color:#F1E7DE;
+  color:var(--cream);
   margin-right: -8px;
 }
 .subHeadline{
   font-size: 35px;
-  color:#343D3A
 }
 
 .subHeadline #love{
-  color: #FD2E58;
+  color: var(--bright-red);
 }
 
 /* h1 span{
@@ -158,7 +157,8 @@ animation-delay: 2.25s;
    padding-top: 80px; /*double as header */
    margin-left: auto;
    margin-right: auto;
-   min-height: 95%;
+   min-height: 100%;
+   color: var(--cream);
 }
 
 
@@ -226,20 +226,13 @@ animation-delay: 2.25s;
 } */
 
     
-      
-
-      
-      
-
-#healthLabels{
-  padding-top: 10px;
-}
+  
 
 
 .savedAlert{
   display: none;
   position: fixed;
-  background-color: #f441a5;
+  background-color: var(--bright-red);
   top:35%;
   left: 20%;
   right: 20%;

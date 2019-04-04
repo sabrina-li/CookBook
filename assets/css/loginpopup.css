@@ -73,7 +73,7 @@
     list-style: none;
     width: 20px;
     height: 20px;
-    background: #F1E7DE;
+    background: var(--cream);
     animation: boxanimate 25s linear infinite;
     bottom: -150px;
     

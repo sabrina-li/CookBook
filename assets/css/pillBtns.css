@@ -1,13 +1,13 @@
 .rounded-full{
-    background: white;
-    border:2px solid #f441a5;
-    color:black;
+    background:none;
+    border:2px solid var(--bright-red);
+    color:var(--cream);
     margin: 1px 2px;
 }
 
 .rounded-full.active{
-    background: #f441a5;
-    border:2px solid #f441a5;
+    background: var(--bright-red);
+    border:2px solid var(--bright-red);
     margin: 1px 2px;
     color: #fff;
 }

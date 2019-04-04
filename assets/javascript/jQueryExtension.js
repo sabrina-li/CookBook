@@ -66,14 +66,14 @@ jQuery.fn.extend({
 
 
         const newCardDiv =
-            `<div class="recipeCard w-full inline-flex flex-wrap w-fullrounded overflow-hidden shadow-lg mx-auto p-2" data="${url}">
-            <div class="lg:w-1/3 text-center mx-auto">
-                   <img class="m-auto, recipe-img"
-                   src="${imageURL}"
-                   alt="Chicken Noodle Soup">
-           </div>
+            `<div class="recipeCard clearfix w-full mx-auto p-2" data="${url}">
+             <div class="cardImgDiv">
+                   <img class="m-auto recipe-img active"
+                        src="${imageURL}"
+                        alt="Chicken Noodle Soup">
+            </div>
           
-           <div class="lg:w-2/3 px-6 py-4" id="recipeData">
+           <div class="recipeData" id="recipeData">
                
                <div class="font-bold text-xl mb-1">${lable}</div>
                <p class="text-sm text-grey-dark flex items-center mb-2">Source:<span id="source">${source}</span></p>
@@ -162,7 +162,7 @@ jQuery.fn.extend({
         //activeLabels is array of active labels
         
 
-        let healthLabelsDiv = `<div class="px-6 py-4 text-left">`;
+        let healthLabelsDiv = `<div class="healthLabelsDiv">`;
 
         healthLabels.forEach(function (val) {
             if(activeLabels && activeLabels.indexOf(val) !== -1){
