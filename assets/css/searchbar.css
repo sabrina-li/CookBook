@@ -3,13 +3,12 @@
     position: sticky;
     top: 40px;
     z-index: 100;
-    padding: 10px;
+    padding-top: 10px;
     box-shadow: 0 15px 15px -5px var(--dark-black);
 }
 #searchForm{
     width: 80%;
     margin: auto;
-
     display: flex;
     align-items: center;
     justify-content: center;

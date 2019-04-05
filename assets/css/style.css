@@ -226,7 +226,10 @@ animation-delay: 2.25s;
 } */
 
     
-  
+#searchDiv{
+  width: 80%;
+  margin: auto;
+}
 
 
 .savedAlert{

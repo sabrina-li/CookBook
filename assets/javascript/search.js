@@ -19,12 +19,20 @@ $(document).ready(function () {
   
   $("#searchBtn").on("click", function (event) {
     event.preventDefault();
+    
     $("#search").removeClass("zeroWidth");
     $("#search").addClass("slidOut");
     $("#searchBtn").addClass("removeLeftBorder");
 
+    console.log($('#searchDiv').offset().top);
+    
+
+    window.scrollTo(0,$('#searchDiv').offset().top-70);
     $("#searchDiv").empty();
-    //API to fetch the gif from giphy.com
+    
+    //TODO scroll to top of div after empty
+    
+
     searchInput = $("#search").val();
     let user = firebase.auth().currentUser;
     if(user && user.uid && searchInput){

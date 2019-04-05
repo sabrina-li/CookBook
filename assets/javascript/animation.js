@@ -57,25 +57,24 @@ $(window).scroll(function() {
     setCSS();
 
     $('.recipe-img').each( function(index){
-        console.log("get images");
-        console.log($(this));
         // halfway through the image
         const slideInAt = (window.scrollY + window.innerHeight) - this.height / 2;
         // bottom of the image
         const imageBottom = this.offsetTop + this.height;
         const isHalfShown = slideInAt > this.offsetTop;
         const isNotScrolledPast = window.scrollY < imageBottom;
-        console.log("slideInAt",slideInAt);
-        console.log("offsetTop",this.offsetTop);
-        console.log("scrolly",window.scrollY);
+        
+        // console.log(this.classList);
+        // console.log(isHalfShown);
+        // console.log(isNotScrolledPast);
+
         if (isHalfShown && isNotScrolledPast) {
-            console.log("adding active")
+            // console.log("adding active")
             this.classList.add('active');
         } else {
             this.classList.remove('active');
         }
-    
-        
+
     });
 })
 
