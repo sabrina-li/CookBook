@@ -7,7 +7,7 @@ $(document).ready(function () {
   //this needs onclick listener to call ajax and display
   $('#searchForm').submit(function(e) {
     e.preventDefault();
-    // $("#searchBtn").click();
+    $("#searchBtn").click();
   });
 
   $("#searchForm").on("click", function (event) {
