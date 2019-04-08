@@ -23,8 +23,8 @@ jQuery.fn.extend({
         })
         healthLabelsDiv += "</div>";
 
-        let ingredientsDiv = `<div class="px-6 text-left ingredients">`;
-        let moreIngredientsDiv = `<div class="px-6 text-left hidden moreIngredients">`;
+        let ingredientsDiv = `<div class=" text-left ingredients">`;
+        let moreIngredientsDiv = `<div class=" text-left hidden moreIngredients">`;
 
         for (i = 0; i < ingredients.length; i++) {
             if (i < 2) {
@@ -82,14 +82,15 @@ jQuery.fn.extend({
                     ${ingredientsDiv}
                     ${moreIngredientsDiv}
 
-                    <button  data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}" data-totalNutrients='${JSON.stringify(totalNutrients)}' data-totalDaily='${JSON.stringify(totalDaily)}'
-                            class="saveToAccount shadow appearance-none border rounded py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Save</button>
-                    <button  data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}"
-                            class="goToRecipe shadow appearance-none border rounded  py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Show Recipe</button>
-                    <button class="showTotalNutrients shadow appearance-none border rounded   py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Show Nutrition</button>
-            
-                    </div>
+                    <div class="recipeCartButtons">
+                        <button  data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}" data-totalNutrients='${JSON.stringify(totalNutrients)}' data-totalDaily='${JSON.stringify(totalDaily)}'
+                                class="saveToAccount shadow">Save</button>
+                        <button  data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}"
+                                class="goToRecipe shadow appearance-none border rounded  py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Show Recipe</button>
+                        <button class="showTotalNutrients shadow appearance-none border rounded   py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Show Nutrition</button>
+                     </div>
                 </div>
+            </div>
             
                 ${healthLabelsDiv}
                 ${totalNutrientsDiv.prop('outerHTML')}
@@ -181,8 +182,7 @@ jQuery.fn.extend({
                         <form class="healthLabelsDiv">
                             <h2>Please chose your diet restrictions and preferences:</h2>
                             ${healthLabelsDiv}
-                            <button id="saveDietBtn"
-                                class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline">Save</button>
+                            <button id="saveDietBtn" class="shadow">Save</button>
                             </form>
                         </div>`)
 

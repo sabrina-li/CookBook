@@ -3,7 +3,7 @@ html,body{
   font-family: "brandon-grotesque", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 body{
-  background-color: #090B1A;
+  background-color: var(--cream);
   color: var(--dark-gray);
 }
 
@@ -46,6 +46,10 @@ body{
   color: var(--bright-red);
 }
 
+#hello{
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 
 

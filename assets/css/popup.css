@@ -22,13 +22,12 @@
 }
 .healthLabelsDiv{
     background:var(--cream);
-
+    padding: 20px;
 }
 
 .healthLabelsDiv .rounded-full{
     background:none;
     border:2px solid var(--bright-red);
-    /* color:var(--dark-gray); */
     margin: 1px 2px;
 }
 
@@ -37,6 +36,18 @@
     border:2px solid var(--bright-red);
     margin: 1px 2px;
     color: #fff;
+}
+.healthLabelsDiv #saveDietBtn{
+    margin-top:10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    color: var(--dark-gray);
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.healthLabelsDiv #saveDietBtn:hover{
+    background-color: var(--darker-cream)
 }
 
 
