@@ -11,7 +11,7 @@
   };
   firebase.initializeApp(config);
 
-  var apiBaseURL = "https://api.edamam.com/search?app_id=c372c471&app_key=9985027ab53a0ce7b9660e4b50d3db60";
+  var apiBaseURL = "https://api.edamam.com/search?app_id=a485d4af&app_key=20e2a49f1d2c65d9667536c7418ddbfb";
   var healthLabels = ["alcohol-free","vegan", "vegetarian", "sugar-conscious", "peanut-free", "tree-nut-free" ];
 
 
