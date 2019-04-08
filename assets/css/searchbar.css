@@ -2,7 +2,7 @@
     background-color: var(--dark-black);
     position: sticky;
     top: 40px;
-    z-index: 100;
+    /* z-index: 100; */
     padding-top: 10px;
     box-shadow: 0 15px 15px -5px var(--dark-black);
 }

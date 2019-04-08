@@ -85,6 +85,7 @@ $(document).ready(function () {
     })
 
     $(document).on('click','#hello',function(){
+        $(".healthLabelsDiv").remove();
         let user = firebase.auth().currentUser;
         database.ref('/users/'+user.uid+"/healthLabels").once('value',function(snap){
             let snapArr = [];
@@ -122,7 +123,7 @@ function showError(errorCode, errorMessage) {
     let error = $("<p>").attr("class", "errormsg");
     error.css("color", "red");
     error.text("Error Authenticating! Error Message: " + errorMessage)
-    $(".loginForm").append(error);
+    $("#area").append(error);
 }
 
 function loginHandler(loggedIn,user=0) {

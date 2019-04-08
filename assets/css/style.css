@@ -8,31 +8,39 @@ body{
 }
 
 .fixHeader{
-  /* height: 0; */
   padding-left: 5%;
   width: 100%;
-  max-height: 40px;
+  max-height: 55px;
   position: fixed;
   top: 0;
   background: var(--cream);
   border-bottom: 5px solid var(--bright-red);
   z-index: 999;
   display: flex;
-  align-items: bottom;
   justify-content: space-between;
   overflow: hidden;
 }
 
-
-.topHeader, .navBar{
-  /* position: absolute; */
-  display: inline-block;
-  align-self: flex-end;
+.fixHeader:hover{
+  height: 55px!important;
+  transition: height 0.5s ease-in-out;
 }
 
 
+.topHeader, .navBar{
+  display: inline-block;
+}
+
+.topHeader{
+  margin-right: 30px;
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 15px;
+}
+
 .navBar .navItem{
   padding: 10px;
+  cursor: pointer;
 }
 .navBar .navItem:hover{
   color: var(--bright-red);
@@ -50,6 +58,7 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
   border-bottom: 5px solid var(--bright-red);
+  font-weight: 600;
   
 }
 
@@ -59,6 +68,7 @@ body{
   /* margin-left: auto; */
   margin-right: auto;
   padding-top: 33%;
+  letter-spacing: 3px;
 }
 
 .headline span{
@@ -114,7 +124,9 @@ h1 span:nth-child(8)
 animation-delay: 2.25s;
 } */
 
-
+#loginoutDiv{
+  padding: 10px 15px 0px 10px;
+}
 #logoutBtnHead, #loginBtnHead{
   background: linear-gradient(90deg,#03a9f4, #f441a5, #ffeb3b, #03a9f4);
   background-size: 400%;
@@ -160,6 +172,9 @@ animation-delay: 2.25s;
    min-height: 100%;
    color: var(--cream);
 }
+
+
+
 
 
 
@@ -227,6 +242,11 @@ animation-delay: 2.25s;
 
     
 #searchDiv{
+  width: 80%;
+  margin: auto;
+}
+
+#savedDiv{
   width: 80%;
   margin: auto;
 }

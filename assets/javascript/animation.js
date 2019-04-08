@@ -48,7 +48,7 @@ function setCSS(){
         $('#exp2').css('transform','scale('+(1+ratio)+') translate3d('+ratio*30+'px, -'+ratio*200+'px, 0px)');
         $('#exp1').css('transform','scale('+(1+ratio)+') translate3d('+ratio*0+'px, -'+ratio*200+'px, 0px)');
     }else{
-        $('.fixHeader').css('height','40px');
+        $('.fixHeader').css('height','55px');
     }
 }
     

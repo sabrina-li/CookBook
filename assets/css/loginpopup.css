@@ -1,5 +1,4 @@
-.modal {
-    
+.modal{
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -10,10 +9,9 @@
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     padding-top: 60px;
-
 }
 
-.loginFrom{
+.loginFrom,.healthLabelsDiv{
     position: absolute;
     left: 20%;
     right: 20%;
@@ -22,6 +20,25 @@
     -webkit-animation: animatezoom 0.6s;
     animation: animatezoom 0.6s
 }
+.healthLabelsDiv{
+    background:var(--cream);
+
+}
+
+.healthLabelsDiv .rounded-full{
+    background:none;
+    border:2px solid var(--bright-red);
+    /* color:var(--dark-gray); */
+    margin: 1px 2px;
+}
+
+.healthLabelsDiv .rounded-full.active{
+    background: var(--bright-red);
+    border:2px solid var(--bright-red);
+    margin: 1px 2px;
+    color: #fff;
+}
+
 
 
 @-webkit-keyframes animatezoom {
@@ -55,6 +72,12 @@
 #googleIcon:active{
     background: url("../images/btn_google_signin_dark_pressed_web.png");
 }
+
+.errormsg{
+    position: relative;
+    bottom:0;
+}
+
 
 
 .circles{

@@ -164,7 +164,7 @@ jQuery.fn.extend({
         //activeLabels is array of active labels
         
 
-        let healthLabelsDiv = `<div class="healthLabelsDiv">`;
+        let healthLabelsDiv = `<div class="selection">`;
 
         healthLabels.forEach(function (val) {
             if(activeLabels && activeLabels.indexOf(val) !== -1){
@@ -177,19 +177,15 @@ jQuery.fn.extend({
         healthLabelsDiv += "</div>";
 
 
-        const healthLabelsSelectionDiv = $(`<form id="healthLabelsDiv" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        const healthLabelsSelectionDiv = $(`<div class="modal">
+                        <form class="healthLabelsDiv">
                             <h2>Please chose your diet restrictions and preferences:</h2>
                             ${healthLabelsDiv}
                             <button id="saveDietBtn"
                                 class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline">Save</button>
-                            </form>`)
-        healthLabelsSelectionDiv.css({
-            position: "fixed",
-            top: "20%",
-            left: "20%",
-            right: "20%",
-            zIndex: 100
-        })
+                            </form>
+                        </div>`)
+
         this.append(healthLabelsSelectionDiv);
         
     }

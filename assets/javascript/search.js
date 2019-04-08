@@ -7,10 +7,10 @@ $(document).ready(function () {
   //this needs onclick listener to call ajax and display
   $('#searchForm').submit(function(e) {
     e.preventDefault();
-    $("#searchBtn").click();
+    // $("#searchBtn").click();
   });
 
-  $(".searchFormGroup").on("click", function (event) {
+  $("#searchForm").on("click", function (event) {
     $("#search").removeClass("zeroWidth");
     $("#search").addClass("slidOut");
     $("#searchBtn").addClass("removeLeftBorder");
@@ -20,13 +20,6 @@ $(document).ready(function () {
   $("#searchBtn").on("click", function (event) {
     event.preventDefault();
     
-    $("#search").removeClass("zeroWidth");
-    $("#search").addClass("slidOut");
-    $("#searchBtn").addClass("removeLeftBorder");
-
-    console.log($('#searchDiv').offset().top);
-    
-
     window.scrollTo(0,$('#searchDiv').offset().top-70);
     $("#searchDiv").empty();
     
@@ -95,6 +88,7 @@ $(document).on("click", ".hideTotalNutrients", function (event) {
   $(this).toggleClass("hideTotalNutrients");
 })
 
+
 function getmMoreRecipe(from, querystr, healthLabels = null) {
   //health=peanut-free&health=tree-nut-free
   let searchHealth = "";
@@ -109,7 +103,7 @@ function getmMoreRecipe(from, querystr, healthLabels = null) {
   // console.log(searchHealth);
   var queryURL =
     apiBaseURL+"&q=" + querystr + "&from=" + from + "&to=" + (from + 10)+searchHealth;
-  console.log(queryURL);
+  console.log("here is",apiBaseURL);
 
   //AJAX call to get the data using GET method and url as parameter
   $.ajax({
