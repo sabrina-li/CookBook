@@ -8,7 +8,7 @@ body{
 }
 
 .fixHeader{
-  padding-left: 5%;
+  padding: 0 5%;
   width: 100%;
   max-height: 55px;
   position: fixed;
@@ -132,14 +132,39 @@ animation-delay: 2.25s;
   padding: 10px 15px 0px 10px;
 }
 #logoutBtnHead, #loginBtnHead{
-  background: linear-gradient(90deg,#03a9f4, #f441a5, #ffeb3b, #03a9f4);
-  background-size: 400%;
   border-radius: 30px;
+  background:none;
+  color: var(--dark-gray);
+  border:  2px solid var(--bright-red);
+  margin: 0px 0px;
+  padding: 5px 0px;
+}
+#logoutBtnHead span,
+#loginBtnHead span{
+  border-radius: 30px;
+  background:var(--cream);
   margin: 0;
+  padding: 5px 17px;
 }
 
 #loginBtnHead:hover, #logoutBtnHead:hover{
+  border: none;
+  padding: 7px 2px;
+  background: linear-gradient(90deg,#03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 400%;
   animation: rainbowEffect 8s linear infinite;
+}
+
+@keyframes rainbowEffect
+{
+  0%
+  {
+    background-position: 0%;
+  }
+  100%
+  {
+    background-position: 400%;
+  }
 }
 /*   
 #loginBtnHead:before,
@@ -182,17 +207,6 @@ animation-delay: 2.25s;
 
 
 
-@keyframes rainbowEffect
-{
-  0%
-  {
-    background-position: 0%;
-  }
-  100%
-  {
-    background-position: 400%;
-  }
-}
 
 
 
@@ -263,4 +277,19 @@ animation-delay: 2.25s;
   top:35%;
   left: 20%;
   right: 20%;
+}
+
+
+.rounded-full{
+  background:none;
+  border:2px solid var(--bright-red);
+  color:var(--dark-gray);
+  margin: 1px 2px;
+}
+
+.rounded-full.active{
+  background: var(--bright-red);
+  border:2px solid var(--bright-red);
+  margin: 1px 2px;
+  color: #fff;
 }

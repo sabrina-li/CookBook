@@ -4,8 +4,8 @@
 // use like $("#muDiv").appendRecipeToDiv(recipeObject)
 
 
-jQuery.fn.extend({
-    appendRecipeToDiv: function (recipe) {
+// jQuery.fn.extend({
+    const appendRecipeToDiv= function (recipe) {
         const url = recipe.url || "";
         const imageURL = recipe.imageURL || "";
         const healthLabels = recipe.healthLabels || [];
@@ -97,9 +97,10 @@ jQuery.fn.extend({
             </div>`
         //TODO: share to social media
 
-        this.append(newCardDiv);
+        // this.append(newCardDiv);
+        return newCardDiv;
     }
-})
+// })
 
 
 jQuery.fn.extend({

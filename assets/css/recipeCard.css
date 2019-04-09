@@ -19,29 +19,12 @@
     background-color: var(--darker-cream);
     animation: glowing 1s ease-in-out infinite;
 }
-@-webkit-keyframes glowing {
-    0% { -webkit-box-shadow: 0 0 3px var(--darker-cream); }
-    50% { -webkit-box-shadow: 0 0  5px 5px var(--darker-cream); }
-    100% { -webkit-box-shadow: 0 0 3px var(--darker-cream); }
+
+@keyframes glowing { 
+    0% { box-shadow: 0 0 3px var(--darker-cream); }
+    50% { box-shadow: 0 0  5px 5px var(--darker-cream); }
+    100% { box-shadow: 0 0 3px var(--darker-cream); }
 }
-
-/* @-moz-keyframes glowing { 
-    0% { background-color: #B20000; -moz-box-shadow: 0 0 3px #B20000; }
-    50% { background-color: #FF0000; -moz-box-shadow: 0 0 40px #FF0000; }
-    100% { background-color: #B20000; -moz-box-shadow: 0 0 3px #B20000; }
-} 
-
-@-o-keyframes glowing {
-    0% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
-    50% { background-color: #FF0000; box-shadow: 0 0 40px #FF0000; }
-    100% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
-} */
-
-/* @keyframes glowing { 
-    0% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
-    50% { background-color: #FF0000; box-shadow: 0 0 40px #FF0000; }
-    100% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
-} */
 
 
 .recipeCard{
@@ -98,80 +81,36 @@
 .recipeCartButtons button{
     width: 100%;
 }
-    
-    /* .recipe-img:hover {
-    transform: scale(1);
-    box-shadow: 0 2px 4px #000, 0 8px 32px rgba(0, 0, 0, 0.5);
-    } */
-    
-    /* .recipe-img:hover:before,
-    .recipe-img:hover:after {
-    position: absolute;
-    content: "";
-    background: linear-gradient(90deg, #ddd 40%, transparent 40%);
-    top: -3px;
-    bottom: -5px;
-    left: -5px;
-    right: -5px;
-    z-index: 1;
-    border-radius: 4px;
-    background-size: 200% 2px;
-    background-repeat: no-repeat;
-    filter: drop-shadow(0 0 8px #fff);
-    background-position: 80% 0;
-    }
-    
-    .recipe-img:hover:before {
-    animation: beforeLineAnim 2s linear infinite;
-    }
-    
-    .recipe-img:hover:after {
-    animation: afterLineAnim 2s linear infinite;
-    transform: rotate(-90deg);
-    background-position: -20% 0;
-    } */
-/*     
-@keyframes beforeLineAnim {
-    45%,
-    50% {
-        background-position: -100% 0;
-    }
-    45% {
-        transform: scale(1)
-    }
-    50%,
-    95% {
-        transform: scale(1, -1)
-    }
-    95% {
-        background-position: 80% 0
-    }
-    } 
-    
-@keyframes afterLineAnim {
-    20%,
-    25% {
-        background-position: -100% 0;
-    }
-    20% {
-        transform: scale(1) rotate(-90deg)
-    }
-    25% {
-        transform: scale(-1, 1) rotate(-90deg)
-    }
-    70%,
-    75% {
-        background-position: 80% 0;
-    }
-    70% {
-        transform: scale(-1, 1) rotate(-90deg)
-    }
-    75% {
-        transform: scale(1, 1) rotate(-90deg)
-    }
-} */
-/*     
-.recipeCard{
-    padding: 20px;
-    margin: 10px;
-} */
+
+
+
+/* nutrients */
+
+.totalNutrients{
+    border: 1px solid black;
+    padding: 10px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+
+.nutritionTable th{
+    font-weight: 500;
+    padding-right: 15px;
+}
+
+.FASAT,.FATRN,.FAMS,.FAPU,.FIBTG,.SUGAR{
+    font-weight: 500;
+    padding-left: 20px;
+}
+
+.ENERC_KCAL,.FAT,.CHOCDF,.PROCNT,.CHOLE,.NA{
+    font-weight: 700!important;
+    border-bottom: 2px solid black;
+}
+
+
+
+
+

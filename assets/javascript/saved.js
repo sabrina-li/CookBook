@@ -41,7 +41,7 @@ $(document).ready(function () {
                                                                 totalDaily:JSON.parse(childSnapshot.val().recipeTotalDaily || "{\"nutrition\":\"unknown\"}")
                                                         }
                                                         
-                                                        $("#savedRecipies").appendRecipeToDiv(testRecipe);
+                                                        $("#savedRecipies").append(appendRecipeToDiv(testRecipe));
                                                         $(".goToRecipe").off('click');
                                                         $(".goToRecipe").on('click',function(){
                                                         // console.log($(this))

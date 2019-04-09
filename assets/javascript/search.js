@@ -145,7 +145,7 @@ function handleRecipeAPIResponse(response){
       totalDaily:val.recipe.totalDaily
     }
     // console.log(val);
-    $("#searchDiv").appendRecipeToDiv(thisRecipe);
+    $("#searchDiv").append(appendRecipeToDiv(thisRecipe));
     //detach onclick rom previouse loop
     $(".goToRecipe").off('click');
     $(".goToRecipe").on('click',function(){
