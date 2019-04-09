@@ -76,13 +76,15 @@ $(document).on("click", ".showLess", function (event) {
 })
 
 $(document).on("click", ".showTotalNutrients", function (event) {
-  $(this).parent().parent().children(".totalNutrients").show();
+  let $reciepiCard = $($(this).parentsUntil(".recipeCard").parent()[0])
+  $reciepiCard.children(".totalNutrients").show();
   $(this).toggleClass("showTotalNutrients");
   $(this).text("Hide Nutrition");
   $(this).toggleClass("hideTotalNutrients");
 })
 $(document).on("click", ".hideTotalNutrients", function (event) {
-  $(this).parent().parent().children(".totalNutrients").hide();
+  let $reciepiCard = $($(this).parentsUntil(".recipeCard").parent()[0])
+  $reciepiCard.children(".totalNutrients").hide();
   $(this).toggleClass("showTotalNutrients");
   $(this).text("Show Nutrition");
   $(this).toggleClass("hideTotalNutrients");
