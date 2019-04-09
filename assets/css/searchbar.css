@@ -2,7 +2,7 @@
     color: var(--dark-gray);
     background-color: var(--cream);
     position: sticky;
-    top: 40px;
+    top: 55px;
     padding-top: 10px;
     box-shadow: 0 15px 15px -5px var(--cream);
 }
