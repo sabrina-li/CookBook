@@ -1,133 +1,103 @@
-html,body,main{
+html,body{
   height: 100%;
-  min-height: fit-content;
+  font-family: "brandon-grotesque", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 body{
-  background-color: rgb(221, 236, 236);
+  background-color: var(--cream);
+  color: var(--dark-gray);
+}
+
+.fixHeader{
+  padding: 0 5%;
+  width: 100%;
+  max-height: 55px;
+  position: fixed;
+  top: 0;
+  background: var(--cream);
+  border-bottom: 5px solid var(--bright-red);
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.fixHeader:hover{
+  height: 55px!important;
+  transition: height 0.5s ease-in-out;
 }
 
 
-
-.relative {
-  background-image: url("../images/food.jpg");
+.topHeader, .navBar{
+  display: inline-block;
 }
 
-
-
-#loginBtnHead:hover{
-  animation: animating 8s linear infinite;
-  }
-  
-  @keyframes animating
-  {
-    0%
-    {
-      background-position: 0%;
-    }
-    100%
-    {
-      background-position: 400%;
-    }
-  }
-  
-  #loginBtnHead:before
-  {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    z-index: -1;
-    background: linear-gradient(90deg,#03a9f4, #f441a5, #ffeb3b, #03a9f4);
-    background-size: 400%;
-    border-radius: 40px;
-    opacity: 0;
-    transition: 0.5s;
-  }
-  
-  #loginBtnHead:hover::before
-  {
-    filter: blur(20px);
-    opacity: 1;
-    animation: animating 8s linear infinite;
-  }
-
-
-#logoutBtnHead{
-  background: linear-gradient(90deg,#03a9f4, #f441a5, #ffeb3b, #03a9f4);
-background-size: 400%;
-border-radius: 30px;
+.topHeader{
+  margin-right: 30px;
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 15px;
 }
 
-
-
-#logoutBtnHead:hover{
-animation: animating 8s linear infinite;
+.navBar .navItem{
+  padding: 10px;
+  cursor: pointer;
+}
+.navBar .navItem:hover{
+  color: var(--bright-red);
 }
 
-@keyframes animating
-{
-  0%
-  {
-    background-position: 0%;
-  }
-  100%
-  {
-    background-position: 400%;
-  }
-}
-
-#logoutBtnHead:before
-{
-  content: '';
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  z-index: -1;
-  background: linear-gradient(90deg,#03a9f4, #f441a5, #ffeb3b, #03a9f4);
-  background-size: 400%;
-  border-radius: 40px;
-  opacity: 0;
-  transition: 0.5s;
-}
-
-#logoutBtnHead:hover::before
-{
-  filter: blur(20px);
-  opacity: 1;
-  animation: animating 8s linear infinite;
-}
-
-
-
-.closelogin{
-  z-index: 100;
+#hello{
+  text-decoration: underline;
   cursor: pointer;
 }
 
 
 
-
-h1 span{
-  font-size: 50px;
-  font-family: 'Gloria Hallelujah', cursive;
-font-family: 'Yesteryear', cursive;
-font-family: 'Rock Salt', cursive;
+.parallax{
+  background-image: url("../images/ingredients.jpg");
+  height: 100vh; 
+  padding-left: 5%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-bottom: 5px solid var(--bright-red);
+  font-weight: 600;
+  
 }
 
-h1 span{
-  /* display: table-cell; */
-margin: 0;
+
+.headline{
+  width: fit-content;
+  /* margin-left: auto; */
+  margin-right: auto;
+  padding-top: 33%;
+  letter-spacing: 3px;
+}
+
+.headline span{
+  display: inline-block;
+  font-size: 60px;
+  color:var(--cream);
+  margin-right: -8px;
+}
+.subHeadline{
+  font-size: 35px;
+}
+
+.subHeadline #love{
+  color: var(--bright-red);
+}
+
+/* h1 span{
+ma rgin: 0;
 padding: 0;
-animation: animate 2s linear infinite;
-}
+animation: headlineFlash 2s linear infinite;
+} */
 
-h1 span:nth-child(1)
+/* h1 span:nth-child(1)
 {
-  animation-delay: .5s;
+  animation-delay: 0.5s;
 }  
 h1 span:nth-child(2)
 {
@@ -156,49 +126,36 @@ h1 span:nth-child(7)
 h1 span:nth-child(8)
 {
 animation-delay: 2.25s;
+} */
+
+#loginoutDiv{
+  padding: 10px 15px 0px 10px;
+}
+#logoutBtnHead, #loginBtnHead{
+  border-radius: 30px;
+  background:none;
+  color: var(--dark-gray);
+  border:  2px solid var(--bright-red);
+  margin: 0px 0px;
+  padding: 5px 0px;
+}
+#logoutBtnHead span,
+#loginBtnHead span{
+  border-radius: 30px;
+  background:var(--cream);
+  margin: 0;
+  padding: 5px 17px;
 }
 
-@keyframes animate
-{
-  0%,100%
- {
-color: rgb(252, 6, 6);
-filter: blur(2px);
-text-shadow: 0 0 10px #00b3ff,
-            0 0 20px #00b3ff,
-            0 0 40px #00b3ff,
-            0 0 80px #00b3ff,
-            0 0 120px #00b3ff,
-            0 0 200px #00b3ff,
-            0 0 300px #00b3ff,
-            0 0 400px #00b3ff, 
-}
-5%,95%
-{
-  color: #fff;
-filter: blur(0px);
-text-shadow: 0 0 10px none;
-}
-
-}
-
-.bg-grey-light {
-  background-color: rgb(245, 61, 29);
-}
-
-#searchBtn{
+#loginBtnHead:hover, #logoutBtnHead:hover{
+  border: none;
+  padding: 7px 2px;
   background: linear-gradient(90deg,#03a9f4, #f441a5, #ffeb3b, #03a9f4);
-background-size: 400%;
-border-radius: 30px;
+  background-size: 400%;
+  animation: rainbowEffect 8s linear infinite;
 }
 
-
-
-#searchBtn:hover{
-animation: animating 8s linear infinite;
-}
-
-@keyframes animating
+@keyframes rainbowEffect
 {
   0%
   {
@@ -209,191 +166,130 @@ animation: animating 8s linear infinite;
     background-position: 400%;
   }
 }
-
-#searchBtn:before
-{
-  content: '';
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  z-index: -1;
-  background: linear-gradient(90deg,#03a9f4, #f441a5, #ffeb3b, #03a9f4);
-  background-size: 400%;
-  border-radius: 40px;
-  opacity: 0;
-  transition: 0.5s;
-}
-
-#searchBtn:hover::before
-{
-  filter: blur(20px);
-  opacity: 1;
-  animation: animating 8s linear infinite;
-}
-
-
-      
-       #discoverBtn{ 
-        float: left;
-        width: 20%;
-        padding: 10px;
-        background: #2196F3;
-        color: white;
-        font-size: 20px;
-        border: 1px solid grey;
-        border-left: none;
-        cursor: pointer;
-      }
-      
-      #savedBtn{
-        float: left;
-        width: 20%;
-        padding: 10px;
-        background: rgb(136, 228, 152);
-        color: white;
-        font-size: 20px;
-        border: 1px solid grey;
-        border-left: none;
-        cursor: pointer;
-      }
-
-      
-      .saveToAccount:hover, .goToRecipe:hover, .showTotalNutrients:hover,.hideTotalNutrients:hover  {
-        background-color: #004A7F;
-        -webkit-border-radius: 10px;
-        border-radius: 10px;
-        border: none;
-        color: #FFFFFF;
-        cursor: pointer;
-        display: inline-block;
-        font-family: Arial;
-        font-size: 20px;
-        padding: 5px 10px;
-        text-align: center;
-        text-decoration: none;
-        -webkit-animation: glowing 1500ms infinite;
-        -moz-animation: glowing 1500ms infinite;
-        -o-animation: glowing 1500ms infinite;
-        animation: glowing 1500ms infinite;
-      }
-      @-webkit-keyframes glowing {
-        0% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
-        50% { background-color: #FF0000; -webkit-box-shadow: 0 0 40px #FF0000; }
-        100% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
-      }
-      
-      @-moz-keyframes glowing {
-        0% { background-color: #B20000; -moz-box-shadow: 0 0 3px #B20000; }
-        50% { background-color: #FF0000; -moz-box-shadow: 0 0 40px #FF0000; }
-        100% { background-color: #B20000; -moz-box-shadow: 0 0 3px #B20000; }
-      } 
-      
-      @-o-keyframes glowing {
-        0% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
-        50% { background-color: #FF0000; box-shadow: 0 0 40px #FF0000; }
-        100% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
-      }
-      
-      @keyframes glowing { 
-        0% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
-        50% { background-color: #FF0000; box-shadow: 0 0 40px #FF0000; }
-        100% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
-      }
-      
-
-      
-      
-
-
- .recipe-img {
-    background-size: cover;
-    float: left;
-    margin: 4px;
-    box-shadow: 0 2px 4px #000;
-    position: relative;
-    transform: scale(0.9);
-    transition: .1s;
-  }
-  
-  .recipe-img:hover {
-    transform: scale(1);
-    box-shadow: 0 2px 4px #000, 0 8px 32px rgba(0, 0, 0, 0.5);
-  }
-  
-  .recipe-img:hover:before,
-  .recipe-img:hover:after {
+/*   
+#loginBtnHead:before,
+#logoutBtnHead:before
+  {
+    content: '';
     position: absolute;
-    content: "";
-    background: linear-gradient(90deg, #ddd 40%, transparent 40%);
-    top: -3px;
-    bottom: -5px;
+    top: -5px;
     left: -5px;
     right: -5px;
-    z-index: 1;
-    border-radius: 4px;
-    background-size: 200% 2px;
-    background-repeat: no-repeat;
-    filter: drop-shadow(0 0 8px #fff);
-    background-position: 80% 0;
-  }
+    bottom: -5px;
+    z-index: -1;
+    background: linear-gradient(90deg,#03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 400%;
+    border-radius: 40px;
+    opacity: 0;
+    transition: 0.5s;
+}
   
-  .recipe-img:hover:before {
-    animation: beforeLineAnim 2s linear infinite;
-  }
-  
-  .recipe-img:hover:after {
-    animation: afterLineAnim 2s linear infinite;
-    transform: rotate(-90deg);
-    background-position: -20% 0;
-  }
-  
-   @keyframes beforeLineAnim {
-    45%,
-    50% {
-      background-position: -100% 0;
-    }
-    45% {
-      transform: scale(1)
-    }
-    50%,
-    95% {
-      transform: scale(1, -1)
-    }
-    95% {
-      background-position: 80% 0
-    }
-  } 
-  
-  @keyframes afterLineAnim {
-    20%,
-    25% {
-      background-position: -100% 0;
-    }
-    20% {
-      transform: scale(1) rotate(-90deg)
-    }
-    25% {
-      transform: scale(-1, 1) rotate(-90deg)
-    }
-    70%,
-    75% {
-      background-position: 80% 0;
-    }
-    70% {
-      transform: scale(-1, 1) rotate(-90deg)
-    }
-    75% {
-      transform: scale(1, 1) rotate(-90deg)
-    }
-  }
-  
-  .recipeCard{
-padding: 70px;
+#loginBtnHead:hover::before,
+#logoutBtnHead:hover::before
+  {
+    filter: blur(20px);
+    opacity: 1;
+    animation: rainbowEffect 8s linear infinite;
+  } */
 
-  }
 
-  
-  
-  
+
+.main{
+   padding-top: 80px; /*double as header */
+   margin-left: auto;
+   margin-right: auto;
+   min-height: 100%;
+   color: var(--dark-gray);
+}
+
+
+
+
+
+
+
+
+
+
+
+@keyframes headlineFlash{
+  0%,100%{
+    color: rgb(252, 6, 6);
+    filter: blur(2px);
+    text-shadow: 0 0 10px red,
+                  0 0 20px yellow,
+                  0 0 40px green,
+                  0 0 80px blue,
+                  0 0 120px magenta,
+                  0 0 200px purple,
+                  0 0 300px red,
+                  0 0 400px red
+  }
+  5%,95%{
+    color: #fff;
+    filter: blur(0px);
+    text-shadow: 0 0 10px none;
+  }
+}
+
+
+/*       
+#discoverBtn{ 
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 20px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+#saved{
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: rgb(136, 228, 152);
+  color: white;
+  font-size: 20px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+} */
+
+    
+#searchDiv{
+  width: 80%;
+  margin: auto;
+}
+
+#savedDiv{
+  width: 80%;
+  margin: auto;
+}
+
+
+.savedAlert{
+  display: none;
+  position: fixed;
+  background-color: var(--bright-red);
+  top:35%;
+  left: 20%;
+  right: 20%;
+}
+
+
+.rounded-full{
+  background:none;
+  border:2px solid var(--bright-red);
+  color:var(--dark-gray);
+  margin: 1px 2px;
+}
+
+.rounded-full.active{
+  background: var(--bright-red);
+  border:2px solid var(--bright-red);
+  margin: 1px 2px;
+  color: #fff;
+}

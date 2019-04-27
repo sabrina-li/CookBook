@@ -4,8 +4,8 @@
 // use like $("#muDiv").appendRecipeToDiv(recipeObject)
 
 
-jQuery.fn.extend({
-    appendRecipeToDiv: function (recipe) {
+// jQuery.fn.extend({
+    const appendRecipeToDiv= function (recipe) {
         const url = recipe.url || "";
         const imageURL = recipe.imageURL || "";
         const healthLabels = recipe.healthLabels || [];
@@ -23,8 +23,8 @@ jQuery.fn.extend({
         })
         healthLabelsDiv += "</div>";
 
-        let ingredientsDiv = `<div class="px-6 text-left ingredients">`;
-        let moreIngredientsDiv = `<div class="px-6 text-left hidden moreIngredients">`;
+        let ingredientsDiv = `<div class=" text-left ingredients">`;
+        let moreIngredientsDiv = `<div class=" text-left hidden moreIngredients">`;
 
         for (i = 0; i < ingredients.length; i++) {
             if (i < 2) {
@@ -66,42 +66,47 @@ jQuery.fn.extend({
 
 
         const newCardDiv =
-            `<div class="recipeCard w-full inline-flex flex-wrap w-fullrounded overflow-hidden shadow-lg mx-auto p-2" data="${url}">
-            <div class="lg:w-1/3 text-center mx-auto">
-                   <img class="m-auto, recipe-img"
-                   src="${imageURL}"
-                   alt="Chicken Noodle Soup">
-           </div>
-          
-           <div class="lg:w-2/3 px-6 py-4" id="recipeData">
-               
-               <div class="font-bold text-xl mb-1">${lable}</div>
-               <p class="text-sm text-grey-dark flex items-center mb-2">Source:<span id="source">${source}</span></p>
-               
-               
-                ${ingredientsDiv}
-                ${moreIngredientsDiv}
+            `<div class="recipeCard w-full mx-auto p-2" data="${url}">
+                <div class="cardFloatContainer clearfix">
+                    <div class="cardImgDiv">
+                        <img class="m-auto recipe-img active"
+                                src="${imageURL}"
+                                alt="Chicken Noodle Soup">
+                    </div>
+            
+                    <div class="recipeData" id="recipeData">
+                        <div class="font-bold text-xl mb-1">${lable}</div>
+                        <p class="text-sm text-grey-dark flex items-center mb-2">Source:<span id="source">${source}</span></p>
+                    
+                    
+                    ${ingredientsDiv}
+                    ${moreIngredientsDiv}
 
-                <br>
-                <button  data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}" data-totalNutrients='${JSON.stringify(totalNutrients)}' data-totalDaily='${JSON.stringify(totalDaily)}'
-                        class="saveToAccount shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Save</button>
-                <button  data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}"
-                        class="goToRecipe shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Show Recipe</button>
-                <button class="showTotalNutrients shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Show Nutrition</button>
-           </div>
-           ${healthLabelsDiv}
-           ${totalNutrientsDiv.prop('outerHTML')}
-       </div>`
+                    <div class="recipeCartButtons">
+                        <button  data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}" data-totalNutrients='${JSON.stringify(totalNutrients)}' data-totalDaily='${JSON.stringify(totalDaily)}'
+                                class="saveToAccount shadow">Save</button>
+                        <button  data-url="${url}" data-imageURL="${imageURL}" data-healthLabels="${healthLabels}" data-lable="${lable}" data-source="${source}" data-ingredients="${ingredients}"
+                                class="goToRecipe shadow appearance-none border rounded  py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Show Recipe</button>
+                        <button class="showTotalNutrients shadow appearance-none border rounded   py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">Show Nutrition</button>
+                     </div>
+                </div>
+            </div>
+            
+                ${healthLabelsDiv}
+                ${totalNutrientsDiv.prop('outerHTML')}
+            </div>`
         //TODO: share to social media
 
-        this.append(newCardDiv);
+        // this.append(newCardDiv);
+        return newCardDiv;
     }
-})
+// })
 
 
 jQuery.fn.extend({
     showLoginSection: function () {
-        const loginDiv = $(`<form id="loginForm area" autocomplete="off" class="loginForm bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        const loginDiv = $(`<div class="modal loginForm">
+        <form id="area" autocomplete="off" class="loginFrom bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <p class="absolute mr-5 pin-r closelogin">x</p>
         <div id="signinWithGoogle"><span id="googleIcon"></span></div>
 
@@ -147,14 +152,9 @@ jQuery.fn.extend({
                 <li></li>
         </ul>
         
-        </form>`)
-    loginDiv.css({
-        position:"fixed",
-        top:"20%",
-        left:"20%",
-        right:"20%",
-        zIndex:100
-    })
+        </form>
+        </div>`)
+
     this.prepend(loginDiv)
     }
 })
@@ -166,7 +166,7 @@ jQuery.fn.extend({
         //activeLabels is array of active labels
         
 
-        let healthLabelsDiv = `<div class="px-6 py-4 text-left">`;
+        let healthLabelsDiv = `<div class="selection">`;
 
         healthLabels.forEach(function (val) {
             if(activeLabels && activeLabels.indexOf(val) !== -1){
@@ -179,19 +179,14 @@ jQuery.fn.extend({
         healthLabelsDiv += "</div>";
 
 
-        const healthLabelsSelectionDiv = $(`<form id="healthLabelsDiv" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        const healthLabelsSelectionDiv = $(`<div class="modal">
+                        <form class="healthLabelsDiv">
                             <h2>Please chose your diet restrictions and preferences:</h2>
                             ${healthLabelsDiv}
-                            <button id="saveDietBtn"
-                                class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline">Save</button>
-                            </form>`)
-        healthLabelsSelectionDiv.css({
-            position: "fixed",
-            top: "20%",
-            left: "20%",
-            right: "20%",
-            zIndex: 100
-        })
+                            <button id="saveDietBtn" class="shadow">Save</button>
+                            </form>
+                        </div>`)
+
         this.append(healthLabelsSelectionDiv);
         
     }

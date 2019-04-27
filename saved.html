@@ -6,42 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CookBook</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/css/stylesaved.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/colors.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/popup.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/login.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/nutrients.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/pillBtns.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/searchbar.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/recipeCard.css">
     <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Rock+Salt|Yesteryear" rel="stylesheet">
-
 
 </head>
 
 <body>
-    <header class="relative container mx-auto p-10 bg-grey-lighter">
-        <h1>
-            <span>C</span>
-            <span>o</span>
-            <span>o</span>
-            <span>k</span>
-            <span>B</span>
-            <span>o</span>
-            <span>o</span>
-            <span>k</span>
-        </h1>
-        <nav class="absolute pin-b pin-l pin-r w-4/5 mx-auto">
-            <div class="flex items-end bg-grey-light">
-                <div class="navItem flex-1 text-grey-darker text-center bg-grey-lighter border border-grey-darker"
-                    id="discoverBtn">Discover</div>
-                <div class="navItem flex-1 text-grey-darker text-center bg-grey-lighter border border-grey-darker"
-                    id="saved">Saved</div>
-            </div>
-        </nav>
-        <div id="loginoutDiv">
-            <button id="logoutBtnHead"class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline hidden">Logout</button>
-            <button id="loginBtnHead"class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline hidden">Login</button>
+    <header class="fixHeader">
+        <div>
+            <div class="topHeader">CookBook</div>
+            <nav class="navBar">
+                <div class="flex">
+                    <div class="navItem "
+                        id="discoverBtn">Discover</div>
+                    <div class="navItem"
+                        id="saved">Saved</div>
+                </div>
+            </nav>
         </div>
+        
+        <div id="loginoutDiv">
+            <button id="logoutBtnHead" class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline hidden">Logout</button>
+            <button id="loginBtnHead" class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline hidden">Login</button>    
+        </div> 
+        
     </header>
-    <main class="relative container m-auto mt-5 ">
-        <div class="w-4/5 bg-grey-lighter p-10 mx-auto" id="savedDiv">
+
+
+    <main class="container main">
+        <div class="p-10 mx-auto" id="savedDiv">
             
             <!-- When authentication success, append here for saved reciepies -->
             <div id="savedRecipies"></div></div>
@@ -56,6 +59,7 @@
     <script src="assets/javascript/config.js"></script>
     <script src="assets/javascript/jQueryExtension.js"></script>
     <script src="assets/javascript/main.js"></script>
+    <script src="assets/javascript/search.js"></script>
     <script src="assets/javascript/saved.js"></script>
     <script src="assets/javascript/login.js"></script>
     <script src="assets/javascript/googleSignin.js"></script>

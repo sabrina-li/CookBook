@@ -1,0 +1,82 @@
+#searchBox{
+    color: var(--dark-gray);
+    background-color: var(--cream);
+    position: sticky;
+    top: 55px;
+    padding-top: 10px;
+    box-shadow: 0 15px 15px -5px var(--cream);
+}
+#searchForm{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.searchFormGroup{
+    display: flex;
+    flex-grow:2;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.searchLabel{
+    padding-right: 10px;
+    min-width: fit-content;
+}
+
+.search{
+    color:var(--dark-gray);
+    border: 2px solid var(--dark-gray); 
+    background:  none;
+    border-right: none;
+    font-size:16px;
+}
+.searchBtn{
+    border: 2px solid var(--dark-gray);
+    font-size:17px;
+}
+
+.search,.searchBtn{
+    
+    padding: 8px;
+    /* color:#EFA93A; */
+}
+
+.zeroWidth{
+    width: 0px;
+    padding: 0;
+    border:none;
+}
+.slidOut{
+    /* width:100%; */
+    /* flex-grow: 100%; */
+    width: 100%;
+    animation: slidOut 1s;
+}
+.removeLeftBorder{
+    border-left: none;
+}
+
+#healthLabels{
+    padding-top: 10px;
+    width: 80%;
+    margin: auto;
+}
+
+
+
+
+@keyframes slidOut {
+    from {
+        /* flex-grow: 0; */
+        width: 0;
+        /* transform: translateX(100%);  */
+    }
+    to {
+        width: 100%;
+        /* transform: translateX(0);  */
+        /* flex-grow: 100%; */
+    }
+  }
+

@@ -1,0 +1,116 @@
+  
+.saveToAccount, .goToRecipe, .showTotalNutrients, .hideTotalNutrients {
+    margin: 2px;
+    background-color: none;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: none;
+    color: var(--dark-gray);
+    cursor: pointer;
+    display: inline-block;
+    font-family: Arial;
+    /* font-size: 20px; */
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+.saveToAccount:hover, .goToRecipe:hover, .showTotalNutrients:hover,.hideTotalNutrients:hover  {
+    background-color: var(--darker-cream);
+    animation: glowing 1s ease-in-out infinite;
+}
+
+@keyframes glowing { 
+    0% { box-shadow: 0 0 3px var(--darker-cream); }
+    50% { box-shadow: 0 0  5px 5px var(--darker-cream); }
+    100% { box-shadow: 0 0 3px var(--darker-cream); }
+}
+
+
+.recipeCard{
+    /* position: relative; */
+    width: 100%;
+    /* background: white; */
+    margin-top: 15px;
+    padding: 15px;
+    border-top: 2px solid var(--bright-red);
+}
+
+.cardImgDiv,.recipeData{
+    float: left;
+    max-height: fit-content;
+}
+.clearfix::after{
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.cardImgDiv{
+    width: 30%;
+    overflow: hidden;
+    max-height: 200px;
+    max-width: 200px; 
+}
+.recipeData{
+    padding-left: 2%;
+    width: 70%;
+    color:var(--dark-gray);
+}
+
+.recipe-img{
+    position: relative;
+    z-index: -1;
+    transform: translateX(-100%);
+    /* max-height: 200px;
+    max-width: 200px; */
+}
+.cardImgDiv .active{
+    transform: translateX(0);
+    animation: slideInLeft 2s ease;
+}
+@keyframes slideInLeft {
+    from{transform: translateX(-100%);}
+    to{transform: translateX(0);}
+}
+
+
+.recipeCartButtons{
+    display:flex;
+}
+.recipeCartButtons button{
+    width: 100%;
+}
+
+
+
+/* nutrients */
+
+.totalNutrients{
+    border: 1px solid black;
+    padding: 10px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+
+.nutritionTable th{
+    font-weight: 500;
+    padding-right: 15px;
+}
+
+.FASAT,.FATRN,.FAMS,.FAPU,.FIBTG,.SUGAR{
+    font-weight: 500;
+    padding-left: 20px;
+}
+
+.ENERC_KCAL,.FAT,.CHOCDF,.PROCNT,.CHOLE,.NA{
+    font-weight: 700!important;
+    border-bottom: 2px solid black;
+}
+
+
+
+
+

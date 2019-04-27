@@ -8,27 +8,6 @@
 $(document).ready(function () {
 
         $(".saveToAccount").hide();
-        $(document).on("click", ".showMore", function (event) {
-                $(this).parent().next().show();
-                $(this).hide();
-        })
-        $(document).on("click", ".showLess", function (event) {
-                $(this).parent().hide();
-                $(this).parent().prev().children(".showMore").show();
-        })
-
-        $(document).on("click", ".showTotalNutrients", function (event) {
-                $(this).parent().parent().children(".totalNutrients").show();
-                $(this).toggleClass("showTotalNutrients");
-                $(this).text("Hide Nutrition");
-                $(this).toggleClass("hideTotalNutrients");
-        })
-              $(document).on("click", ".hideTotalNutrients", function (event) {
-                $(this).parent().parent().children(".totalNutrients").hide();
-                $(this).toggleClass("showTotalNutrients");
-                $(this).text("Show Nutrition");
-                $(this).toggleClass("hideTotalNutrients");
-        })
 
 
         //todo: put this to onauth change
@@ -62,7 +41,7 @@ $(document).ready(function () {
                                                                 totalDaily:JSON.parse(childSnapshot.val().recipeTotalDaily || "{\"nutrition\":\"unknown\"}")
                                                         }
                                                         
-                                                        $("#savedRecipies").appendRecipeToDiv(testRecipe);
+                                                        $("#savedRecipies").append(appendRecipeToDiv(testRecipe));
                                                         $(".goToRecipe").off('click');
                                                         $(".goToRecipe").on('click',function(){
                                                         // console.log($(this))

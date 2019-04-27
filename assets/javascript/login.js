@@ -66,18 +66,18 @@ $(document).ready(function () {
     $(document).on('click',"#saveDietBtn", function (event) {
         //get  lables from selection
         //push lables to DB
+        
         event.preventDefault();
         let user = firebase.auth().currentUser;
         let labels = $(this).prev().children(".active");
         
-
+        
         database.ref('/users/'+user.uid+"/healthLabels").remove();
         labels.each(function(idx,val){
             let label = $(val).text();
-            
             database.ref('/users/'+user.uid+"/healthLabels").push(label);
         });
-        $("#healthLabelsDiv").remove();
+        $(".modal").remove();
         
     })
     $(document).on('click','.healthLabels',function(event){
@@ -85,6 +85,7 @@ $(document).ready(function () {
     })
 
     $(document).on('click','#hello',function(){
+        $(".healthLabelsDiv").remove();
         let user = firebase.auth().currentUser;
         database.ref('/users/'+user.uid+"/healthLabels").once('value',function(snap){
             let snapArr = [];
@@ -122,15 +123,14 @@ function showError(errorCode, errorMessage) {
     let error = $("<p>").attr("class", "errormsg");
     error.css("color", "red");
     error.text("Error Authenticating! Error Message: " + errorMessage)
-    $(".loginForm").append(error);
+    $("#area").append(error);
 }
 
 function loginHandler(loggedIn,user=0) {
     if (loggedIn) {
         $("#hello").remove();
         $(".loginForm").remove();
-        $("#loginoutDiv").prepend(`<span id="hello" style="color: white; font-size: 40px;">Hello! `+user.displayName+"</span>");
-        $("#hello").css("text-decoration","underline")
+        $("#loginoutDiv").prepend(`<span id="hello">Hello! `+user.displayName+"</span>");
         $("#logoutBtnHead").show();//TODO: position the log out button
         $("#loginBtnHead").hide();
     } else {

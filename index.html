@@ -8,55 +8,83 @@
     <title>CookBook</title>
     
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/css/stylesaved.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/colors.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/popup.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/login.css">
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/nutrients.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/pillBtns.css"> -->
+    <link rel="stylesheet" type="text/css" href="assets/css/searchbar.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/recipeCard.css">
     <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Rock+Salt|Yesteryear" rel="stylesheet">
 
 </head>
 
 <body>
-    <header class="relative container mx-auto p-10 bg-grey-lighter">
-        <h1>
-            <span>C</span>
-            <span>o</span>
-            <span>o</span>
-            <span>k</span>
-            <span>B</span>
-            <span>o</span>
-            <span>o</span>
-            <span>k</span>
-        </h1>
-        
-        <nav class="absolute pin-b pin-l pin-r w-4/5 mx-auto">
-            <div class="flex items-end bg-grey-light">
-                <div class="navItem flex-1 text-grey-darker text-center bg-grey-lighter border border-grey-darker"
-                    id="discoverBtn">Discover</div>
-                <div class="navItem flex-1 text-grey-darker text-center bg-grey-lighter border border-grey-darker"
-                    id="saved">Saved</div>
-            </div>
-        </nav>
-        <div id="loginoutDiv">
-            <button id="logoutBtnHead" class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline hidden">Logout</button>
-            <button id="loginBtnHead" class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 mt-3 mb-1 rounded focus:outline-none focus:shadow-outline hidden">Login</button>    
+    <header class="fixHeader">
+        <div>
+            <div class="topHeader">CookBook</div>
+            <nav class="navBar">
+                <div class="flex">
+                    <div class="navItem "
+                        id="discoverBtn">Discover</div>
+                    <div class="navItem"
+                        id="saved">Saved</div>
+                </div>
+            </nav>
         </div>
+        
+        <div id="loginoutDiv">
+            <button id="logoutBtnHead" class="hidden"><span>Logout</span></button>
+            <button id="loginBtnHead" class="hidden"><span>Login</span></button>    
+        </div> 
         
     </header>
-    <main class="relative container m-auto mt-5 ">
-        <div class="w-4/5 bg-grey-lighter p-10 mx-auto">
-            <form autocomplete="off" class="bg-white shadow-md rounded px-8 pt-6 pb-4 mb-4">
-                <label for="search-input" class="block text-grey-darker text-sm font-bold mb-2">Search for
-                    Recipe:</label>
-                <input id="search" type="text" placeholder="Chicken Noodle Soup"
-                    class="shadow appearance-none border rounded w-4/5 py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline">
-                <input type="submit" value="Search" id="searchBtn"
-                    class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"></input>
-                <div id="healthLabels"></div>
-            </form>
-            
-            <div id="searchDiv"></div>
-        </div>
 
+    <div class="parallax" >
+        <h1 class="headline">
+            <span id="exp1" class="dei-1">C</span>
+            <span id="exp2"  class="dei-2">o</span>
+            <span id="exp3"  class="dei-3">o</span>
+            <span id="exp4"  class="dei-4">k</span>
+            <span id="exp5"  class="dei-5">B</span>
+            <span id="exp6"  class="dei-6">o</span>
+            <span id="exp7"  class="dei-7">o</span>
+            <span id="exp8"  class="dei-8">k</span>
+        </h1>
+        <h3 class="subHeadline">
+            <span id="cooking">Cooking</span> is <span id="love">love</span> made visible
+        </h3>
+    </div>
+    
+
+
+    
+    
+    
+    <main class=" container main">
+        <div id="searchBox">
+            <form id="searchForm" >
+                    <div class="searchFormGroup">
+                        <label for="search-input" class="searchLabel">Search for
+                            Recipe:</label>
+                        <input id="search" type="text" placeholder="Chicken Noodle Soup"
+                            class="search zeroWidth focus:outline-none">
+                    </div>
+                    <a id="searchBtn"
+                        class="searchBtn focus:outline-none">
+                        <i class="fas fa-search"></i>
+                    </a>
+            </form>
+            <div id="healthLabels"></div>
+        </div>
+        
+
+        <!-- <div class="w-4/5 p-10 mx-auto"> -->
+            <div id="searchDiv"></div>
+        <!-- </div> -->
+        
         <div class="savedAlert flex items-center text-white text-sm font-bold px-4 py-3" role="alert">
             <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/></svg>
             <span>Your recipe is saved successfully! Go to saved tab to see them!</span>
@@ -72,10 +100,10 @@
     <script src="assets/javascript/config.js"></script>
     <script src="assets/javascript/jQueryExtension.js"></script>
     <script src="assets/javascript/main.js"></script>
-    <script src="assets/javascript/search.js"></script>
     <script src="assets/javascript/login.js"></script>
     <script src="assets/javascript/googleSignin.js"></script>
-    
+    <script src="assets/javascript/animation.js"></script>
+    <script src="assets/javascript/search.js"></script>
 
 </body>
 

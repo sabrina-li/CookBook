@@ -5,13 +5,30 @@ $(document).ready(function () {
   var searchInput = "";
 
   //this needs onclick listener to call ajax and display
+  $('#searchForm').submit(function(e) {
+    e.preventDefault();
+    $("#searchBtn").click();
+  });
+
+  $("#searchForm").on("click", function (event) {
+    $("#search").removeClass("zeroWidth");
+    $("#search").addClass("slidOut");
+    $("#searchBtn").addClass("removeLeftBorder");
+  });
+
+  
   $("#searchBtn").on("click", function (event) {
     event.preventDefault();
+    
+    window.scrollTo(0,$('#searchDiv').offset().top-70);
     $("#searchDiv").empty();
-    //API to fetch the gif from giphy.com
+    
+    //TODO scroll to top of div after empty
+    
+
     searchInput = $("#search").val();
     let user = firebase.auth().currentUser;
-    if(user && user.uid){
+    if(user && user.uid && searchInput){
       database.ref('/users/' + user.uid + "/healthLabels").once('value', function (snap) {
         let snapArr = [];
         snap.forEach(function (item) {
@@ -20,7 +37,7 @@ $(document).ready(function () {
         getmMoreRecipe(0, searchInput, snapArr);
       });
     }else{
-      $("#healthLabels").remove();
+      $("#healthLabels").empty();
       getmMoreRecipe(0, searchInput);
     } 
   });
@@ -59,17 +76,20 @@ $(document).on("click", ".showLess", function (event) {
 })
 
 $(document).on("click", ".showTotalNutrients", function (event) {
-  $(this).parent().parent().children(".totalNutrients").show();
+  let $reciepiCard = $($(this).parentsUntil(".recipeCard").parent()[0])
+  $reciepiCard.children(".totalNutrients").show();
   $(this).toggleClass("showTotalNutrients");
   $(this).text("Hide Nutrition");
   $(this).toggleClass("hideTotalNutrients");
 })
 $(document).on("click", ".hideTotalNutrients", function (event) {
-  $(this).parent().parent().children(".totalNutrients").hide();
+  let $reciepiCard = $($(this).parentsUntil(".recipeCard").parent()[0])
+  $reciepiCard.children(".totalNutrients").hide();
   $(this).toggleClass("showTotalNutrients");
   $(this).text("Show Nutrition");
   $(this).toggleClass("hideTotalNutrients");
 })
+
 
 function getmMoreRecipe(from, querystr, healthLabels = null) {
   //health=peanut-free&health=tree-nut-free
@@ -85,7 +105,7 @@ function getmMoreRecipe(from, querystr, healthLabels = null) {
   // console.log(searchHealth);
   var queryURL =
     apiBaseURL+"&q=" + querystr + "&from=" + from + "&to=" + (from + 10)+searchHealth;
-  console.log(queryURL);
+  console.log("here is",apiBaseURL);
 
   //AJAX call to get the data using GET method and url as parameter
   $.ajax({
@@ -125,7 +145,7 @@ function handleRecipeAPIResponse(response){
       totalDaily:val.recipe.totalDaily
     }
     // console.log(val);
-    $("#searchDiv").appendRecipeToDiv(thisRecipe);
+    $("#searchDiv").append(appendRecipeToDiv(thisRecipe));
     //detach onclick rom previouse loop
     $(".goToRecipe").off('click');
     $(".goToRecipe").on('click',function(){
