@@ -54,7 +54,7 @@ body{
 
 
 .parallax{
-  background-image: url("../images/ingredients.jpg");
+  background-image: url("https://sabrina-li.github.io/CookBook/assets/images/ingredients.jpg");
   height: 100vh; 
   padding-left: 5%;
   background-attachment: fixed;
