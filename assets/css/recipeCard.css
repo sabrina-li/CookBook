@@ -89,7 +89,6 @@
 .totalNutrients{
     border: 1px solid black;
     padding: 10px;
-    position: relative;
     margin-left: auto;
     margin-right: auto;
     width: fit-content;
